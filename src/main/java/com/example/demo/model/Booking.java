@@ -8,15 +8,15 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity(name = "bookings")
+@Entity(name = "booking")
 public class Booking {
     @Id
     @GeneratedValue
     private Long id;
     @NotNull
-    private String firstName;
+    private Integer numberInParty;
     @NotNull
-    private String lastName;
+    private String selectedHotelName;
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkIn;
