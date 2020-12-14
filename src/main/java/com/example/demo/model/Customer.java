@@ -18,14 +18,9 @@ public class Customer {
     @NotNull
     private String lastName;
     @NotNull
-    private Boolean isAdult;
+    private String bookingId;
+//    @NotNull
+//    private Boolean isAdult;
 
-    // TODO ustawic pola customera, nie wiem czy te ponizsze sa potrzebne, czy wystarcza w "booking"
-//    @NotNull
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    private LocalDate checkIn;
-//    @NotNull
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    private LocalDate CheckOut;
 
 }
