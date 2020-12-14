@@ -26,5 +26,7 @@ public class Customer {
     @NotNull
     private String bookingId;
 
+    // TODO: add email address field
+
 
 }
