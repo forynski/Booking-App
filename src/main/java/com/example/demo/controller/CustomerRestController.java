@@ -17,7 +17,7 @@ public class CustomerRestController {
     private final CustomerService customerService;
 
     public CustomerRestController(CustomerService customerService) {
-        this.customerService - customerService;
+        this.customerService = customerService;
     }
 
     @PostMapping
