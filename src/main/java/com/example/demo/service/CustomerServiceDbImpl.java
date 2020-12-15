@@ -38,7 +38,11 @@ public class CustomerServiceDbImpl implements CustomerService {
 
     @Override
     public Customer updateCustomerById(Long id, Customer customer) {
-        return null;
+        // if powoduje nadpisanie customera pod obecnym id zamiast tworzyc nowego
+        if (customerRepository.existsById(id)) {
+            customer.setId(id);
+        }
+        return customerRepository.save(customer);
     }
 
     @Override

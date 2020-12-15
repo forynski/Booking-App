@@ -49,6 +49,7 @@ public class CustomerRestController {
         return ResponseEntity.notFound().build();
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removeCustomerById(@PathVariable Long id) {
         if (customerService.removeCustomerById(id)) {
@@ -57,5 +58,3 @@ public class CustomerRestController {
         return ResponseEntity.badRequest().build();
     }
 }
-
-
