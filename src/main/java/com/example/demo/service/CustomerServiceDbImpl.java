@@ -43,6 +43,7 @@ public class CustomerServiceDbImpl implements CustomerService {
 
     @Override
     public boolean removeCustomerById(Long id) {
+        log.info("Customer successfully deleted from database");
         customerRepository.deleteById(id);
         return true;
     }
