@@ -1,5 +1,10 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +12,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity(name = "hotel")
 public class Hotel {
     @Id
@@ -20,7 +29,6 @@ public class Hotel {
     @Min(value = 1, message = "Star rating must not be less than 0")
     @Max(value = 5, message = "Star rating must not be greater than 5")
     private Integer starRating;
-    // TODO: dodać @Valid na gwiazdki od 1-5
     @NotNull
     private Integer rooms;
     @NotNull

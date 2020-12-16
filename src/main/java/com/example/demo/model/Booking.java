@@ -34,6 +34,8 @@ public class Booking {
     @NotNull
     @DateTimeFormat(pattern = "HH:mm")
     private LocalTime checkOutTime;
+    @NotNull
+    private Boolean allInclusive;
 
 
 }
