@@ -24,7 +24,9 @@ public class Hotel {
     @NotNull
     private String hotelName;
     @NotNull
-    private String location;
+    private String locationCity;
+    @NotNull
+    private String locationCountry;
     @NotNull
     @Min(value = 1, message = "Star rating must not be less than 0")
     @Max(value = 5, message = "Star rating must not be greater than 5")

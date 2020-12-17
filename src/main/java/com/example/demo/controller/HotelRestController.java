@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(path = "/hotel")
+@RequestMapping(path = "booking/hotel")
 @Slf4j
 public class HotelRestController {
 
