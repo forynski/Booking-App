@@ -20,6 +20,7 @@ import javax.validation.constraints.NotNull;
 public class Hotel {
     @Id
     @GeneratedValue
+    // TODO: zmienic na hotelId zeby nie wrzucalo do jednej tabeli customera i hotelu
     private Long id;
     @NotNull
     private String hotelName;
@@ -28,7 +29,7 @@ public class Hotel {
     @NotNull
     private String locationCountry;
     @NotNull
-    @Min(value = 1, message = "Star rating must not be less than 0")
+    @Min(value = 0, message = "Star rating must not be less than 0")
     @Max(value = 5, message = "Star rating must not be greater than 5")
     private Integer starRating;
     @NotNull
