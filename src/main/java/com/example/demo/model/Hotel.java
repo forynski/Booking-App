@@ -1,16 +1,16 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -36,6 +36,14 @@ public class Hotel {
     private Integer rooms;
     @NotNull
     private Integer costPerNight;
+
+//    @ManyToMany(mappedBy = "hotels")
+//    @Setter(value = AccessLevel.NONE)
+//    private List<Booking> bookings = new ArrayList<>();
+
+//    public void addBooking(Booking booking) {
+//        bookings.add(booking);
+//    }
 
 }
 

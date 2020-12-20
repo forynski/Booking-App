@@ -1,16 +1,13 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,13 +25,18 @@ public class Customer {
 //    @Pattern(regexp = "[a-zA-Z]", message = "Last name must contain only alphabetic characters")
     private String lastName;
     @NotNull
-    private String bookingId;
-    @NotNull
     @Pattern(regexp = "[[0-9]]+", message = "Phone number must contain digits only")
     private String phoneNumber;
     @NotNull
     @Email
     private String email;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Setter(value = AccessLevel.NONE)
+    private List<Booking> bookings = new ArrayList<>();
+
+//    public void addBooking(Booking booking) {
+//        bookings.add(booking);
+//    }
 
 }

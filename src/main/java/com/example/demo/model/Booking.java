@@ -1,14 +1,9 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -44,6 +39,10 @@ public class Booking {
     private LocalTime checkOutTime;
     @NotNull
     private Boolean allInclusive;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Getter(value=AccessLevel.NONE)
+    private Customer customer;
 
 
 }
