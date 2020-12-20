@@ -21,7 +21,7 @@ public class Hotel {
     @Id
     @GeneratedValue
     // TODO: zmienic na hotelId zeby nie wrzucalo do jednej tabeli customera i hotelu
-    private Long id;
+    private Long hotelId;
     @NotNull
     private String hotelName;
     @NotNull

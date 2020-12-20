@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class Booking {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long bookingId;
     @NotNull
     private Integer adults;
     @NotNull
