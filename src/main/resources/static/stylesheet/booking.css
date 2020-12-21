@@ -18,7 +18,7 @@
 /*    width: 50%;*/
 /*}*/
 
-html,body{
+html, body {
     background-image: url('https://castelnou.be/swfiles/body/header-home.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,6 +27,9 @@ html,body{
 
 .navbar-nav {
     margin: 20px;
+    font-size: x-large;
 }
 
-
+.card {
+    opacity: 0.9;
+}

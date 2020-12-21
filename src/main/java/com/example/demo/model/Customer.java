@@ -17,7 +17,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue
-    private Long customerId;
+    private Long id;
     @NotNull
 //    @Pattern(regexp = "[a-zA-Z]", message = "First name must contain only alphabetic characters")
     private String firstName;

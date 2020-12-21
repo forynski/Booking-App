@@ -49,7 +49,7 @@ public class BookingServiceDbImpl implements BookingService {
             throw new WrongIdNumber("couldn't find any match with this id" + id);
         } else {
             log.info("Booking data updated");
-            booking.setBookingId(id);
+            booking.setId(id);
             return bookingRepository.save(booking);
         }
     }

@@ -38,7 +38,7 @@ public class HotelServiceDbImpl implements HotelService {
     @Override
     public Hotel updateHotelById(Long id, Hotel hotel) {
         if (hotelRepository.existsById(id)) {
-            hotel.setHotelId(id);
+            hotel.setId(id);
         }
         return hotelRepository.save(hotel);
     }

@@ -5,9 +5,61 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
+    <title>Booking App</title>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Booking App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+        </div>
+    </div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button type="button" class="btn btn-warning">Search</button>
+    </form>
+    </div>
+</nav>
+
+<!--<h1 th:text="#{customer.list}"></h1>-->
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Bookings</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customerList}">
+                <td><a th:href="@{/customer/__${customer.id}__}" th:text="${customer.id}"></a></td>
+                <td th:text="${customer.firstName}"></td>
+                <td th:text="${customer.lastName}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.bookings}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>
