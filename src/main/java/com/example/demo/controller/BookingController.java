@@ -23,7 +23,9 @@ public class BookingController {
 
     @GetMapping(path = "/booking")
     public String booking(ModelMap modelMap) {
-        List<Booking> bookingList = bookingService.getAllBookings();
+        List<Booking> bookingPage = bookingService.getAllBookings(1, 100);
+        modelMap.addAttribute("bookingList", bookingService.getAllBookings(1, 100));
+        modelMap.addAttribute("bookingPage", bookingPage);
         // TODO: model view to create
         return "booking";
     }

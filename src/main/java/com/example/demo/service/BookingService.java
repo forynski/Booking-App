@@ -9,7 +9,7 @@ public interface BookingService {
 
     Booking getBookingById(Long id);
 
-    List<Booking> getAllBookings();
+    List<Booking> getAllBookings(Integer page, Integer size);
 
     Booking updateBookingById(Long id, Booking booking);
 

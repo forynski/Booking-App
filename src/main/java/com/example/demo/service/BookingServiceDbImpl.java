@@ -38,7 +38,7 @@ public class BookingServiceDbImpl implements BookingService {
     }
 
     @Override
-    public List<Booking> getAllBookings() {
+    public List<Booking> getAllBookings(Integer page, Integer size) {
         log.info("All bookings found");
         return bookingRepository.findAll();
     }
