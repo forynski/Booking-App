@@ -23,7 +23,7 @@ public class HotelController {
     @GetMapping(path = "/hotel")
     public String hotel(ModelMap modelMap) {
         List<Hotel> hotelPage = hotelService.getAllHotels(1, 100);
-        modelMap.addAttribute("customerList", hotelService.getAllHotels(1, 100));
+        modelMap.addAttribute("hotelList", hotelService.getAllHotels(1, 100));
         modelMap.addAttribute("hotelPage", hotelPage);
         return null;
     }
