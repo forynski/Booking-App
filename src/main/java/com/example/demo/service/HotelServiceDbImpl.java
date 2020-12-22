@@ -32,6 +32,7 @@ public class HotelServiceDbImpl implements HotelService {
 
     @Override
     public List<Hotel> getAllHotels(Integer page, Integer size) {
+        log.info("All hotels found");
         return hotelRepository.findAll();
     }
 

@@ -4,6 +4,8 @@ import com.example.demo.model.Customer;
 import com.example.demo.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +34,7 @@ public class CustomerServiceDbImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers(Integer page, Integer size) {
+        log.info("All customers found");
         return customerRepository.findAll();
     }
 

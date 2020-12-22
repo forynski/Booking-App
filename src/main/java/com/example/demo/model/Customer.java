@@ -31,12 +31,16 @@ public class Customer {
     @Email
     private String email;
 
+//    @OneToOne(mappedBy = "customer")
+//    @Getter(value=AccessLevel.NONE)
+//    private User user;
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     @Setter(value = AccessLevel.NONE)
     private List<Booking> bookings = new ArrayList<>();
 
-//    public void addBooking(Booking booking) {
-//        bookings.add(booking);
-//    }
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
 
 }
