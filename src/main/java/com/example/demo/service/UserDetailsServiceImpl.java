@@ -5,6 +5,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,12 +14,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserDetailServiceImpl implements UserService {
+public class UserDetailsServiceImpl implements UserDetailsService, UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserDetailServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserDetailsServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -61,6 +62,7 @@ public class UserDetailServiceImpl implements UserService {
             return userRepository.findById(id).orElse(null);
         }
     }
+
 
 }
 
