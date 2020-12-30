@@ -8,7 +8,7 @@ public interface UserService {
 
     User createNewUser(User user);
 
-    List<User> getAllUsers(Integer page, Integer size);
+    List<User> getAllUsers();
 
     User getUserById(Long id);
 
