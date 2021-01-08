@@ -32,7 +32,6 @@ public class UserController {
         modelMap.addAttribute("isUserLogged", true);
         modelMap.addAttribute("isAuthorizedUserAdminOrManager", true);
         return "user";
-        // TODO: dodać widok dla usera
     }
 
     @GetMapping("user/{id}")

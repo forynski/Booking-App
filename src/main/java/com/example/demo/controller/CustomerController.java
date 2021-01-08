@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +23,17 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/customer")
-    public String customer(ModelMap modelMap) {
+    public String customer(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         List<Customer> customerPage = customerService.getAllCustomers(1, 100);
         modelMap.addAttribute("customerList", customerService.getAllCustomers(1, 100));
         modelMap.addAttribute("customerPage", customerPage);
-//        return "customer"; TODO: create model views
-        return null;
+
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
+        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
+        modelMap.addAttribute("isUserLogged", true);
+        modelMap.addAttribute("isAuthorizedUserAdminOrManager", true);
+        return "customer";
     }
 
     @GetMapping(path = "/customer/add")
