@@ -15,26 +15,11 @@ public class LoginController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-                    grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
-            modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserAdminOrManager);
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         return "login";
     }
-
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public String loginPage(@RequestParam(value = "error", required = false) String error,
-//                            @RequestParam(value = "logout", required = false) String logout,
-//                            Model model) {
-//        String errorMessge = null;
-//        if(error != null) {
-//            errorMessge = "Username or Password is incorrect !!";
-//        }
-//        if(logout != null) {
-//            errorMessge = "You have been successfully logged out !!";
-//        }
-//        model.addAttribute("errorMessge", errorMessge);
-//        return "login";
-//    }
 
 }

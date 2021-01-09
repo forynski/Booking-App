@@ -20,17 +20,17 @@ public class User {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Email
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
-//    @Column(nullable = false)
+////    @Column(nullable = false)
 //    private String role;
 
     @Column()

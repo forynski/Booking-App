@@ -27,10 +27,11 @@ public class UserController {
         modelMap.addAttribute("userList", userService.getAllUsers());
         modelMap.addAttribute("userPage", userPage);
 
-        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUserAdminOrManager", true);
+        modelMap.addAttribute("isAuthorizedUserAdmin", true);
         return "user";
     }
 
@@ -38,9 +39,11 @@ public class UserController {
     public String user(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         modelMap.addAttribute("user", userService.getUserById(id));
         modelMap.addAttribute("updateUser", new User());
+
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUserOrManager", true);
-        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        modelMap.addAttribute("isAuthorizedUser", true);
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         return "one-user";
         // TODO: dodać widok

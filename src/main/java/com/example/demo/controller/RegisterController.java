@@ -29,9 +29,9 @@ public class RegisterController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-                    grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
-            modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserAdminOrManager);
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         modelMap.addAttribute("user", new User());
         return "register";
@@ -40,7 +40,7 @@ public class RegisterController {
     @PostMapping("/register")
     public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors, ModelMap modelMap) {
         modelMap.addAttribute("isUserLogged", false);
-        modelMap.addAttribute("isAuthorizedUserAdminOrManager", false);
+        modelMap.addAttribute("isAuthorizedUserAdmin", false);
         if (errors.hasErrors()) {
             return "register";
         }
