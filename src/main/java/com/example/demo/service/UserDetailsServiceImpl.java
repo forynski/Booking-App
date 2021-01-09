@@ -55,7 +55,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(Long id) throws IdNotFoundException {
         if (id == null) {
             throw new IdNotFoundException("Id has not been found");
         } else {

@@ -85,6 +85,11 @@
             <artifactId>bootstrap</artifactId>
             <version>4.5.2</version> <!--może być dostępna nowsza wersja-->
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>

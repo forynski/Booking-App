@@ -17,9 +17,9 @@ public class HomepageController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUserOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
-            modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserOrManager);
+            modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserAdminOrManager);
         }
         return "homepage";
     }

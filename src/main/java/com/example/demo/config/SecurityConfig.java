@@ -12,17 +12,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final UserDetailsServiceImpl userDetailService;
 
-    public SecurityConfig(UserDetailsServiceImpl userDetailService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userDetailService = userDetailService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserDetailsServiceImpl userDetailsService;
+
+
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -30,15 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/{id}")
+                .antMatchers("/users/{id}")
                 .hasRole("ADMIN")
-                .antMatchers("/user/**", "/booking/**", "/customer/**")
+                .antMatchers("/users/**", "/booking/**", "/customer/**")
                 .hasAnyRole("ADMIN", "MANAGER")
-                .antMatchers("/booking/**", "/customer/**")
+                .antMatchers("/user/**", "/booking/**", "/customer/**")
                 .hasAnyRole("ADMIN", "MANAGER", "USER")
                 .antMatchers("/", "/**", "/login", "/register").permitAll().anyRequest().authenticated();
         http.formLogin()
                 .loginPage("/login")
+//                .defaultSuccessUrl("/home")
+//                .failureUrl("/login?error=true")
                 .permitAll();
         http.httpBasic();
 
@@ -49,6 +53,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        // Note that the CSRf token is disabled for all requests (change it as you wish...)
 //        http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic();
 //    }
+
+//        protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+//            auth.inMemoryAuthentication()
+//                    .withUser("user1").password(bCryptPasswordEncoder.encode("user1Pass")).roles("USER")
+//                    .and()
+//                    .withUser("user2").password(bCryptPasswordEncoder.encode("user2Pass")).roles("USER")
+//                    .and()
+//                    .withUser("admin").password(bCryptPasswordEncoder.encode("adminPass")).roles("ADMIN");
+//        }
 
     }
 }
