@@ -9,6 +9,7 @@
 
 .navbar {
     background-color: #007bff;
+    margin-bottom: 50px;
 }
 
 /*.img-thumbnail {*/
@@ -33,3 +34,4 @@ html, body {
 .card {
     opacity: 0.9;
 }
+
