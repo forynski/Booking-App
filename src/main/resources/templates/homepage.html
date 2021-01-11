@@ -19,55 +19,63 @@
           integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
           crossorigin="anonymous"/>
 
-    <!--    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>-->
-    <!--    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>-->
-    <!--    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
-    <!--    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>-->
-
-
     <title>Booking App</title>
+
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Booking App</a>
+    <div class="container" id="navi-container">
+    <a class="navbar-brand" href="/">Booking App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
         <div class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
             <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
-            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
-            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
             <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
+            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
+            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
             <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
             <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-            <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
+            </ul>
+
         </div>
     </div>
-
-<!--    <form class="form-inline">-->
-<!--        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--        <button type="button" class="btn btn-warning">Search</button>-->
-<!--    </form>-->
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container">
     <form method="post" th:object="${booking}">
         <div class="form-group row justify-content-md-center">
-            <div class='col-sm-3'>
-                    <input type='text' placeholder="Where are you going?" class="form-control" id="destination" autocomplete="off"
+            <div class='col-sm-5'>
+                    <input type='text' placeholder="Where are you going?" class="form-control" id="destination" list="popular-destination" autocomplete="off"
                            th:field="*{destination}"/>
+                <datalist id="popular-destination">
+                    <option value="Barcelona"></option>
+                    <option value="Montréal"></option>
+                    <option value="New York"></option>
+                    <option value="London"></option>
+                    <option value="Wrocław"></option>
+                    <option value="Derby"></option>
+                </datalist>
 
                 <script type="text/javascript">
                 </script>
             </div>
 
-            <div class='col-sm-2'>
+            <div class='col-sm-3'>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' placeholder="Check-in" class="form-control" id="checkin" autocomplete="off" th:field="*{checkIn}"/>
                     <span class="input-group-addon">
@@ -83,7 +91,7 @@
 
             </div>
 
-            <div class='col-sm-2'>
+            <div class='col-sm-3'>
                 <div class='input-group date' id='datetimepicker2'>
                     <input type='text' placeholder="Check-out" class="form-control" id="checkout" autocomplete="off" th:field="*{checkOut}"/>
                     <span class="input-group-addon">

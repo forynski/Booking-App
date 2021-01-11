@@ -12,14 +12,7 @@
     margin-bottom: 50px;
 }
 
-/*.img-thumbnail {*/
-/*    display: block;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
-/*    width: 50%;*/
-/*}*/
-
-html, body {
+body {
     background-image: url('https://castelnou.be/swfiles/body/header-home.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,11 +20,14 @@ html, body {
 }
 
 .navbar-nav {
-    margin: 20px;
-    font-size: x-large;
+    margin: 10px;
+    font-size: large;
 }
 
 .card {
     opacity: 0.9;
 }
 
+div button {
+    float: right;
+}

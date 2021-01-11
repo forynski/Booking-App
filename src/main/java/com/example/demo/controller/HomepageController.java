@@ -39,4 +39,6 @@ public class HomepageController {
         model.addAttribute("booking", booking);
         return "test";
     }
+
+
 }
