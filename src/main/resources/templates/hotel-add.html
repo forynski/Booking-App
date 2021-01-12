@@ -59,25 +59,25 @@
         <div class="form-group">
             <div class="form-group col-md-6">
 <!--                <label for="inputHotelName">Hotel name</label>-->
-                <input type="text" class="form-control" id="inputHotelName" placeholder="Hotel name"
-                       th:field="*{hotelName}">
+                <input type="text" class="form-control" id="inputHotelName" placeholder="Hotel name" th:field="*{hotelName}" required>
             </div>
 
             <div class="form-group col-md-6">
 <!--                <label for="inputCity">City</label>-->
-                <input type="text" class="form-control" id="inputCity" placeholder="City" th:field="*{locationCity}">
+                <input type="text" class="form-control" id="inputCity" placeholder="City" th:field="*{locationCity}" required>
             </div>
 
             <div class="form-group col-md-6">
 <!--                <label for="inputCity">Country</label>-->
                 <input type="text" class="form-control" id="inputCountry" placeholder="Country"
-                       th:field="*{locationCountry}">
+                       th:field="*{locationCountry}" required>
             </div>
 
 
             <div class="form-group col-md-6">
 <!--                <label for="inputRating">Rating</label>-->
-                <select id="inputRating" class="form-control" th:placeholder="Rating" th:field="*{starRating}">
+                <select id="inputRating" class="form-control" th:placeholder="Rating" th:field="*{starRating}" required>
+                    <option value="" selected disabled>Rating</option>
                     <option th:field="*{starRating}" value="1">1</option>
                     <option th:field="*{starRating}" value="2">2</option>
                     <option th:field="*{starRating}" value="3">3</option>
@@ -90,18 +90,17 @@
             <div class="form-group">
                 <div class="form-group col-md-6">
 <!--                    <label for="inputRooms">City</label>-->
-                    <input type="text" class="form-control" id="inputRooms" placeholder="Rooms" th:field="*{rooms}">
+                    <input type="text" class="form-control" id="inputRooms" placeholder="Rooms" th:field="*{rooms}" required>
                 </div>
 
                 <div class="form-group col-md-6">
 <!--                    <label for="inputCostPerNight">Country</label>-->
-                    <input type="text" class="form-control" id="inputCostPerNight" placeholder="Cost per night"
-                           th:field="*{costPerNight}">
+                    <input type="text" class="form-control" id="inputCostPerNight" placeholder="Cost per night" th:field="*{costPerNight}" required>
                     </label>
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-warning" id="dasd">Submit</button>
+            <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>
         </div>
 
     </form>

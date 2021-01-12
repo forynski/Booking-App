@@ -28,7 +28,11 @@ body {
     opacity: 0.9;
 }
 
-div button {
+/*div button {*/
+/*    margin-left: 15px;*/
+/*}*/
+
+#addHotelButton {
     margin-left: 15px;
 }
 
