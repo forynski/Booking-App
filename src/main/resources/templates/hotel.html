@@ -34,6 +34,7 @@
             <ul class="navbar-nav mr-auto">
                 <li th:if="${isUserLogged}" class="nav-item"><a href="/hotel/add" class="btn btn-large btn-warning">Add hotel</a></li>
                 <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                 <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                 <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
             </ul>
