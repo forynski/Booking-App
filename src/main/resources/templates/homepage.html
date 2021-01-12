@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
 
     <link rel="stylesheet"
@@ -24,6 +25,7 @@
 </head>
 <body>
 
+<!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container" id="navi-container">
     <a class="navbar-brand" href="/">Booking App</a>
@@ -56,6 +58,7 @@
     </div>
 </nav>
 
+<!-- SEARCH ENGINE -->
 <div class="container">
     <form method="post" th:object="${booking}">
         <div class="form-group row justify-content-md-center">
@@ -64,7 +67,7 @@
                            th:field="*{destination}"/>
                 <datalist id="popular-destination">
                     <option value="Barcelona"></option>
-                    <option value="Montréal"></option>
+                    <option value="Montreal"></option>
                     <option value="New York"></option>
                     <option value="London"></option>
                     <option value="Wrocław"></option>
@@ -120,7 +123,87 @@
     </div>
 </div>
 
+<!-- HOTEL LISTING -->
+<div class="container" id="listing">
+<div class="card-deck">
+    <div class="card">
+        <img class="card-img-top" src="http://pix6.agoda.net/hotelImages/5446455/0/c2928029e6a3dff38a89eeb0d21dbb30.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Hotel Arts Barcelona</h5>
+            <p class="text"><i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>
+            <hr>
+            <p class="card-text"></i>Marina 19-21, Barceloneta, Barcelona, Spain, 08005<br></p>
+            <div class="form-group">
+                <label for="sel1">Rooms:</label>
+                <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary">Book now</a>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="http://pix6.agoda.net/hotelImages/245/2456638/2456638_17081203280055344672.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">CHOTEL10</h5>
+            <p class="text"><i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></p>
+            <hr>
+            <p class="card-text">10 SHERBROOKE WEST, Downtown Montreal, Montreal (QC), Canada, H2X 4C9</p>
+            <div class="form-group">
+                <label for="sel1">Rooms:</label>
+                <select class="form-control" id="sel2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary">Book now</a>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="http://pix6.agoda.net/hotelImages/1273560/0/cf068c20fdb4525b47d30df4de8842c0.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Doubletree By Hilton Wroclaw</h5>
+            <p class="text"><i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true">
+                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>
+            <hr>
+            <p class="card-text">Ul Podwale 82 84, Wroclaw City Center, Wroclaw, Poland, 50 414</p>
+            <div class="form-group">
+                <label for="sel1">Rooms:</label>
+                <select class="form-control" id="sel3">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="#" class="btn btn-primary">Book now</a>
+        </div>
+    </div>
+</div>
+</div>
 
+<!-- SCRIPTS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"

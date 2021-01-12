@@ -31,3 +31,11 @@ body {
 div button {
     float: right;
 }
+
+#listing {
+    margin-top: 50px;
+}
+
+.fa {
+    color: gold;
+}
