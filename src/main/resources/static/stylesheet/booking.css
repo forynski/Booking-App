@@ -29,7 +29,7 @@ body {
 }
 
 div button {
-    float: right;
+    margin-left: 15px;
 }
 
 #listing {
@@ -39,3 +39,4 @@ div button {
 .fa {
     color: gold;
 }
+

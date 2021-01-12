@@ -5,6 +5,7 @@ import com.example.demo.service.HotelService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,16 +40,31 @@ public class HotelController {
     }
 
     @GetMapping(path = "/hotel/add")
-    public String showHotelAdd(ModelMap modelMap) {
+    public String showHotelAdd(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         modelMap.addAttribute("hotel", new Hotel());
-//        return "hotel-add";
-        return null;
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+        return "hotel-add";
     }
 
     @PostMapping(path = "/hotel/add")
-    public String addHotel(@Valid @ModelAttribute("hotel") Hotel hotel) {
+    public String addHotel(@Valid @ModelAttribute("hotel") Hotel hotel, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
         hotelService.createNewHotel(hotel);
-        return "redirect:/";
+        return "redirect:/hotel";
     }
 
 }

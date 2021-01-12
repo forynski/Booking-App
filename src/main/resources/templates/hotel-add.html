@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
+    <title>Hotels</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container" id="navi-container">
+        <a class="navbar-brand" href="/">Booking App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbar">
+            <div class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}">Home<span
+                            class="sr-only">(current)</span></a></li>
+                    <li class="nav-item active"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a>
+                    </li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a>
+                    </li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link"
+                                                                             th:href="@{/user}">Users</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+<!--                    <li th:if="${isUserLogged}" class="nav-item"><a href="/hotel/add" class="btn btn-large btn-warning">Add-->
+<!--                        hotel</a></li>-->
+                    <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ADD HOTEL FORM -->
+
+<div class="container">
+    <h1 th:text="#{add.hotel.form}"></h1>
+    <form method="post" th:action="@{/hotel/add}" th:object="${hotel}">
+
+        <div class="form-group">
+            <div class="form-group col-md-6">
+<!--                <label for="inputHotelName">Hotel name</label>-->
+                <input type="text" class="form-control" id="inputHotelName" placeholder="Hotel name"
+                       th:field="*{hotelName}">
+            </div>
+
+            <div class="form-group col-md-6">
+<!--                <label for="inputCity">City</label>-->
+                <input type="text" class="form-control" id="inputCity" placeholder="City" th:field="*{locationCity}">
+            </div>
+
+            <div class="form-group col-md-6">
+<!--                <label for="inputCity">Country</label>-->
+                <input type="text" class="form-control" id="inputCountry" placeholder="Country"
+                       th:field="*{locationCountry}">
+            </div>
+
+
+            <div class="form-group col-md-6">
+<!--                <label for="inputRating">Rating</label>-->
+                <select id="inputRating" class="form-control" th:placeholder="Rating" th:field="*{starRating}">
+                    <option th:field="*{starRating}" value="1">1</option>
+                    <option th:field="*{starRating}" value="2">2</option>
+                    <option th:field="*{starRating}" value="3">3</option>
+                    <option th:field="*{starRating}" value="4">4</option>
+                    <option th:field="*{starRating}" value="5">5</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-group col-md-6">
+<!--                    <label for="inputRooms">City</label>-->
+                    <input type="text" class="form-control" id="inputRooms" placeholder="Rooms" th:field="*{rooms}">
+                </div>
+
+                <div class="form-group col-md-6">
+<!--                    <label for="inputCostPerNight">Country</label>-->
+                    <input type="text" class="form-control" id="inputCostPerNight" placeholder="Cost per night"
+                           th:field="*{costPerNight}">
+                    </label>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-warning" id="dasd">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
