@@ -39,6 +39,8 @@ public class Booking {
     private LocalTime checkOutTime;
     @NotNull
     private Boolean allInclusive;
+    @NotNull
+    private Double calculatedPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter(value=AccessLevel.NONE)

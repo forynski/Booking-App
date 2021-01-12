@@ -12,6 +12,7 @@ import org.springframework.validation.Errors;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class BookingController {
@@ -37,18 +38,30 @@ public class BookingController {
     }
 
     @GetMapping(path = "/booking/add")
-    public String showBookingAdd(ModelMap modelMap) {
+    public String showBookingAdd(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         modelMap.addAttribute("booking", new Booking());
-        // TODO: model view to create
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
         return "booking-add";
     }
 
-    @PostMapping(path = "/bookind/add")
-    public String addBooking(@Valid @ModelAttribute("booking") Booking booking, final Errors errors) {
-        if (errors.hasErrors()) {
-            return "booking-add";
+    @PostMapping(path = "/booking/add")
+    public String addBooking(@Valid @ModelAttribute("booking") Booking booking, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
         bookingService.createNewBooking(booking);
-        return "redirect:/";
+        return "redirect:/booking";
     }
 }

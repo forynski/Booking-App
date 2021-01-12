@@ -59,6 +59,7 @@
                 <th scope="col">Check-out</th>
                 <th scope="col">Check-out time</th>
                 <th scope="col">All inclusive</th>
+                <th scope="col">Price</th>
             </tr>
             </thead>
             <tbody>
@@ -73,6 +74,7 @@
                 <td th:text="${booking.checkOut}"></td>
                 <td th:text="${booking.checkOutTime}"></td>
                 <td th:text="${booking.allInclusive}"></td>
+                <td th:text="${booking.calculatedPrice}"></td>
             </tr>
             </tbody>
         </table>
