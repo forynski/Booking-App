@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.model.Hotel;
 import com.example.demo.repository.HotelRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,4 +52,16 @@ public class HotelServiceDbImpl implements HotelService {
         hotelRepository.deleteById(id);
         return true;
     }
+
+    //SEARCH
+//    @Override
+//    public List<Hotel> findByKeyword(String keyword) {
+//        return hotelRepository.findByKeyword(keyword);
+//    }
+
+    @Override
+    public Iterable<Hotel> findHotelByLocationCity(String locationCity) {
+        return hotelRepository.findHotelByLocationCity(locationCity);
+    }
+
 }

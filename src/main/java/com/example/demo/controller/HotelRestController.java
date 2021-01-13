@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -56,4 +57,12 @@ public class HotelRestController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+//    //SEARCH:
+//    @GetMapping("/hotel/{locationCity}")
+//    public ResponseEntity<?> getHotelsByCity(@PathVariable String locationCity) {
+//        List<Hotel> hotels =hotelService.findHotelByLocationCity(locationCity);
+//        return ResponseEntity.notFound().build();
+//    }
+
 }

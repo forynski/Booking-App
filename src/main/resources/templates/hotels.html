@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title></title>
+
+</head>
+<body>
+<div class="container">
+
+    <h2>Search for students</h2>
+    <form th:object="${search}" th:action="@{/hotels}" method="get">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" value="Search"/>
+        <div th:if="${not #lists.isEmpty(search)}">
+            <h2>Students List</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                </tr>
+                <tr th:each="hotel: ${search}">
+                    <td th:text="${hotel.id}"><a href="/student/${student.idStudent}">idStudent</a></td>
+                    <td th:text="${hotel.hotelName}">name</td>
+                    <td th:text="${hotel.locationCity}">surname</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>

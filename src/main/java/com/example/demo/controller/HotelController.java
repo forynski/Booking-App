@@ -4,11 +4,9 @@ import com.example.demo.model.Hotel;
 import com.example.demo.service.HotelService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -65,6 +63,13 @@ public class HotelController {
         }
         hotelService.createNewHotel(hotel);
         return "redirect:/hotel";
+    }
+
+    //SEARCH
+    @RequestMapping(value = "hotels", method = RequestMethod.GET)
+    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
+        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
+        return "hotels";
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Hotel;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -16,5 +17,9 @@ public interface HotelService {
 
     boolean removeHotelById(Long id);
 
+    //SEARCH
+//    List<Hotel> findByKeyword(String keyword);
+
+    Iterable<Hotel> findHotelByLocationCity(String locationCity);
 
 }
