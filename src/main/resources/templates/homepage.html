@@ -52,13 +52,17 @@
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-                    <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a>
-                    </li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
                 </ul>
 
             </div>
         </div>
     </div>
+    <!-- SOCIAL LINKS (TOP RIGHT) -->
+<!--    <div class="social_links">-->
+<!--        <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>-->
+<!--        <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>-->
+<!--    </div>-->
 </nav>
 
 <!-- SEARCH ENGINE -->
