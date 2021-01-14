@@ -160,8 +160,8 @@
     <h2>Search for Hotels </h2>
     <form th:object="${search}" th:action="@{/hotels}" method="get">
 
-        <input type="text" name="search" id="search" th:value="${search}"/>
-        <input type="submit" value="Search"/>
+<!--        <input type="text" name="search" id="search" th:value="${search}"/>-->
+<!--        <input type="submit" value="Search"/>-->
 
         <div th:if="${not #lists.isEmpty(search)}">
             <table class="table table-bordered table-striped">
