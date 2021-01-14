@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.Hotel;
 import com.example.demo.service.HotelService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -65,10 +66,25 @@ public class HotelController {
         return "redirect:/hotel";
     }
 
+//    //SEARCH
+//    @RequestMapping(value = "hotels", method = RequestMethod.GET)
+//    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
+//        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
+//        return "hotels";
+//    }
+
     //SEARCH
     @RequestMapping(value = "hotels", method = RequestMethod.GET)
-    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
+    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, ModelMap modelMap, Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
         model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        model.addAttribute("booking", new Booking());
+        if (isUserLogged) {
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
+        }
         return "hotels";
     }
 
