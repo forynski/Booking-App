@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -59,20 +59,20 @@
         </div>
     </div>
     <!-- SOCIAL LINKS (TOP RIGHT) -->
-<!--    <div class="social_links">-->
-<!--        <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>-->
-<!--        <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>-->
-<!--    </div>-->
+    <!--    <div class="social_links">-->
+    <!--        <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>-->
+    <!--        <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>-->
+    <!--    </div>-->
 </nav>
 
 <!-- SEARCH ENGINE -->
 <div class="container">
-    <form method="post" th:object="${booking}">
+    <form th:object="${search}" th:action="@{/hotels}" method="get">
         <div class="form-group row justify-content-md-center">
             <div class='col-sm-5'>
-                <input type='text' placeholder="Where are you going?" class="form-control" id="destination"
+                <input type='text' placeholder="Where are you going?" class="form-control"
                        list="popular-destination" autocomplete="off"
-                       th:field="*{destination}"/>
+                       name="search" id="search" th:value="${search}"/>
                 <datalist id="popular-destination">
                     <option value="Barcelona"></option>
                     <option value="Montreal"></option>
@@ -85,7 +85,7 @@
                 <script type="text/javascript">
                 </script>
             </div>
-
+            <form method="post" th:object="${booking}">
             <div class='col-sm-3'>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' placeholder="Check-in" class="form-control" id="checkin" autocomplete="off"
@@ -121,14 +121,17 @@
             </div>
             <div class='col-sm-1'>
                 <form class="form-inline">
-                    <button type="button" class="btn btn-warning">Search</button>
+<!--                    <button type="button" class="btn btn-warning">Search</button>-->
+                    <button type="submit" class="btn btn-warning" value="Search">Search</button>
+<!--                    <input type="submit" value="Search"/>-->
                 </form>
 
                 <script type="text/javascript">
                 </script>
 
             </div>
-        </div>
+
+
     </form>
 </div>
 
@@ -201,7 +204,7 @@
                             <i class="fa fa-star" aria-hidden="true">
                                 <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>
                 <hr>
-                <p class="card-text">Ul Podwale 82 84, Wroclaw City Center, Wroclaw, Poland, 50 414</p>
+                <p class="card-text">Ul Podwale 82 84, Wroclaw City Center, Wrocław, Poland, 50 414</p>
                 <div class="form-group">
                     <label for="sel1">Rooms:</label>
                     <select class="form-control" id="sel3">
