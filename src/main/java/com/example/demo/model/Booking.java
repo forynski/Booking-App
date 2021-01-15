@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -42,9 +44,24 @@ public class Booking {
     @NotNull
     private Double calculatedPrice;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @Getter(value=AccessLevel.NONE)
+//    private Customer customer;
+
+    @ManyToMany
+    @JoinTable(
+            name="BOOKING_HOTEL",
+            joinColumns = @JoinColumn(name = "BOOKING_ID"),
+            inverseJoinColumns = @JoinColumn(name = "HOTEL_ID")
+    )
+    private List<Hotel> hotels = new ArrayList<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter(value=AccessLevel.NONE)
     private Customer customer;
 
+    public void addHotel(Hotel hotel){
+        hotels.add(hotel);
+    }
 
 }

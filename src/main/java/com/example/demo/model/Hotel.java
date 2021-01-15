@@ -45,5 +45,13 @@ public class Hotel {
 //        bookings.add(booking);
 //    }
 
-}
+    @ManyToMany(mappedBy = "hotels")
+    @Setter(value = AccessLevel.NONE)
+    @Getter(value = AccessLevel.NONE)
+    private List<Booking> bookings = new ArrayList<>();
 
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
+
+}
