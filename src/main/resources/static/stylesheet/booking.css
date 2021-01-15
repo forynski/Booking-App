@@ -19,10 +19,10 @@ body {
     height: 100%;
 }
 
-.navbar-nav {
-    margin: 10px;
-    font-size: large;
-}
+/*.navbar-nav {*/
+/*    margin: 10px;*/
+/*    font-size: large;*/
+/*}*/
 
 .card {
     opacity: 0.9;
@@ -32,9 +32,9 @@ body {
 /*    margin-left: 15px;*/
 /*}*/
 
-#addHotelButton {
-    margin-left: 15px;
-}
+/*#addHotelButton {*/
+/*    margin-left: 15px;*/
+/*}*/
 
 #listing {
     margin-top: 50px;
