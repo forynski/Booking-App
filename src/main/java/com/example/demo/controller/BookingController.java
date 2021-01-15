@@ -64,4 +64,5 @@ public class BookingController {
         bookingService.createNewBooking(booking);
         return "redirect:/booking";
     }
+
 }
