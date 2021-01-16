@@ -54,20 +54,23 @@ public class Booking {
 //    @Getter(value=AccessLevel.NONE)
 //    private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name="BOOKING_USER",
-            joinColumns = @JoinColumn(name = "BOOKING_ID"),
-            inverseJoinColumns = @JoinColumn(name = "USER_ID")
-    )
-    private List<Room> rooms = new ArrayList<>();
+//    @ManyToMany
+//    @JoinTable(
+//            name="BOOKING_ROOM",
+//            joinColumns = @JoinColumn(name = "BOOKING_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "ROOM_ID")
+//    )
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Getter(value=AccessLevel.NONE)
-    private User user;
 
-    public void addRoom(Room room){
-        rooms.add(room);
-    }
+
+//    private List<Room> rooms = new ArrayList<>();
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @Getter(value=AccessLevel.NONE)
+//    private User user;
+//
+//    public void addRoom(Room room){
+//        rooms.add(room);
+//    }
 
 }

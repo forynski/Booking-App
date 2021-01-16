@@ -22,4 +22,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     //SEARCH
 //    Iterable<Room> findRoomByType(String roomType);
 
+    
+
 }

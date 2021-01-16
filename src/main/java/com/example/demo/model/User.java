@@ -9,16 +9,16 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "users")
+@Entity(name = "user")
 public class User {
     @Id
     @GeneratedValue
-
     @Column(nullable = false, updatable = false)
     private Long id;
 
@@ -43,6 +43,7 @@ public class User {
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    private Customer customer;
+
 }
 
 // KOPIA CUSTOMERA

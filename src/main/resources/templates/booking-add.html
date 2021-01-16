@@ -65,6 +65,28 @@
 
 <div class="container">
     <h1 th:text="#{add.booking.form}"></h1>
+
+
+<!--    <div class="container">-->
+<!--        <form method="post" th:object="${room}">-->
+
+<!--            <div class="form-group">-->
+<!--                <div class="form-group col-md-6">-->
+<!--                    <label for="inputRoomType">Select room type</label>-->
+<!--                    &lt;!&ndash;                <input type="text" class="form-control" id="inputHotelName" placeholder="Room type" th:field="*{roomType}" required>&ndash;&gt;-->
+<!--                    <select class="form-control" id="inputRoomType" th:field="*{}" required>-->
+<!--                        <option value="Single Room">Single Room</option>-->
+<!--                        <option value="Double Room">Double Room</option>-->
+<!--                        <option value="Superior Family Room">Superior Family Room</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--    </form>-->
+<!--</div>-->
+
+
     <form method="post" th:action="@{/booking/add}" th:object="${booking}">
 
         <div class="form-group">

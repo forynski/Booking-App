@@ -73,19 +73,4 @@ public class RoomController {
 //        return "hotels";
 //    }
 
-//    //SEARCH
-//    @RequestMapping(value = "rooms", method = RequestMethod.GET)
-//    public String findRoomByType(@RequestParam (value = "search", required = false) String roomType, ModelMap modelMap, Model model, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        boolean isUserLogged = Objects.nonNull(authenticationUser);
-//        model.addAttribute("search", roomService.findRoomByType(roomType));
-//        modelMap.addAttribute("isUserLogged", isUserLogged);
-//        model.addAttribute("booking", new Booking());
-//        if (isUserLogged) {
-//            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-//                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-//            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
-//        }
-//        return "rooms";
-//    }
-
 }

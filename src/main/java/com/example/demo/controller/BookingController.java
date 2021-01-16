@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
+import com.example.demo.service.RoomService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,9 +18,11 @@ import java.util.Objects;
 public class BookingController {
 
     private final BookingService bookingService;
+    private final RoomService roomService;
 
-    public BookingController(BookingService bookingService) {
+    public BookingController(BookingService bookingService, RoomService roomService) {
         this.bookingService = bookingService;
+        this.roomService = roomService;
     }
 
     @GetMapping(path = "/booking")
@@ -66,5 +69,7 @@ public class BookingController {
         modelMap.addAttribute("newOne", newOne);
         return "redirect:/booking";
     }
+
+
 
 }
