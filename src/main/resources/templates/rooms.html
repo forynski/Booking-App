@@ -39,7 +39,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span
                             class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
@@ -67,7 +67,7 @@
 
 <!-- SEARCH ENGINE -->
 <div class="container">
-    <form th:object="${search}" th:action="@{/hotels}" method="get">
+    <form th:object="${search}" th:action="@{/rooms}" method="get">
         <div class="form-group row justify-content-md-center">
             <div class='col-sm-5'>
                 <input type='text' placeholder="Where are you going?" class="form-control"
@@ -159,8 +159,8 @@
     <div class="card my-5">
         <div class="card-body">
 
-    <h2>Search for Hotels </h2>
-    <form th:object="${search}" th:action="@{/hotels}" method="get">
+    <h2>Search for Rooms </h2>
+    <form th:object="${search}" th:action="@{/rooms}" method="get">
 
 <!--        <input type="text" name="search" id="search" th:value="${search}"/>-->
 <!--        <input type="submit" value="Search"/>-->
@@ -170,25 +170,17 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Hotel name</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">Rooms</th>
+                    <th scope="col">Room type</th>
                     <th scope="col">Cost per night</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="hotel : ${search}">
-                    <td><a th:href="@{/hotel/__${hotel.id}__}" th:text="${hotel.id}"></a></td>
-                    <td th:text="${hotel.hotelName}"></td>
-                    <td th:text="${hotel.locationCity}"></td>
-                    <td th:text="${hotel.locationCountry}"></td>
-                    <td th:text="${hotel.starRating}"></td>
-                    <td th:text="${hotel.rooms}"></td>
-                    <td th:text="${hotel.costPerNight}"></td>
-                    <td><a href="/booking/add" class="btn btn-large btn-primary">Book now</a></td>
+                <tr th:each="room : ${search}">
+                    <td><a th:href="@{/room/__${room.id}__}" th:text="${room.id}"></a></td>
+                    <td th:text="${room.roomType}"></td>
+                    <td th:text="${room.costPerNight}"></td>
+                    <td><a href="/room/add" class="btn btn-large btn-primary">Book now</a></td>
                 </tr>
                 </tbody>
             </table>

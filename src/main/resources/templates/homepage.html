@@ -7,19 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
-          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
-          crossorigin="anonymous"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
-          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
-          crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-          crossorigin="anonymous"/>
-
     <title>Booking App</title>
 
 </head>
@@ -37,18 +24,16 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbar">
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span
-                            class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
+                    <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
                 </ul>
             </div>
 
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
@@ -65,78 +50,7 @@
     <!--    </div>-->
 </nav>
 
-<!-- SEARCH ENGINE -->
-
-<div class="container">
-    <form th:object="${search}" th:action="@{/hotels}" method="get">
-        <div class="form-group row justify-content-md-center">
-            <div class='col-sm-5'>
-                <input type='text' placeholder="Where are you going?" class="form-control"
-                       list="popular-destination" autocomplete="off"
-                       name="search" id="search" th:value="${search}"/>
-                <datalist id="popular-destination">
-                    <option value="Barcelona"></option>
-                    <option value="Montreal"></option>
-                    <option value="New York"></option>
-                    <option value="London"></option>
-                    <option value="Wrocław"></option>
-                    <option value="Derby"></option>
-                </datalist>
-
-                <script type="text/javascript">
-                </script>
-            </div>
-
-            <form method="post" th:object="${booking}">
-            <div class='col-sm-3'>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' placeholder="Check-in" class="form-control" id="checkin" autocomplete="off"
-                           th:field="*{checkIn}"/>
-                    <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
-               </span>
-                </div>
-
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                </script>
-
-            </div>
-
-            <div class='col-sm-3'>
-                <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' placeholder="Check-out" class="form-control" id="checkout" autocomplete="off"
-                           th:field="*{checkOut}"/>
-                    <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
-               </span>
-                </div>
-
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                </script>
-
-            </div>
-            <div class='col-sm-1'>
-                <form class="form-inline">
-<!--                    <button type="button" class="btn btn-warning">Search</button>-->
-                    <button type="submit" class="btn btn-warning" value="Search">Search</button>
-<!--                    <input type="submit" value="Search"/>-->
-                </form>
-
-                <script type="text/javascript">
-                </script>
-
-            </div>
-            </form>
-</div>
-
-
-<!-- HOTEL LISTING -->
+<!-- ROOMS LISTING -->
 <div class="container" id="listing">
     <div class="card-deck">
         <div class="card">
@@ -144,23 +58,23 @@
                  src="http://pix6.agoda.net/hotelImages/5446455/0/c2928029e6a3dff38a89eeb0d21dbb30.jpg"
                  alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Hotel Arts Barcelona</h5>
-                <p class="text"><i class="fa fa-star" aria-hidden="true">
-                    <i class="fa fa-star" aria-hidden="true">
-                        <i class="fa fa-star" aria-hidden="true">
-                            <i class="fa fa-star" aria-hidden="true">
-                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>
+                <h5 class="card-title">Single Room</h5>
+<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
+<!--                    <i class="fa fa-star" aria-hidden="true">-->
+<!--                        <i class="fa fa-star" aria-hidden="true">-->
+<!--                            <i class="fa fa-star" aria-hidden="true">-->
+<!--                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>-->
                 <hr>
-                <p class="card-text">Marina 19-21, Barceloneta, Barcelona, Spain, 08005<br><br></p>
-                <div class="form-group">
-                    <label for="sel1">Rooms:</label>
-                    <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br></p>
+<!--                <div class="form-group">-->
+<!--                    <label for="sel1">Rooms:</label>-->
+<!--                    <select class="form-control" id="sel1">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                    </select>-->
+<!--                </div>-->
             </div>
             <div class="card-footer">
 <!--                <a href="#" class="btn btn-primary">Book now</a>-->
@@ -172,22 +86,22 @@
                  src="http://pix6.agoda.net/hotelImages/245/2456638/2456638_17081203280055344672.jpg"
                  alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">CHOTEL10</h5>
-                <p class="text"><i class="fa fa-star" aria-hidden="true">
-                    <i class="fa fa-star" aria-hidden="true">
-                        <i class="fa fa-star" aria-hidden="true">
-                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></p>
+                <h5 class="card-title">Double Room</h5>
+<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
+<!--                    <i class="fa fa-star" aria-hidden="true">-->
+<!--                        <i class="fa fa-star" aria-hidden="true">-->
+<!--                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></p>-->
                 <hr>
-                <p class="card-text">10 SHERBROOKE WEST, Downtown Montreal, Montreal (QC), Canada, H2X 4C9</p>
-                <div class="form-group">
-                    <label for="sel1">Rooms:</label>
-                    <select class="form-control" id="sel2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<!--                <div class="form-group">-->
+<!--                    <label for="sel1">Rooms:</label>-->
+<!--                    <select class="form-control" id="sel2">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                    </select>-->
+<!--                </div>-->
             </div>
             <div class="card-footer">
 <!--                <a href="#" class="btn btn-primary">Book now</a>-->
@@ -199,50 +113,30 @@
                  src="http://pix6.agoda.net/hotelImages/1273560/0/cf068c20fdb4525b47d30df4de8842c0.jpg"
                  alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Doubletree By Hilton Wroclaw</h5>
-                <p class="text"><i class="fa fa-star" aria-hidden="true">
-                    <i class="fa fa-star" aria-hidden="true">
-                        <i class="fa fa-star" aria-hidden="true">
-                            <i class="fa fa-star" aria-hidden="true">
-                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>
+                <h5 class="card-title">Family Room</h5>
+<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
+<!--                    <i class="fa fa-star" aria-hidden="true">-->
+<!--                        <i class="fa fa-star" aria-hidden="true">-->
+<!--                            <i class="fa fa-star" aria-hidden="true">-->
+<!--                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>-->
                 <hr>
-                <p class="card-text">Ul Podwale 82 84, Wroclaw City Center, Wrocław, Poland, 50 414<br><br></p>
-                <div class="form-group">
-                    <label for="sel1">Rooms:</label>
-                    <select class="form-control" id="sel3">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br></p>
+<!--                <div class="form-group">-->
+<!--                    <label for="sel1">Rooms:</label>-->
+<!--                    <select class="form-control" id="sel3">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                    </select>-->
+<!--                </div>-->
             </div>
             <div class="card-footer">
-<!--                <a href="#" class="btn btn-primary">Book now</a>-->
                 <a href="/booking/add" class="btn btn-large btn-primary">Book now</a></li>
             </div>
         </div>
     </div>
 </div>
-
-<!-- SCRIPTS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
-        integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
-<script>
-    $('.input-group.date').datepicker({
-        format: 'yyyy-MM-dd',
-        autoclose: true,
-        todayHighlight: true
-    });
-</script>
 
 </body>
 </html>

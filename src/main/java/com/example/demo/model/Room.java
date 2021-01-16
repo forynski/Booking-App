@@ -16,28 +16,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "hotel")
-public class Hotel {
+@Entity(name = "room")
+public class Room {
     @Id
     @GeneratedValue
-    // TODO: zmienic zeby nie wrzucalo do jednej tabeli customera i hotelu
     private Long id;
     @NotNull
-    private String hotelName;
-    @NotNull
-    private String locationCity;
-    @NotNull
-    private String locationCountry;
-    @NotNull
-    @Min(value = 0, message = "Star rating must not be less than 0")
-    @Max(value = 5, message = "Star rating must not be greater than 5")
-    private Integer starRating;
-    @NotNull
-    private Integer rooms;
+    private String roomType;
     @NotNull
     private Integer costPerNight;
 
-//    @ManyToMany(mappedBy = "hotels")
+
+//    @ManyToMany(mappedBy = "rooms")
 //    @Setter(value = AccessLevel.NONE)
 //    private List<Booking> bookings = new ArrayList<>();
 
@@ -45,7 +35,7 @@ public class Hotel {
 //        bookings.add(booking);
 //    }
 
-    @ManyToMany(mappedBy = "hotels")
+    @ManyToMany(mappedBy = "rooms")
     @Setter(value = AccessLevel.NONE)
     @Getter(value = AccessLevel.NONE)
     private List<Booking> bookings = new ArrayList<>();

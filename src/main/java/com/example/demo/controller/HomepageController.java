@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Booking;
-import com.example.demo.model.Hotel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -34,11 +33,11 @@ public class HomepageController {
 //        return "homepage";
 //    }
 
-    @PostMapping("/")
-    public String save(Booking booking, Model model) {
-        model.addAttribute("booking", booking);
-        return "test";
-    }
+//    @PostMapping("/")
+//    public String save(Booking booking, Model model) {
+//        model.addAttribute("booking", booking);
+//        return "test";
+//    }
 
 
 }

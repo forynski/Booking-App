@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
-    <title>Hotels</title>
+    <title>Rooms</title>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
@@ -38,17 +38,16 @@
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
                 </ul>
             </div>
 
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
-                    <li th:if="${isUserLogged}" class="nav-item"><a href="/hotel/add" class="btn btn-large btn-warning">Add hotel</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a href="/room/add" class="btn btn-large btn-danger">Add room</a></li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item active"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
@@ -62,7 +61,7 @@
 
 <!-- SEARCH ENGINE -->
 <div class="container">
-    <form th:object="${search}" th:action="@{/hotels}" method="get">
+    <form th:object="${search}" th:action="@{/rooms}" method="get">
         <div class="form-group row justify-content-md-center">
             <div class='col-sm-5'>
                 <input type='text' placeholder="Where are you going?" class="form-control"
@@ -138,25 +137,16 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Hotel name</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Rating</th>
-                    <th scope="col">Rooms</th>
+                    <th scope="col">Room type</th>
                     <th scope="col">Cost per night</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="hotel : ${hotelList}">
-                    <td><a th:href="@{/hotel/__${hotel.id}__}" th:text="${hotel.id}"></a></td>
-                    <td th:text="${hotel.hotelName}"></td>
-                    <td th:text="${hotel.locationCity}"></td>
-                    <td th:text="${hotel.locationCountry}"></td>
-                    <td th:text="${hotel.starRating}"></td>
-                    <td th:text="${hotel.rooms}"></td>
-                    <td th:text="${hotel.costPerNight}"></td>
-                    <td><a href="/booking/add" class="btn btn-large btn-primary">Book now</a></td>
+                <tr th:each="room : ${roomList}">
+                    <td><a th:href="@{/room/__${room.id}__}" th:text="${room.id}"></a></td>
+                    <td th:text="${room.roomType}"></td>
+                    <td th:text="${room.costPerNight}"></td>
                 </tr>
                 </tbody>
             </table>

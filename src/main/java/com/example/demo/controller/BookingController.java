@@ -8,7 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.validation.Errors;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -61,7 +60,10 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-        bookingService.createNewBooking(booking);
+//        bookingService.createNewBooking(booking);
+        //TODO: check this!
+        Booking newOne = bookingService.createNewBooking(booking);
+        modelMap.addAttribute("newOne", newOne);
         return "redirect:/booking";
     }
 

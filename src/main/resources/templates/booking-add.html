@@ -39,7 +39,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}">Home<span
                             class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/hotel}">Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item active"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/customer}">Customers</a></li>
@@ -78,16 +78,6 @@
                 <input type="number" class="form-control" id="inputBookingChildren" placeholder="Children" th:field="*{children}" required>
             </div>
 
-            <div class="form-group col-md-6">
-                <!--                <label for="inputBookingRooms">Rooms</label>-->
-                <input type="number" class="form-control" id="inputBookingRooms" placeholder="Rooms" th:field="*{rooms}" required>
-            </div>
-
-            <div class="form-group col-md-6">
-                <!--                <label for="inputBookingDestination">Destination</label>-->
-                <input type="text" class="form-control" id="inputBookingDestination" placeholder="Destination" th:field="*{destination}" required>
-            </div>
-
             <div class="form-group row">
                 <div class='col-sm-3'>
                     <div class='input-group date' id='datetimepicker1'>
@@ -112,28 +102,17 @@
                </span>
                     </div>
 
+
                     <script type="text/javascript">
                         $(function () {
                             $('#datetimepicker1').datetimepicker();
                         });
                     </script>
                 </div>
-
-            </div>
-            <div class="form-group row">
-                <div class="form-group col-md-3">
-                    <!--                <label for="checkinTime">Check-in time</label>-->
-                    <input type="time" class="form-control" id="checkinTime" placeholder="Check-in time" th:field="*{checkInTime}" required>
-                </div>
-
-                <div class="form-group col-md-3">
-                    <!--                <label for="checkoutTime">Check-out time</label>-->
-                    <input type="time" class="form-control" id="checkoutTime" placeholder="Check-out time" th:field="*{checkOutTime}" required>
-                </div>
             </div>
 
             <div class="form-group row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                     <!--                <label for="inputAllInclusive">All inclusive?</label>-->
                     <select id="inputAllInclusive" class="form-control" placeholder="All inclusive" th:field="*{allInclusive}" required>
                         <option value="" selected disabled>All inclusive?</option>
@@ -142,10 +121,10 @@
                     </select>
                 </div>
 
-                <div class="form-group col-md-3">
-                    <!--                <label for="inp">inputCalculatedPrice</label>-->
-                    <input type="number" class="form-control" id="inputCalculatedPrice" placeholder="Price" th:field="*{calculatedPrice}" required>
-                </div>
+<!--                <div class="form-group col-md-3">-->
+<!--                    &lt;!&ndash;                <label for="inp">inputCalculatedPrice</label>&ndash;&gt;-->
+<!--                    <input type="text" class="form-control" id="inputCalculatedPrice" placeholder="Price" th:field="*{booking.getPrice()}">-->
+<!--                </div>-->
 
             </div>
             <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>
@@ -165,13 +144,6 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-<!--<script>-->
-<!--    $('.input-group.date').datepicker({-->
-<!--        format: 'yyyy-MM-dd',-->
-<!--        autoclose: true,-->
-<!--        todayHighlight: true-->
-<!--    });-->
-<!--</script>-->
 <script>
     $('.input-group.date').datepicker({
         format: 'yyyy-mm-dd',
