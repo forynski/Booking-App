@@ -7,6 +7,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+
     <title>Booking App</title>
 
 </head>
@@ -55,53 +68,46 @@
     <div class="card-deck">
         <div class="card">
             <img class="card-img-top"
-                 src="http://pix6.agoda.net/hotelImages/5446455/0/c2928029e6a3dff38a89eeb0d21dbb30.jpg"
+                 src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=1024x768"
                  alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Single Room</h5>
-<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
-<!--                    <i class="fa fa-star" aria-hidden="true">-->
-<!--                        <i class="fa fa-star" aria-hidden="true">-->
-<!--                            <i class="fa fa-star" aria-hidden="true">-->
-<!--                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>-->
+                <p class="text">
+<tr>
+    <i class="fas fa-bed" aria-hidden="true">&nbsp;
+        <i class="fas fa-bath" aria-hidden="true">&nbsp;
+            <i class="fas fa-utensils" aria-hidden="true">&nbsp;
+                <i class="fas fa-wifi" aria-hidden="true">&nbsp;
+                    <i class="fas fa-spa" aria-hidden="true">&nbsp;
+                    </i></i></i></i></i></p></tr>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br></p>
-<!--                <div class="form-group">-->
-<!--                    <label for="sel1">Rooms:</label>-->
-<!--                    <select class="form-control" id="sel1">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                    </select>-->
-<!--                </div>-->
+
+                <p class="card-text">1 large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
             </div>
+
             <div class="card-footer">
-<!--                <a href="#" class="btn btn-primary">Book now</a>-->
-                <a href="/booking/add" class="btn btn-large btn-primary">Book now</a></li>
+                <form action="listReferred" method="get">
+                <a href="/booking/add/" class="btn btn-large btn-primary" id="inputRoomType" th:field="*{booking.roomClass}" th:value="2">Book now</a>
+                </form>
             </div>
         </div>
         <div class="card">
             <img class="card-img-top"
-                 src="http://pix6.agoda.net/hotelImages/245/2456638/2456638_17081203280055344672.jpg"
+                 src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=1024x768"
                  alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Double Room</h5>
-<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
-<!--                    <i class="fa fa-star" aria-hidden="true">-->
-<!--                        <i class="fa fa-star" aria-hidden="true">-->
-<!--                            <i class="fa fa-star" aria-hidden="true"></i></i></i></i></p>-->
+                <p class="text">
+                <tr>
+                    <i class="fas fa-bed" aria-hidden="true">&nbsp;
+                        <i class="fas fa-bath" aria-hidden="true">&nbsp;
+                            <i class="fas fa-utensils" aria-hidden="true">&nbsp;
+                                <i class="fas fa-wifi" aria-hidden="true">&nbsp;
+                                    <i class="fas fa-spa" aria-hidden="true">&nbsp;
+                                    </i></i></i></i></i></p></tr>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-<!--                <div class="form-group">-->
-<!--                    <label for="sel1">Rooms:</label>-->
-<!--                    <select class="form-control" id="sel2">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                    </select>-->
-<!--                </div>-->
+
+                <p class="card-text">1 extra-large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
             </div>
             <div class="card-footer">
 <!--                <a href="#" class="btn btn-primary">Book now</a>-->
@@ -110,26 +116,21 @@
         </div>
         <div class="card">
             <img class="card-img-top"
-                 src="http://pix6.agoda.net/hotelImages/1273560/0/cf068c20fdb4525b47d30df4de8842c0.jpg"
+                 src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=1024x768"
                  alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Family Room</h5>
-<!--                <p class="text"><i class="fa fa-star" aria-hidden="true">-->
-<!--                    <i class="fa fa-star" aria-hidden="true">-->
-<!--                        <i class="fa fa-star" aria-hidden="true">-->
-<!--                            <i class="fa fa-star" aria-hidden="true">-->
-<!--                                <i class="fa fa-star" aria-hidden="true"></i></i></i></i></i></p>-->
+                <p class="text">
+                    <tr>
+                        <i class="fas fa-bed" aria-hidden="true">&nbsp;
+                            <i class="fas fa-bath" aria-hidden="true">&nbsp;
+                                <i class="fas fa-utensils" aria-hidden="true">&nbsp;
+                                    <i class="fas fa-wifi" aria-hidden="true">&nbsp;
+                                        <i class="fas fa-spa" aria-hidden="true">&nbsp;
+                                        </i></i></i></i></i></p></tr>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br></p>
-<!--                <div class="form-group">-->
-<!--                    <label for="sel1">Rooms:</label>-->
-<!--                    <select class="form-control" id="sel3">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                    </select>-->
-<!--                </div>-->
+
+                <p class="card-text">1 sofa bed and 1 large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
             </div>
             <div class="card-footer">
                 <a href="/booking/add" class="btn btn-large btn-primary">Book now</a></li>
@@ -137,6 +138,26 @@
         </div>
     </div>
 </div>
+
+<!-- SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
+        integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+<script>
+    $('.input-group.date').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
+
 
 </body>
 </html>

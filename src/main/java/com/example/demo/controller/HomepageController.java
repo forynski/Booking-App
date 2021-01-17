@@ -27,17 +27,5 @@ public class HomepageController {
         return "homepage";
     }
 
-//    @GetMapping("/")
-//    public String main(Model model) {
-//        model.addAttribute("booking", new Booking());
-//        return "homepage";
-//    }
-
-//    @PostMapping("/")
-//    public String save(Booking booking, Model model) {
-//        model.addAttribute("booking", booking);
-//        return "test";
-//    }
-
 
 }

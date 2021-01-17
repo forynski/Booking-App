@@ -63,14 +63,11 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-//        bookingService.createNewBooking(booking);
-        //TODO: check this!
 
         Booking newOne = bookingService.createNewBooking(booking);
         modelMap.addAttribute("newOne", newOne);
         return "redirect:/booking";
     }
-
 
 
 }

@@ -6,8 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -61,6 +59,7 @@ public class Booking {
         }
         return calculatedPrice;
     }
+
 }
 
 
