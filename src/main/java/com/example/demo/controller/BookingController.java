@@ -65,6 +65,7 @@ public class BookingController {
         }
 //        bookingService.createNewBooking(booking);
         //TODO: check this!
+
         Booking newOne = bookingService.createNewBooking(booking);
         modelMap.addAttribute("newOne", newOne);
         return "redirect:/booking";

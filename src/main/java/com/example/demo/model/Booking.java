@@ -36,24 +36,36 @@ public class Booking {
     @NotNull
     private Double price = 100.00;
 
+    Integer roomClass;
+
     double calculatedPrice = 0;
 
     public double getPrice() {
         long days = DAYS.between(checkIn, checkOut);
+
+        if (roomClass == 1) {
+            price *= 1.0;
+        }
+        if (roomClass == 2) {
+            price *= 1.5;
+        }
+        if (roomClass == 3) {
+            price *= 2.0;
+        }
         double calculatedPrice = (price * adults) * days;
         if (allInclusive) {
-            calculatedPrice += 150.00;
+            calculatedPrice *= 0.2;
         }
         if (children > 0) {
             calculatedPrice += 20.00 * children * days;
         }
         return calculatedPrice;
     }
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Room room;
-
-
-
 }
+
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Room room;
+
+
+

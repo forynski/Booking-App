@@ -24,15 +24,7 @@ public class Room {
     private Integer costPerNight;
 
 
-//    @ManyToMany(mappedBy = "rooms")
-//    @Setter(value = AccessLevel.NONE)
-//    private List<Booking> bookings = new ArrayList<>();
-
-//    public void addBooking(Booking booking) {
-//        bookings.add(booking);
-//    }
-
-//    @ManyToMany(mappedBy = "rooms")
+//    @OneToMany(mappedBy = "rooms")
 //    @Setter(value = AccessLevel.NONE)
 //    @Getter(value = AccessLevel.NONE)
 //    private List<Booking> bookings = new ArrayList<>();
@@ -40,14 +32,5 @@ public class Room {
 //    public void addBooking(Booking booking) {
 //        bookings.add(booking);
 //    }
-
-    @OneToMany(mappedBy = "rooms")
-    @Setter(value = AccessLevel.NONE)
-    @Getter(value = AccessLevel.NONE)
-    private List<Booking> bookings = new ArrayList<>();
-
-    public void addBooking(Booking booking) {
-        bookings.add(booking);
-    }
 
 }
