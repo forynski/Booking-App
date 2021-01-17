@@ -50,27 +50,10 @@ public class Booking {
         return calculatedPrice;
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @Getter(value=AccessLevel.NONE)
-//    private User user;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name="BOOKING_ROOM",
-//            joinColumns = @JoinColumn(name = "BOOKING_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "ROOM_ID")
-//    )
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Room room;
 
 
-
-//    private List<Room> rooms = new ArrayList<>();
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @Getter(value=AccessLevel.NONE)
-//    private User user;
-//
-//    public void addRoom(Room room){
-//        rooms.add(room);
-//    }
 
 }

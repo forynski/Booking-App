@@ -2,10 +2,7 @@ package com.example.demo.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -43,5 +40,14 @@ public class Room {
 //    public void addBooking(Booking booking) {
 //        bookings.add(booking);
 //    }
+
+    @OneToMany(mappedBy = "rooms")
+    @Setter(value = AccessLevel.NONE)
+    @Getter(value = AccessLevel.NONE)
+    private List<Booking> bookings = new ArrayList<>();
+
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
 
 }
