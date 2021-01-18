@@ -44,23 +44,6 @@ public class User {
 //    @OneToOne(fetch = FetchType.LAZY)
 //    private Customer customer;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "booking_user_id")
-    private Collection<Booking> reservations;
-
-    public void setRoles(Collection<Role> roles) {
-        Collection<Role> roles1 = new ArrayList<>();
-        roles1.add(new Role("ROLE_EMPLOYEE"));
-
-        this.roles = roles1;
-    }
-
 }
 
 // KOPIA CUSTOMERA

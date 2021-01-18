@@ -24,9 +24,6 @@ public class HomepageController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
-        else {
-            modelMap.addAttribute("isAuthorizedUserAdmin", false);
-        }
         return "homepage";
     }
 

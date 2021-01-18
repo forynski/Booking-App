@@ -12,33 +12,33 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container" id="navi-container">
-        <a class="navbar-brand" href="/">Booking App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <a class="navbar-brand" href="/">Booking App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbar">
-            <div class="navbar-nav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
-                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
-                </ul>
-            </div>
-
-            <div class="navbar-nav">
-                <ul class="navbar-nav mr-auto">
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
-                    <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
-                    <li th:if="${!isUserLogged}" class="nav-item active"><a class="nav-link" th:href="@{/register}">Register</a></li>
-                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-                    <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
-                </ul>
-
-            </div>
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
+        <div class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+                <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
+            </ul>
         </div>
+
+        <div class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
+                <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
+                <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                <li th:if="${!isUserLogged}" class="nav-item active"><a class="nav-link" th:href="@{/register}">Register</a></li>
+                <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
+            </ul>
+
+        </div>
+    </div>
     </div>
 </nav>
 
@@ -60,15 +60,15 @@
                         <input type="text" class="form-control" name="username" placeholder="username"
                                th:field="*{username}">
                     </div>
-                    <div th:if="${#fields.hasErrors('email')}" class="input-group alert alert-danger">
-                        <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-at"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="email" placeholder="e-mail">
-                    </div>
+                                        <div th:if="${#fields.hasErrors('email')}" class="input-group alert alert-danger">
+                                            <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
+                                        </div>
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" name="email" placeholder="e-mail">
+                                        </div>
                     <div th:if="${#fields.hasErrors('password')}" class="input-group alert alert-danger">
                         <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
                     </div>
