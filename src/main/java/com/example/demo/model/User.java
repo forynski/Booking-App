@@ -35,7 +35,7 @@ public class User {
 ////    @Column(nullable = false)
 //    private String role;
 
-    @Column()
+    @Column(nullable = false)
     private String role = "ROLE_ADMIN";
 
     @Column(columnDefinition = "boolean not null default false")

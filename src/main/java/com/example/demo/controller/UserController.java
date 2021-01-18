@@ -50,11 +50,11 @@ public class UserController {
     }
 
     @PostMapping("user/add")
-    public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors) {
+    public String addUser(@Valid @ModelAttribute("user") ModelMap modelMap, User user, final Errors errors) {
         if (errors.hasErrors()) {
             return "user-add";
         }
         userService.createNewUser(user);
-        return "redirect:/";
+        return "redirect:/user";
     }
 }
