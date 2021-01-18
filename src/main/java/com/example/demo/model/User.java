@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -39,10 +41,27 @@ public class User {
     private String role = "ROLE_ADMIN";
 
     @Column(columnDefinition = "boolean not null default false")
-    private Boolean enabled;
+    private Boolean enabled = true;
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    private Customer customer;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_user_id")
+    private Collection<Booking> reservations;
+
+    public void setRoles(Collection<Role> roles) {
+        Collection<Role> roles1 = new ArrayList<>();
+        roles1.add(new Role("ROLE_EMPLOYEE"));
+
+        this.roles = roles1;
+    }
 
 }
 
