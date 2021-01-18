@@ -2,13 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import com.example.demo.temp.CurrentUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -41,35 +39,15 @@ public class RegisterController {
         return "register";
     }
 
-    //    @PostMapping("/register")
-//    public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors, ModelMap modelMap) {
-//        modelMap.addAttribute("isUserLogged", false);
-//        modelMap.addAttribute("isAuthorizedUserAdmin", false);
-//        if (errors.hasErrors()) {
-//            return "register";
-//        }
-//        userService.createNewUser(user);
-//        return "redirect:/login";
-//    }
-// registration process page
     @PostMapping("/register")
-    public String processRegistrationForm(@Valid @ModelAttribute("newUser") CurrentUser currentUser,
-                                          BindingResult theBindingResult, Model model) {
-
-        // check the database if user already exists
-        if (userService.findUserByEmail(currentUser.getEmail()) != null) {
-            model.addAttribute("newUser", new CurrentUser());
-            model.addAttribute("registrationError", "Email already exists.");
-
-            return "login";
+    public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors, ModelMap modelMap) {
+        modelMap.addAttribute("isUserLogged", false);
+        modelMap.addAttribute("isAuthorizedUserAdmin", false);
+        if (errors.hasErrors()) {
+            return "register";
         }
-
-        // create user account
-        userService.saveUser(currentUser);
-        model.addAttribute("registrationSuccess", "registration Success.");
-
+        userService.createNewUser(user);
         return "redirect:/login";
-
     }
 
 }

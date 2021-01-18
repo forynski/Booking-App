@@ -3,13 +3,9 @@ package com.example.demo.controller;
 import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.RoomService;
-import com.example.demo.service.UserService;
-import com.example.demo.temp.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +18,11 @@ import java.util.Objects;
 public class BookingController {
 
     private final BookingService bookingService;
-    private final UserService userService;
+    private final RoomService roomService;
 
-    public BookingController(BookingService bookingService, UserService userService) {
+    public BookingController(BookingService bookingService, RoomService roomService) {
         this.bookingService = bookingService;
-        this.userService = userService;
+        this.roomService = roomService;
     }
 
     @GetMapping(path = "/booking")
@@ -72,27 +68,6 @@ public class BookingController {
         modelMap.addAttribute("newOne", newOne);
         return "redirect:/booking";
     }
-
-//    // registration process page
-//    @PostMapping("/register")
-//    public String processRegistrationForm(@Valid @ModelAttribute("newUser") CurrentUser currentUser,
-//                                          BindingResult theBindingResult, Model model) {
-//
-//        // check the database if user already exists
-//        if (userService.findUserByEmail(currentUser.getEmail()) != null) {
-//            model.addAttribute("newUser", new CurrentUser());
-//            model.addAttribute("registrationError", "Email already exists.");
-//
-//            return "login";
-//        }
-//
-//        // create user account
-//        userService.saveUser(currentUser);
-//        model.addAttribute("registrationSuccess", "registration Success.");
-//
-//        return "redirect:/login-form-page";
-//
-//    }
 
 
 }

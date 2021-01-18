@@ -34,8 +34,6 @@ public class Booking {
     @NotNull
     private Double price = 100.00;
 
-    private Long userId;
-
     Integer roomClass;
 
     double calculatedPrice = 0;
@@ -60,10 +58,6 @@ public class Booking {
             calculatedPrice += 20.00 * children * days;
         }
         return calculatedPrice;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
 }

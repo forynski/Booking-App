@@ -1,15 +1,10 @@
 package com.example.demo.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 @Controller
@@ -26,18 +21,5 @@ public class LoginController {
         }
         return "login";
     }
-
-//    // log out
-//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-//
-//        // handle logout for logged user
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null) {
-//            new SecurityContextLogoutHandler().logout(request, response, auth);
-//        }
-//
-//        return "redirect:/login-form-page?logout";
-//    }
 
 }
