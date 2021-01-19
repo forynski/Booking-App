@@ -36,7 +36,7 @@ public class Booking {
     private Double price = 100.00;
 
     Integer roomClass;
-//    Integer roomNumber;
+    Integer roomNumber;
     double calculatedPrice = 0;
 
 

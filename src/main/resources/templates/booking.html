@@ -58,6 +58,7 @@
                 <th scope="col">Room class</th>
                 <th scope="col">Room number</th>
                 <th scope="col">Total price</th>
+                <th scope="col">Selected room</th>
             </tr>
             </thead>
             <tbody>
@@ -71,6 +72,9 @@
                 <td th:text="${booking.roomClass}"></td>
                 <td th:text="${booking.generateRoomNumber()}"></td>
                 <td th:text="${booking.getPrice()}"></td>
+                <td th:if="${booking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
+                <td th:if="${booking.roomClass.equals(2)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=160x120" alt=""></td>
+                <td th:if="${booking.roomClass.equals(3)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=160x120" alt=""></td>
             </tr>
             </tbody>
         </table>

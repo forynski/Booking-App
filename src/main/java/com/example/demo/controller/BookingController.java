@@ -69,5 +69,12 @@ public class BookingController {
         return "redirect:/booking";
     }
 
+    //    //SEARCH
+//    @RequestMapping(value = "hotels", method = RequestMethod.GET)
+//    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
+//        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
+//        return "hotels";
+//    }
+
 
 }
