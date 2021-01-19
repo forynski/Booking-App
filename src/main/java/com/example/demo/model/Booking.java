@@ -54,7 +54,7 @@ public class Booking {
         }
         double calculatedPrice = (price * adults) * days;
         if (allInclusive) {
-            calculatedPrice *= 0.2;
+            calculatedPrice *= 1.2;
         }
         if (children > 0) {
             calculatedPrice += 20.00 * children * days;

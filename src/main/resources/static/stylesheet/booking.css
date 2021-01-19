@@ -45,10 +45,19 @@ body {
 }
 
 .row {
-    /*margin-left: 0px !important;*/
-    /*margin-right: 0px !important;*/
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .fab {
     color: white;
+}
+
+#addHotelButton {
+    margin-left: 15px;
+}
+
+#bookingContainer {
+    opacity: 0.9;
+    padding: 20px 20px 20px 20px;
 }
