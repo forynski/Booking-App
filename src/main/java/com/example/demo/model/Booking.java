@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Random;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -35,8 +36,9 @@ public class Booking {
     private Double price = 100.00;
 
     Integer roomClass;
-
+//    Integer roomNumber;
     double calculatedPrice = 0;
+
 
     public double getPrice() {
         long days = DAYS.between(checkIn, checkOut);
@@ -58,6 +60,15 @@ public class Booking {
             calculatedPrice += 20.00 * children * days;
         }
         return calculatedPrice;
+    }
+
+    public Integer generateRoomNumber() {
+        Random random = new Random();
+        int roomNumber;
+        do {
+            roomNumber = random.nextInt(101);
+        } while (roomNumber == 0);
+        return roomNumber;
     }
 
 }

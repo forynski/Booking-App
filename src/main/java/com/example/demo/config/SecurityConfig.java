@@ -23,12 +23,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }
-
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+////        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+//        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+//    }
+//
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -46,15 +46,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Override
-//    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user1").password(bCryptPasswordEncoder.encode("user1Pass")).roles("USER")
-//                .and()
-//                .withUser("user2").password(bCryptPasswordEncoder.encode("user2Pass")).roles("USER")
-//                .and()
-//                .withUser("admin").password(bCryptPasswordEncoder.encode("adminPass")).roles("ADMIN");
-//
-//    }
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("user1").password(bCryptPasswordEncoder.encode("user1Pass")).roles("USER")
+                .and()
+                .withUser("user2").password(bCryptPasswordEncoder.encode("user2Pass")).roles("USER")
+                .and()
+                .withUser("admin").password(bCryptPasswordEncoder.encode("adminPass")).roles("ADMIN");
+
+    }
 
 }

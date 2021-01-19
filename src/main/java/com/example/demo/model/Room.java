@@ -19,7 +19,7 @@ public class Room {
     @GeneratedValue
     private Long id;
     @NotNull
-    private String roomType;
+    Integer roomClass;
     @NotNull
     private Integer costPerNight;
 

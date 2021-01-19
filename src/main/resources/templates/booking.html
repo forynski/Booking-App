@@ -56,6 +56,7 @@
                 <th scope="col">Check-out</th>
                 <th scope="col">All inclusive</th>
                 <th scope="col">Room class</th>
+                <th scope="col">Room number</th>
                 <th scope="col">Total price</th>
             </tr>
             </thead>
@@ -68,6 +69,7 @@
                 <td th:text="${booking.checkOut}"></td>
                 <td th:text="${booking.allInclusive}"></td>
                 <td th:text="${booking.roomClass}"></td>
+                <td th:text="${booking.generateRoomNumber()}"></td>
                 <td th:text="${booking.getPrice()}"></td>
             </tr>
             </tbody>
