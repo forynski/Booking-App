@@ -6,9 +6,8 @@ import com.example.demo.service.RoomService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -69,7 +68,38 @@ public class BookingController {
         return "redirect:/booking";
     }
 
-    //    //SEARCH
+    // GET EDIT BOOKING
+    @GetMapping(value = "/booking/update/{id}")
+    public String showBookingToUpdate(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+        modelMap.addAttribute("booking", bookingService.getBookingById(id));
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+        modelMap.addAttribute("booking", id);
+        bookingService.getBookingById(id);
+        return "booking-update";
+    }
+
+    // POST EDIT BOOKING
+    @PostMapping("/booking/update")
+    public String updateBookingById(@Valid @ModelAttribute("booking") ModelMap modelMap, Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+        modelMap.addAttribute("booking");
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+
+        return "redirect:/booking/" + booking.getId();
+
+        //    //SEARCH
 //    @RequestMapping(value = "hotels", method = RequestMethod.GET)
 //    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
 //        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
@@ -77,4 +107,5 @@ public class BookingController {
 //    }
 
 
+    }
 }

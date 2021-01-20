@@ -62,10 +62,10 @@
 
 <div class="container">
     <div class="card" id="bookingContainer">
-        <h1 th:text="#{add.booking.form}"></h1>
+        <h1 th:text="#{update.booking.form}"></h1>
 
 
-        <form method="post" th:action="@{/booking/add}" th:object="${booking}">
+        <form method="post" th:action="@{/booking/update/}" th:value="id" th:object="${booking}">
 
             <!--        <div class="form-group">-->
             <div class="form-group col-md-6">
@@ -111,7 +111,7 @@
                 </select>
             </div>
 
-<!--            DATE AND TIME PICKER STARTS-->
+            <!--            DATE AND TIME PICKER STARTS-->
             <div class="form-group row">
                 <div class='col-sm-3'>
                     <div class='input-group date'>
@@ -143,7 +143,7 @@
                     </script>
                 </div>
             </div>
-<!--            DATA TIME PICKER ENDS-->
+            <!--            DATA TIME PICKER ENDS-->
 
             <!--            <div class="form-group row">-->
             <div class="form-group col-md-6">
@@ -183,7 +183,7 @@
         });
     </script>
 
-<!--        <script th:href="@{scripts/calendar.js}"></script>-->
+    <!--        <script th:href="@{scripts/calendar.js}"></script>-->
 
 </div>
 </body>

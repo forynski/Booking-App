@@ -25,28 +25,10 @@ public class BookingRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createNewBooking(booking));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getBookingById(@PathVariable Long id) {
-        Booking booking = bookingService.getBookingById(id);
-        if (Objects.nonNull(booking)) {
-            return ResponseEntity.ok(booking);
-        }
-        return ResponseEntity.notFound().build();
-    }
-
     @GetMapping
     public ResponseEntity<?> getBookings(@RequestParam(required = false) Integer page,
                                          @RequestParam(required = false) Integer size) {
         return ResponseEntity.ok(bookingService.getAllBookings(page, size));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateBookingById(@PathVariable Long id, @RequestBody Booking booking) {
-        Booking updateBooking = bookingService.updateBookingById(id, booking);
-        if (Objects.nonNull(updateBooking)) {
-            return ResponseEntity.ok(booking);
-        }
-        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
@@ -56,6 +38,26 @@ public class BookingRestController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+//    @PostMapping("/{id}")
+//    public ResponseEntity<?> updateBookingById(@RequestBody Booking booking) {
+//        Booking updateBooking = bookingService.updateBooking(booking);
+//        if (Objects.nonNull(updateBooking)) {
+//            return ResponseEntity.ok(booking);
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> getBookingById(@PathVariable Long id) {
+//        Booking booking = bookingService.getBookingById(id);
+//        if (Objects.nonNull(booking)) {
+//            return ResponseEntity.ok(booking);
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
+
+
 
     //    //SEARCH:
 //    @GetMapping("/hotel/{locationCity}")

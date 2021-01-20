@@ -65,3 +65,9 @@ body {
 #submitBooking {
     margin-top: 25px;
 }
+
+.navbar {
+    font-family: 'Numans', sans-serif;
+    grid-area: navbar;
+    font-size: 18px;
+}
