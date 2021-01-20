@@ -39,7 +39,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
-<!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item active"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>-->
+                    <!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item active"><a class="nav-link" th:href="@{/booking}">Bookings</a></li>-->
                     <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
                 </ul>
             </div>
@@ -57,11 +57,11 @@
             </div>
         </div>
     </div>
-<!--     SOCIAL LINKS (TOP RIGHT)-->
-<!--        <div class="social_links">-->
-<!--            <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>-->
-<!--            <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>-->
-<!--        </div>-->
+    <!--     SOCIAL LINKS (TOP RIGHT)-->
+    <!--        <div class="social_links">-->
+    <!--            <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>-->
+    <!--            <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>-->
+    <!--        </div>-->
 </nav>
 
 
@@ -75,21 +75,25 @@
             <div class="card-body">
                 <h5 class="card-title">Single Room</h5>
                 <p class="text">
-<tr>
-    <i class="fas fa-bed" aria-hidden="true">&nbsp;
-        <i class="fas fa-bath" aria-hidden="true">&nbsp;
-            <i class="fas fa-utensils" aria-hidden="true">&nbsp;
-                <i class="fas fa-wifi" aria-hidden="true">&nbsp;
-                    <i class="fas fa-spa" aria-hidden="true">&nbsp;
-                    </i></i></i></i></i></p></tr>
+                    <tr>
+                        <i class="fas fa-bed" aria-hidden="true">&nbsp;
+                            <i class="fas fa-bath" aria-hidden="true">&nbsp;
+                                <i class="fas fa-utensils" aria-hidden="true">&nbsp;
+                                    <i class="fas fa-wifi" aria-hidden="true">&nbsp;
+                                        <i class="fas fa-spa" aria-hidden="true">&nbsp;
+                                        </i></i></i></i></i></p></tr>
                 <hr>
 
                 <p class="card-text">1 large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
+
+                <h4 class="h5 font-weight-bold">From £100<span class="text-small font-weight-normal ml-2">per night</span></h4>
             </div>
 
             <div class="card-footer">
                 <form action="listReferred" method="get">
-                <a href="/booking/add/" class="btn btn-large btn-primary" id="inputRoomType" th:field="*{booking.roomClass}" th:value="2">Book now</a>
+<!--                    TODO: check th:field with input type button !!!!!-->
+<!--                    <a href="/booking/add/" class="btn btn-lg btn-block btn-primary">Book now</a>-->
+                    <a href="/booking/add/" class="btn btn-lg btn-block btn-primary" id="inputRoomType" th:field="*{booking.roomClass}" th:value="2">Book now</a>
                 </form>
             </div>
         </div>
@@ -100,20 +104,24 @@
             <div class="card-body">
                 <h5 class="card-title">Double Room</h5>
                 <p class="text">
-                <tr>
-                    <i class="fas fa-bed" aria-hidden="true">&nbsp;
-                        <i class="fas fa-bath" aria-hidden="true">&nbsp;
-                            <i class="fas fa-utensils" aria-hidden="true">&nbsp;
-                                <i class="fas fa-wifi" aria-hidden="true">&nbsp;
-                                    <i class="fas fa-spa" aria-hidden="true">&nbsp;
-                                    </i></i></i></i></i></p></tr>
+                    <tr>
+                        <i class="fas fa-bed" aria-hidden="true">&nbsp;
+                            <i class="fas fa-bath" aria-hidden="true">&nbsp;
+                                <i class="fas fa-utensils" aria-hidden="true">&nbsp;
+                                    <i class="fas fa-wifi" aria-hidden="true">&nbsp;
+                                        <i class="fas fa-spa" aria-hidden="true">&nbsp;
+                                        </i></i></i></i></i></p></tr>
                 <hr>
 
                 <p class="card-text">1 extra-large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
+
+                <h4 class="h5 font-weight-bold">From £150<span class="text-small font-weight-normal ml-2">per night</span></h4>
             </div>
             <div class="card-footer">
-<!--                <a href="#" class="btn btn-primary">Book now</a>-->
-                <a href="/booking/add" class="btn btn-large btn-primary">Book now</a></li>
+                <!--                <a href="#" class="btn btn-primary">Book now</a>-->
+<!--                <a href="/booking/add" class="btn btn-large btn-primary">Book now</a></li>-->
+                <a href="/booking/add" class="btn btn-lg btn-block btn-primary">Book now</a>
+
             </div>
         </div>
         <div class="card">
@@ -134,9 +142,11 @@
                 <hr>
 
                 <p class="card-text">1 sofa bed and 1 large double bed<br>Bath or shower<br>Restaurant<br>Free WiFi<br>Fitness centre<br>
+
+                <h4 class="h5 font-weight-bold">From £200<span class="text-small font-weight-normal ml-2">per night</span></h4>
             </div>
             <div class="card-footer">
-                <a href="/booking/add/" id="familyRoom" class="btn btn-large btn-primary">Book now</a></li>
+                <a href="/booking/add/" id="familyRoom" class="btn btn-lg btn-block btn-primary">Book now</a></li>
             </div>
         </div>
     </div>

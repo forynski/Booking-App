@@ -62,12 +62,12 @@
 
 <div class="container">
     <div class="card" id="bookingContainer">
-    <h1 th:text="#{add.booking.form}"></h1>
+        <h1 th:text="#{add.booking.form}"></h1>
 
 
-    <form method="post" th:action="@{/booking/add}" th:object="${booking}">
+        <form method="post" th:action="@{/booking/add}" th:object="${booking}">
 
-<!--        <div class="form-group">-->
+            <!--        <div class="form-group">-->
             <div class="form-group col-md-6">
                 <label for="inputRoomType">Select room type</label>
                 <select class="form-control" id="inputRoomType" th:field="*{roomClass}" required>
@@ -76,17 +76,17 @@
                     <option th:value="3">Superior Family Room</option>
                 </select>
             </div>
-<!--        </div>-->
+            <!--        </div>-->
 
 
-<!--        <div class="form-group">-->
-<!--            <div class="form-group col-md-6">-->
-<!--                <input type="number" class="form-control" id="inputBookingAdults" placeholder="Adults" th:field="*{adults}" required>-->
-<!--            </div>-->
+            <!--        <div class="form-group">-->
+            <!--            <div class="form-group col-md-6">-->
+            <!--                <input type="number" class="form-control" id="inputBookingAdults" placeholder="Adults" th:field="*{adults}" required>-->
+            <!--            </div>-->
             <div class="form-group col-md-6">
-                                <label for="inputBookingAdults">Adults</label>
+                <label for="inputBookingAdults">Adults</label>
                 <select id="inputBookingAdults" class="form-control" th:placeholder="Adults" th:field="*{adults}" required>
-<!--                    <option value="" selected disabled>Adults</option>-->
+                    <!--                    <option value="" selected disabled>Adults</option>-->
                     <option th:field="*{adults}" th:value="1">1</option>
                     <option th:field="*{adults}" th:value="2">2</option>
                     <option th:field="*{adults}" th:value="3">3</option>
@@ -95,21 +95,21 @@
                 </select>
             </div>
 
-<!--            <div class="form-group col-md-6">-->
-<!--                <input type="number" class="form-control" id="inputBookingChildren" placeholder="Children" th:field="*{children}" required>-->
-<!--            </div>-->
-        <div class="form-group col-md-6">
-                            <label for="inputBookingChildren">Children</label>
-            <select id="inputBookingChildren" class="form-control" th:field="*{children}" required>
-<!--                <option value="" selected disabled>Adults</option>-->
-                <option th:field="*{children}" th:value="0">0</option>
-                <option th:field="*{children}" th:value="1">1</option>
-                <option th:field="*{children}" th:value="2">2</option>
-                <option th:field="*{children}" th:value="3">3</option>
-                <option th:field="*{children}" th:value="4">4</option>
-                <option th:field="*{children}" th:value="5">5</option>
-            </select>
-        </div>
+            <!--            <div class="form-group col-md-6">-->
+            <!--                <input type="number" class="form-control" id="inputBookingChildren" placeholder="Children" th:field="*{children}" required>-->
+            <!--            </div>-->
+            <div class="form-group col-md-6">
+                <label for="inputBookingChildren">Children</label>
+                <select id="inputBookingChildren" class="form-control" th:field="*{children}" required>
+                    <!--                <option value="" selected disabled>Adults</option>-->
+                    <option th:field="*{children}" th:value="0">0</option>
+                    <option th:field="*{children}" th:value="1">1</option>
+                    <option th:field="*{children}" th:value="2">2</option>
+                    <option th:field="*{children}" th:value="3">3</option>
+                    <option th:field="*{children}" th:value="4">4</option>
+                    <option th:field="*{children}" th:value="5">5</option>
+                </select>
+            </div>
 
             <div class="form-group row">
                 <div class='col-sm-3'>
@@ -144,41 +144,44 @@
                 </div>
             </div>
 
-<!--            <div class="form-group row">-->
-                <div class="form-group col-md-6">
-                                    <label for="inputAllInclusive">All inclusive?</label>
-                    <select id="inputAllInclusive" class="form-control" placeholder="All inclusive" th:field="*{allInclusive}" required>
-<!--                        <option value="" selected disabled>All inclusive?</option>-->
-                        <option th:field="*{allInclusive}" value="true">Yes</option>
-                        <option th:field="*{allInclusive}" value="false">No</option>
-                    </select>
-                </div>
-<!--            </div>-->
-            <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>
-<!--        </div>-->
+            <!--            <div class="form-group row">-->
+            <div class="form-group col-md-6">
+                <label for="inputAllInclusive">All inclusive?</label>
+                <select id="inputAllInclusive" class="form-control" placeholder="All inclusive" th:field="*{allInclusive}" required>
+                    <!--                        <option value="" selected disabled>All inclusive?</option>-->
+                    <option th:field="*{allInclusive}" value="true">Yes</option>
+                    <option th:field="*{allInclusive}" value="false">No</option>
+                </select>
+            </div>
+            <!--            </div>-->
+<!--            <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>-->
+            <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-lg btn-block btn-warning" id="submitBooking">Submit</button>
+            </div>
+            <!--        </div>-->
 
 
-    </form>
+        </form>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
+            integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+    <script>
+        $('.input-group.date').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+    </script>
 </div>
-
-<!-- SCRIPTS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"
-        integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA=="
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
-<script>
-    $('.input-group.date').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-        todayHighlight: true
-    });
-</script>
-
 </body>
 </html>
