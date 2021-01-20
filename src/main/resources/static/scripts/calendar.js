@@ -1,11 +1,11 @@
-$( function() {
-    $( "#datetimepicker1" ).datepicker({ minDate: "now" });
-} );
-
-$( function() {
-    $( "#datetimepicker2" ).datepicker({ minDate: 1 });
-} );
-
+// $( function() {
+//     $( "#checkin" ).datepicker({ minDate: "now" });
+// } );
+//
+// $( function() {
+//     $( "#checkout" ).datepicker({ minDate: 1 });
+// } );
+//
 // $('.input-group.date').datepicker({
 //     format: 'yyyy-mm-dd',
 //     autoclose: true,
