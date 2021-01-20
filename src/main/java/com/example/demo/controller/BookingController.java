@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.RoomService;
+import org.hibernate.annotations.DynamicInsert;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,13 @@ public class BookingController {
     public BookingController(BookingService bookingService, RoomService roomService) {
         this.bookingService = bookingService;
         this.roomService = roomService;
+    }
+
+    // MODEL MAP SENDING MODEL TO VIEWS
+    @GetMapping("/booking/{id}")
+    public String booking(ModelMap modelMap, @PathVariable Long id) {
+        modelMap.addAttribute("booking", bookingService.getBookingById(id));
+        return "one-booking";
     }
 
     @GetMapping(path = "/booking")
@@ -71,7 +79,7 @@ public class BookingController {
     // GET EDIT BOOKING
     @GetMapping(value = "/booking/update/{id}")
     public String showBookingToUpdate(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-        modelMap.addAttribute("booking", bookingService.getBookingById(id));
+//        modelMap.addAttribute("booking", bookingService.getBookingById(id));
 
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
@@ -80,15 +88,28 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-        modelMap.addAttribute("booking", id);
-        bookingService.getBookingById(id);
+        modelMap.addAttribute("booking", bookingService.getBookingById(id));
         return "booking-update";
     }
 
-    // POST EDIT BOOKING
+//    // POST EDIT BOOKING
+//    @PostMapping("/booking/update")
+//    public String updateBookingById(@Valid @ModelAttribute("booking") ModelMap modelMap, Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+//        modelMap.addAttribute("booking");
+//        boolean isUserLogged = Objects.nonNull(authenticationUser);
+//        modelMap.addAttribute("isUserLogged", isUserLogged);
+//        if (isUserLogged) {
+//            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+//                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+//            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+//        }
+//        return "redirect:/booking/" + booking.getId();
+//
+//
+
     @PostMapping("/booking/update")
-    public String updateBookingById(@Valid @ModelAttribute("booking") ModelMap modelMap, Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-        modelMap.addAttribute("booking");
+    public String updateBookingById(ModelMap modelMap, @Valid @ModelAttribute("booking") Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
@@ -96,8 +117,9 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-
+        bookingService.updateBooking(booking);
         return "redirect:/booking/" + booking.getId();
+    }
 
         //    //SEARCH
 //    @RequestMapping(value = "hotels", method = RequestMethod.GET)
@@ -108,4 +130,4 @@ public class BookingController {
 
 
     }
-}
+

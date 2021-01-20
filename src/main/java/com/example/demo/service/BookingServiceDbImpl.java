@@ -55,6 +55,11 @@ public class BookingServiceDbImpl implements BookingService {
             return true;
         }
     }
+
+    @Override
+    public Booking updateBooking(Booking booking) {
+        return bookingRepository.save(booking);
+    }
 }
 
 

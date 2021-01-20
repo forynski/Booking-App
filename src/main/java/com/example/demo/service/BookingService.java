@@ -15,4 +15,6 @@ public interface BookingService {
 
     boolean removeBookingById(Long id);
 
+    Booking updateBooking(Booking booking);
+
 }

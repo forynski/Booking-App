@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+</head>
+<body>
+<div>
+    <div th:object="${booking}">
+        <p th:text="*{id}"></p>
+        <p th:text="*{adults}"></p>
+        <p th:text="*{children}"></p>
+        <p th:text="*{checkIn}"></p>
+        <p th:text="*{checkOut}"></p>
+        <p th:text="*{allInclusive}"></p>
+        <p th:text="*{roomClass}"></p>
+        <p th:text="*{generateRoomNumber()}"></p>
+        <p th:text="*{getPrice()}"></p>
+    </div>
+
+</div>
+
+</body>
+</html>
