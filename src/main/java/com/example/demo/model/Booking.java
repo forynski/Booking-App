@@ -40,6 +40,8 @@ public class Booking {
     double calculatedPrice = 0;
 
 
+
+
     public double getPrice() {
         long days = DAYS.between(checkIn, checkOut);
 
