@@ -81,7 +81,7 @@ public class BookingController {
 
         Booking newOne = bookingService.createNewBooking(booking);
         modelMap.addAttribute("newOne", newOne);
-        return "redirect:/booking";
+        return "redirect:/booking/" + booking.getId();
     }
 
     // GET EDIT BOOKING

@@ -17,6 +17,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
+
+    background-attachment: fixed;
+    background-position: center;
 }
 
 /*.navbar-nav {*/
@@ -67,7 +70,15 @@ body {
 }
 
 .navbar {
-    font-family: 'Numans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     grid-area: navbar;
     font-size: 18px;
 }
+
+/*CSS FOR STICKY NAVBAR*/
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
