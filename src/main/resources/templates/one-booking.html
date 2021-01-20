@@ -5,23 +5,140 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
-    <title>Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+
+    <title>Booking App</title>
+
 </head>
 <body>
-<div>
-    <div th:object="${booking}">
-        <p th:text="*{id}"></p>
-        <p th:text="*{adults}"></p>
-        <p th:text="*{children}"></p>
-        <p th:text="*{checkIn}"></p>
-        <p th:text="*{checkOut}"></p>
-        <p th:text="*{allInclusive}"></p>
-        <p th:text="*{roomClass}"></p>
-        <p th:text="*{generateRoomNumber()}"></p>
-        <p th:text="*{getPrice()}"></p>
+
+<!-- MENU -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container" id="navi-container">
+        <a class="navbar-brand" href="/">Booking App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbar">
+            <div class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
+                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                    <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                    <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
+                </ul>
+
+            </div>
+        </div>
     </div>
+</nav>
 
+<!-- ADD HOTEL FORM -->
+
+<div class="container">
+<!--    <div class="card" id="bookingContainer">-->
+<!--        <h1 th:text="#{update.booking.form}"></h1>-->
+
+        <!--    </div>-->
+        <div class="card my-5">
+            <h1 th:text="#{update.current.booking.form}"></h1>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Adults</th>
+                        <th scope="col">Children</th>
+                        <th scope="col">Check-in</th>
+                        <th scope="col">Check-out</th>
+                        <th scope="col">All inclusive</th>
+                        <th scope="col">Room class</th>
+                        <th scope="col">Room number</th>
+                        <th scope="col">Total price</th>
+                        <th scope="col">Selected room</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:object="${booking}">
+                        <td><a th:href="@{/booking/__${booking.id}__}" th:text="${booking.id}"></a></td>
+                        <td th:text="${booking.adults}"></td>
+                        <td th:text="${booking.children}"></td>
+                        <td th:text="${booking.checkIn}"></td>
+                        <td th:text="${booking.checkOut}"></td>
+                        <td th:text="${booking.allInclusive}"></td>
+                        <td th:text="${booking.roomClass}"></td>
+                        <td th:text="${booking.generateRoomNumber()}"></td>
+                        <td th:text="${booking.getPrice()}"></td>
+                        <td th:if="${booking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
+                        <td th:if="${booking.roomClass.equals(2)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=160x120" alt=""></td>
+                        <td th:if="${booking.roomClass.equals(3)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=160x120" alt=""></td>
+                        <!--                <td><a href="/booking/update/" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>-->
+                        <!--                    <a href="/booking/add" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>-->
+                        <td><a th:href="@{/booking/update/__${booking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
+                            <a href="/booking/add" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-
 </body>
 </html>
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en"-->
+<!--      xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Booking</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <div th:object="${booking}">-->
+<!--        <p th:text="*{id}"></p>-->
+<!--        <p th:text="*{adults}"></p>-->
+<!--        <p th:text="*{children}"></p>-->
+<!--        <p th:text="*{checkIn}"></p>-->
+<!--        <p th:text="*{checkOut}"></p>-->
+<!--        <p th:text="*{allInclusive}"></p>-->
+<!--        <p th:text="*{roomClass}"></p>-->
+<!--        <p th:text="*{generateRoomNumber()}"></p>-->
+<!--        <p th:text="*{getPrice()}"></p>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->

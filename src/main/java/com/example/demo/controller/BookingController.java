@@ -27,8 +27,16 @@ public class BookingController {
 
     // MODEL MAP SENDING MODEL TO VIEWS
     @GetMapping("/booking/{id}")
-    public String booking(ModelMap modelMap, @PathVariable Long id) {
+    public String booking(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         modelMap.addAttribute("booking", bookingService.getBookingById(id));
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
         return "one-booking";
     }
 
