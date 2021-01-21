@@ -24,6 +24,7 @@ public class BookingServiceDbImpl implements BookingService {
 
     @Override
     public Booking createNewBooking(Booking booking) {
+        //TODO: ADD USER TO BOOKING
         log.info("Creating new booking");
         return bookingRepository.save(booking);
     }

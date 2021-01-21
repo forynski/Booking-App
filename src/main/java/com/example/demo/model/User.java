@@ -1,15 +1,13 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -43,8 +41,14 @@ public class User {
     @Column(columnDefinition = "boolean not null default false")
     private Boolean enabled;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    private Customer customer;
+
+    //TODO: DATABASE KEYS
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @Setter(value = AccessLevel.NONE)
+//    private List<Booking> bookings = new ArrayList<>();
+//    private void addBooking(Booking booking) {
+//        bookings.add(booking);
+//    }
 
 }
 
