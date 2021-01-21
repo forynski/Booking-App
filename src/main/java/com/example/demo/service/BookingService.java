@@ -13,8 +13,8 @@ public interface BookingService {
 
     List<Booking> getAllBookings(Integer page, Integer size);
 
-    boolean removeBookingById(Long id);
-
     Booking updateBooking(Booking booking);
+
+    boolean deleteBookingById(Long id);
 
 }

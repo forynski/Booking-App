@@ -87,7 +87,6 @@ public class BookingController {
     // GET EDIT BOOKING
     @GetMapping(value = "/booking/update/{id}")
     public String showBookingToUpdate(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        modelMap.addAttribute("booking", bookingService.getBookingById(id));
 
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
@@ -100,20 +99,7 @@ public class BookingController {
         return "booking-update";
     }
 
-//    // POST EDIT BOOKING
-//    @PostMapping("/booking/update")
-//    public String updateBookingById(@Valid @ModelAttribute("booking") ModelMap modelMap, Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        modelMap.addAttribute("booking");
-//        boolean isUserLogged = Objects.nonNull(authenticationUser);
-//        modelMap.addAttribute("isUserLogged", isUserLogged);
-//        if (isUserLogged) {
-//            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-//                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-//            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
-//        }
-//        return "redirect:/booking/" + booking.getId();
-//
-//
+    // POST EDIT BOOKING
 
     @PostMapping("/booking/update")
     public String updateBookingById(ModelMap modelMap, @Valid @ModelAttribute("booking") Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
@@ -127,6 +113,12 @@ public class BookingController {
         }
         bookingService.updateBooking(booking);
         return "redirect:/booking/" + booking.getId();
+    }
+
+    @RequestMapping(value = "/delete_booking/{id}", method = RequestMethod.GET)
+    public String deleteBookingById(@PathVariable(name = "id") Long id) {
+        bookingService.deleteBookingById(id);
+        return "redirect:/booking";
     }
 
         //    //SEARCH

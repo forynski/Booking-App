@@ -100,7 +100,7 @@
                         <!--                <td><a href="/booking/update/" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>-->
                         <!--                    <a href="/booking/add" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>-->
                         <td><a th:href="@{/booking/update/__${booking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
-                            <a href="/booking/add" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>
+                            <a th:href="@{/delete_booking/__${booking.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>
                     </tr>
                     </tbody>
                 </table>

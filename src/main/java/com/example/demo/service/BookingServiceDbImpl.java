@@ -46,19 +46,19 @@ public class BookingServiceDbImpl implements BookingService {
     }
 
     @Override
-    public boolean removeBookingById(Long id) throws WrongIdNumber {
-        if (bookingRepository.findById(id).isEmpty()) {
-            throw new WrongIdNumber("couldn't find any match with this id" + id);
-        } else {
-            log.info("Booking deleted");
-            bookingRepository.deleteById(id);
-            return true;
-        }
+    public Booking updateBooking(Booking booking) {
+        return bookingRepository.save(booking);
     }
 
     @Override
-    public Booking updateBooking(Booking booking) {
-        return bookingRepository.save(booking);
+    public boolean deleteBookingById(Long id) throws IdNotFoundException {
+        if (bookingRepository.findById(id).isEmpty()) {
+            throw new IdNotFoundException("couldn't find any match with this id " + id);
+        } else {
+            log.info("Booking successfully deleted");
+            bookingRepository.deleteById(id);
+            return true;
+        }
     }
 }
 

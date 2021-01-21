@@ -7,8 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
-
 @RestController
 @RequestMapping(path = "/booking/booking")
 @Slf4j
@@ -32,30 +30,13 @@ public class BookingRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> removeBookingById(@PathVariable Long id) {
-        if (bookingService.removeBookingById(id)) {
+    public ResponseEntity<?> deleteBooking(@PathVariable Long id) {
+        if (bookingService.deleteBookingById(id)) {
             return ResponseEntity.accepted().build();
         }
         return ResponseEntity.badRequest().build();
     }
 
-//    @PostMapping("/{id}")
-//    public ResponseEntity<?> updateBookingById(@RequestBody Booking booking) {
-//        Booking updateBooking = bookingService.updateBooking(booking);
-//        if (Objects.nonNull(updateBooking)) {
-//            return ResponseEntity.ok(booking);
-//        }
-//        return ResponseEntity.notFound().build();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<?> getBookingById(@PathVariable Long id) {
-//        Booking booking = bookingService.getBookingById(id);
-//        if (Objects.nonNull(booking)) {
-//            return ResponseEntity.ok(booking);
-//        }
-//        return ResponseEntity.notFound().build();
-//    }
 
 
 
