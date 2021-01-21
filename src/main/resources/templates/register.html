@@ -6,8 +6,22 @@
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <link th:href="@{/stylesheet/booking.css}" rel="stylesheet"/>
+    <link th:href="@{/stylesheet/register.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+          integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
+          integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <title>Registration</title>
+
+    <title>Register</title>
 </head>
 <body>
 
@@ -23,7 +37,7 @@
         <div class="navbar-nav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+<!--                <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
                 <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
             </ul>
         </div>
@@ -43,9 +57,9 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" id="register-container">
     <div class="d-flex justify-content-center h-100">
-        <div class="card">
+        <div class="card" id="register-card">
             <div class="card-header">
                 <h3>Register</h3>
             </div>
@@ -56,20 +70,20 @@
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
                         </div>
                         <input type="text" class="form-control" name="username" placeholder="username"
                                th:field="*{username}">
                     </div>
-                                        <div th:if="${#fields.hasErrors('email')}" class="input-group alert alert-danger">
-                                            <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
-                                        </div>
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-at"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="email" placeholder="e-mail">
-                                        </div>
+                    <div th:if="${#fields.hasErrors('email')}" class="input-group alert alert-danger">
+                        <div th:each="err : ${#fields.errors('email')}" th:text="${err}"></div>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-at"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="email" placeholder="e-mail">
+                    </div>
                     <div th:if="${#fields.hasErrors('password')}" class="input-group alert alert-danger">
                         <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
                     </div>
@@ -87,17 +101,16 @@
                         <input type="password" class="form-control" id="confirm-password-register" name="password" placeholder="confirm password">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create account" class="btn float-right register_btn">
+                        <input type="submit" value="Create account" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                    Do have an account?&nbsp<a th:href="@{/login}">Login</a>
+                    Do you have an account?&nbsp<a th:href="@{/login}">Login</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</body>
-</html>
+

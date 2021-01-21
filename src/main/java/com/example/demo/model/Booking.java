@@ -40,20 +40,21 @@ public class Booking {
     double calculatedPrice = 0;
 
 
-
-
     public double getPrice() {
         long days = DAYS.between(checkIn, checkOut);
 
-        if (roomClass == 1) {
-            price *= 1.0;
+        switch (roomClass) {
+            case 1:
+                price *= 1.0;
+                break;
+            case 2:
+                price *= 1.5;
+                break;
+            case 3:
+                price *= 2.0;
+                break;
         }
-        if (roomClass == 2) {
-            price *= 1.5;
-        }
-        if (roomClass == 3) {
-            price *= 2.0;
-        }
+
         double calculatedPrice = (price * adults) * days;
         if (allInclusive) {
             calculatedPrice *= 1.2;

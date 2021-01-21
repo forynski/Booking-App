@@ -24,7 +24,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
                     <li class="nav-item active"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>
+<!--                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a>
                     </li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link"
