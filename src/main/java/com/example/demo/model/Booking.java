@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Random;
@@ -39,7 +40,6 @@ public class Booking {
     Integer roomNumber;
     double calculatedPrice = 0;
 
-
     public double getPrice() {
         long days = DAYS.between(checkIn, checkOut);
 
@@ -57,7 +57,7 @@ public class Booking {
 
         double calculatedPrice = (price * adults) * days;
         if (allInclusive) {
-            calculatedPrice *= 1.2;
+            calculatedPrice += 20.00 * days;
         }
         if (children > 0) {
             calculatedPrice += 20.00 * children * days;
