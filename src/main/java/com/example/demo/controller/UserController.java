@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.service.UserDetailsAdapter;
 import com.example.demo.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -35,19 +36,19 @@ public class UserController {
         return "user";
     }
 
-//    @GetMapping("user/{id}")
-//    public String user(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        modelMap.addAttribute("user", userService.getUserById(id));
-//        modelMap.addAttribute("updateUser", new User());
-//
-//        modelMap.addAttribute("isUserLogged", true);
-//        modelMap.addAttribute("isAuthorizedUser", true);
-//        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-//                grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-//        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
-//        return "one-user";
+    @GetMapping("user/{id}")
+    public String user(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+        modelMap.addAttribute("user", userService.getUserById(id));
+        modelMap.addAttribute("updateUser", new User());
+
+        modelMap.addAttribute("isUserLogged", true);
+        modelMap.addAttribute("isAuthorizedUser", true);
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
+        return "one-user";
 //        // TODO: dodać widok
-//    }
+    }
 
         @GetMapping("user/add")
     public String showUserAdd(ModelMap modelMap) {

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService, UserService {
+public class UserDetailsServiceImpl implements UserDetailsService, UserService{
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -35,6 +35,15 @@ public class UserDetailsServiceImpl implements UserDetailsService, UserService {
                 AuthorityUtils.createAuthorityList(user.getRole()));
     }
 
+//    @Override
+//    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(username);
+//        if (Objects.isNull(user)) {
+//            throw new UsernameNotFoundException("User " + username + " has not been found");
+//        }
+//        return new UserDetailsAdapter(user);
+//    }
+
     @Override
     public User createNewUser(User user) {
         if (Objects.isNull(userRepository.findByUsername(user.getUsername()))) {
@@ -42,10 +51,24 @@ public class UserDetailsServiceImpl implements UserDetailsService, UserService {
             if (Objects.isNull(user.getEnabled())) {
                 user.setEnabled(true);
             }
+            // TODO: SET ROLE WHEN CREATING NEW USER
+//            if (Objects.isNull(user.getRole())) {
+//                user.setRole("ROLE_USER");
+//            }
             return userRepository.save(user);
         }
         return null;
     }
+
+//    @Override
+//    public User createNewUser(User user) {
+//        user.setUsername(user.getUsername());
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setEmail(user.getEmail());
+//        user.setRole("ROLE_ADMIN");
+//        user.setEnabled(true);
+//        return userRepository.save(user);
+//    }
 
     @Override
     public List<User> getAllUsers() {

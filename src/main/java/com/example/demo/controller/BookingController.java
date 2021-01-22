@@ -3,11 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.RoomService;
-import org.hibernate.annotations.DynamicInsert;
+import com.example.demo.service.UserDetailsAdapter;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -116,12 +115,20 @@ public class BookingController {
     }
 
     @RequestMapping(value = "/delete_booking/{id}", method = RequestMethod.GET)
-    public String deleteBookingById(@PathVariable(name = "id") Long id) {
+    public String deleteBookingById(@PathVariable(name = "id") Long id, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
         bookingService.deleteBookingById(id);
         return "redirect:/booking";
     }
 
-        //    //SEARCH
+    //    //SEARCH
 //    @RequestMapping(value = "hotels", method = RequestMethod.GET)
 //    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
 //        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
@@ -129,5 +136,5 @@ public class BookingController {
 //    }
 
 
-    }
+}
 

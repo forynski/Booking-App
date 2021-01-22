@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.model.Booking;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

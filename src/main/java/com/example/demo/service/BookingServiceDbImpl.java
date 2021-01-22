@@ -7,7 +7,6 @@ import com.example.demo.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -46,10 +45,13 @@ public class BookingServiceDbImpl implements BookingService {
         return bookingRepository.findAll();
     }
 
+
     @Override
     public Booking updateBooking(Booking booking) {
+        log.info("Booking successfully updated");
         return bookingRepository.save(booking);
     }
+
 
     @Override
     public boolean deleteBookingById(Long id) throws IdNotFoundException {
