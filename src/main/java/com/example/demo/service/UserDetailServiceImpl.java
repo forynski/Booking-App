@@ -14,12 +14,13 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService, UserService{
+public class UserDetailServiceImpl implements UserDetailsService, UserService{
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserDetailsServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+
+    public UserDetailServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

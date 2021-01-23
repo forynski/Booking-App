@@ -32,4 +32,6 @@ public class UserRestController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
+
+
 }

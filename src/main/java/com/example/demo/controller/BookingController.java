@@ -100,8 +100,8 @@ public class BookingController {
 
     // POST EDIT BOOKING
 
-    @PostMapping("/booking/update")
-    public String updateBookingById(ModelMap modelMap, @Valid @ModelAttribute("booking") Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+    @PostMapping("/booking/update/{id}")
+    public String updateBookingById(@PathVariable(name = "id") Long id, ModelMap modelMap, @Valid @ModelAttribute("booking") Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
 
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
@@ -110,6 +110,7 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
+        booking.setId(id);
         bookingService.updateBooking(booking);
         return "redirect:/booking/" + booking.getId();
     }

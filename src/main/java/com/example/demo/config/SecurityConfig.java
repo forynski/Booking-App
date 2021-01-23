@@ -1,25 +1,41 @@
 package com.example.demo.config;
 
-import com.example.demo.service.UserDetailsServiceImpl;
-import org.springframework.context.annotation.Bean;
+import com.example.demo.service.UserDetailServiceImpl;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+//    private final DataSource dataSource;
+//
+//    public SecurityConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+//        @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery("select username, password, enabled from booking.user where username = ?")
+//                .authoritiesByUsernameQuery("select username, 'default' from booking.user where username=?")
+//                .passwordEncoder(new BCryptPasswordEncoder() {
+//                });
+//    }
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final UserDetailsServiceImpl userDetailService;
+    private final UserDetailServiceImpl userDetailService;
 
 
-    public SecurityConfig(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userDetailService = userDetailsService;
+    public SecurityConfig(UserDetailServiceImpl userDetailService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userDetailService = userDetailService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
