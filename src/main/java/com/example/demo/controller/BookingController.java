@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.model.Booking;
 import com.example.demo.service.BookingService;
 import com.example.demo.service.RoomService;
-import com.example.demo.service.UserDetailsAdapter;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

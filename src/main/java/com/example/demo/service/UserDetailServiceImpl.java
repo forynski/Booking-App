@@ -3,8 +3,6 @@ package com.example.demo.service;
 import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,25 +23,31 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService{
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(username);
+//        if (Objects.isNull(user)) {
+//            user = userRepository.findByEmail(username);
+//            if (Objects.isNull(user)) {
+//                throw new UsernameNotFoundException("User " + username + " has not been found");
+//            }
+//        }
+//        return new org.springframework.security.core.userdetails.User(username, user.getPassword(),
+//                user.getEnabled(), true, true, true,
+//                AuthorityUtils.createAuthorityList(user.getRole()));
+//    }
+
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (Objects.isNull(user)) {
             throw new UsernameNotFoundException("User " + username + " has not been found");
         }
-        return new org.springframework.security.core.userdetails.User(username, user.getPassword(),
-                user.getEnabled(), true, true, true,
-                AuthorityUtils.createAuthorityList(user.getRole()));
+        return new UserDetailsAdapter(user);
     }
 
-//    @Override
-//    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userRepository.findByUsername(username);
-//        if (Objects.isNull(user)) {
-//            throw new UsernameNotFoundException("User " + username + " has not been found");
-//        }
-//        return new UserDetailsAdapter(user);
-//    }
 
     @Override
     public User createNewUser(User user) {
