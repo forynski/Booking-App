@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService, UserService{
+public class UserDetailServiceImpl implements UserDetailsService, UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -39,13 +41,27 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService{
 //    }
 
 
+//    @Override
+//    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(username);
+//        if (Objects.isNull(user)) {
+//            throw new UsernameNotFoundException("User " + username + " has not been found");
+//        }
+//        return new UserDetailsAdapter(user);
+//    }
+
     @Override
-    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String loginUsername) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(loginUsername);
         if (Objects.isNull(user)) {
-            throw new UsernameNotFoundException("User " + username + " has not been found");
+            user = userRepository.findByEmail(loginUsername);
+            if (Objects.isNull(user)) {
+                throw new UsernameNotFoundException("User " + loginUsername + " has not been found");
+            }
         }
-        return new UserDetailsAdapter(user);
+        return new org.springframework.security.core.userdetails.User(loginUsername, user.getPassword(),
+                user.getEnabled(), true, true, true,
+                AuthorityUtils.createAuthorityList(user.getRole()));
     }
 
 

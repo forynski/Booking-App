@@ -7,13 +7,26 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.example.demo.service.UserDetailServiceImpl;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+
+//    //JDBC AUTHENTICATION TESTING
+//    private final PasswordEncoder passwordEncoder;
+//    public SecurityConfig(PasswordEncoder passwordEncoder) {
+//        this.passwordEncoder = passwordEncoder;
+//    }
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.jdbcAuthentication().passwordEncoder(passwordEncoder)
+//                .usersByUsernameQuery("select username, password, enabled from booking.user where username = ?")
+//                .authoritiesByUsernameQuery("select username, 'default' from booking.user where username=?")
+//                .passwordEncoder(new StandardPasswordEncoder("secret"));
+//    }
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserDetailServiceImpl userDetailService;
@@ -29,20 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailService).passwordEncoder(bCryptPasswordEncoder);
     }
 
-//    //JDBC AUTHENTICATION TESTING
-//private final PasswordEncoder passwordEncoder;
-//    public SecurityConfig(PasswordEncoder passwordEncoder) {
-//        this.passwordEncoder = passwordEncoder;
-//    }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication().passwordEncoder(passwordEncoder)
-//                .usersByUsernameQuery("select username, password, enabled from booking.user where username = ?")
-//                .authoritiesByUsernameQuery("select username, 'default' from booking.user where username=?")
-//                .passwordEncoder(new StandardPasswordEncoder("secret"));
-//    }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -54,7 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**", "/booking/**", "/room/**")
                 .hasAnyRole("ADMIN", "USER")
                 .antMatchers("/", "/**", "/login", "/register").permitAll().anyRequest().authenticated();
-        http.formLogin()
+        http
+                .formLogin()
                 .loginPage("/login")
                 .permitAll();
         http.httpBasic();

@@ -82,7 +82,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-at"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="email" placeholder="e-mail">
+                        <input type="text" class="form-control" name="email" placeholder="e-mail" th:field="*{email}">
                     </div>
                     <div th:if="${#fields.hasErrors('password')}" class="input-group alert alert-danger">
                         <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
@@ -98,7 +98,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" id="confirm-password-register" name="password" placeholder="confirm password">
+<!--                        <input type="password" class="form-control" id="confirm-password-register" name="password" placeholder="confirm password">-->
+                        <input type="password" class="form-control" id="confirm-password-register" name="confirm-password" placeholder="confirm password">
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Create account" class="btn float-right login_btn">

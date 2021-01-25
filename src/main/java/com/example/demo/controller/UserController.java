@@ -51,7 +51,7 @@ public class UserController {
 //        // TODO: dodać widok
     }
 
-        @GetMapping("user/add")
+    @GetMapping("user/add")
     public String showUserAdd(ModelMap modelMap) {
         modelMap.addAttribute("user", new User());
         modelMap.addAttribute("error-msg", "Nie masz poprawnych pol");
