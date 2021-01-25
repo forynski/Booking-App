@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Booking;
 import com.example.demo.model.User;
 
 import com.example.demo.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class UserController {
@@ -52,18 +54,80 @@ public class UserController {
     }
 
     @GetMapping("user/add")
-    public String showUserAdd(ModelMap modelMap) {
+    public String showUserAdd(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         modelMap.addAttribute("user", new User());
-        modelMap.addAttribute("error-msg", "Nie masz poprawnych pol");
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
         return "user-add";
     }
 
+    // TODO: ERROR MAPPING EXAMPLE
     @PostMapping("user/add")
-    public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors) {
+    public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         if (errors.hasErrors()) {
             return "user-add";
         }
-        userService.createNewUser(user);
-        return "redirect:/";
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+
+        User newOne = userService.createNewUser(user);
+        modelMap.addAttribute("newOne", newOne);
+        return "redirect:/user/" + user.getId();
+    }
+
+    // GET EDIT USER
+    @GetMapping(value = "/user/update/{id}")
+    public String showUserToUpdate(ModelMap modelMap, @PathVariable Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+        modelMap.addAttribute("user", userService.getUserById(id));
+        return "user-update";
+    }
+
+    // POST EDIT USER
+    @PostMapping(value = "user/update/{id}")
+    public String updateUserById(@PathVariable(name = "id") Long id, ModelMap modelMap, @Valid @ModelAttribute("user") User user, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+        user.setId(id);
+        userService.updateUser(user);
+        return "redirect:/booking/" + user.getId();
+    }
+
+    @RequestMapping(value = "/delete_user/{id}", method = RequestMethod.GET)
+    public String deleteUserById(@PathVariable(name = "id") Long id, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+
+        boolean isUserLogged = Objects.nonNull(authenticationUser);
+        modelMap.addAttribute("isUserLogged", isUserLogged);
+        if (isUserLogged) {
+            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        }
+        userService.deleteUserById(id);
+        return "redirect:/booking";
     }
 }

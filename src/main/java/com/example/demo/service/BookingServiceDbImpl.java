@@ -56,7 +56,7 @@ public class BookingServiceDbImpl implements BookingService {
     @Override
     public boolean deleteBookingById(Long id) throws IdNotFoundException {
         if (bookingRepository.findById(id).isEmpty()) {
-            throw new IdNotFoundException("couldn't find any match with this id " + id);
+            throw new IdNotFoundException("Couldn't find any match with this id " + id);
         } else {
             log.info("Booking successfully deleted");
             bookingRepository.deleteById(id);

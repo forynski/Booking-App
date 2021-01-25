@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 @Service
 public class UserDetailServiceImpl implements UserDetailsService, UserService {
 
@@ -84,6 +86,22 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
     }
 
 
+    @Override
+    public User updateUser(User user) {
+        log.info("User successfully updated");
+        return userRepository.save(user);
+    }
+
+    @Override
+    public Boolean deleteUserById(Long id) throws IdNotFoundException {
+        if (userRepository.findById(id).isEmpty()) {
+            throw new IdNotFoundException("Couldn't find any match with this id " + id);
+        } else {
+            log.info("User successfully deleted");
+            userRepository.deleteById(id);
+            return true;
+        }
+    }
 }
 
 

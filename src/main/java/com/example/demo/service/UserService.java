@@ -19,5 +19,9 @@ public interface UserService {
 
     User getUserById(Long id);
 
+    Boolean deleteUserById(Long id);
+
+    User updateUser(User user);
+
 
 }

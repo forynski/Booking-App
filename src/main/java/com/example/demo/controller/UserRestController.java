@@ -36,5 +36,13 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        if (userService.deleteUserById(id)) {
+            return ResponseEntity.accepted().build();
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
 
 }
