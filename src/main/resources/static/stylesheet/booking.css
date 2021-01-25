@@ -65,6 +65,11 @@ body {
     padding: 20px 20px 20px 20px;
 }
 
+#userContainer {
+    opacity: 0.9;
+    padding: 20px 20px 20px 20px;
+}
+
 #submitBooking {
     margin-top: 25px;
 }
