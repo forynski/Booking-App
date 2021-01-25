@@ -26,30 +26,6 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
     }
 
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userRepository.findByUsername(username);
-//        if (Objects.isNull(user)) {
-//            user = userRepository.findByEmail(username);
-//            if (Objects.isNull(user)) {
-//                throw new UsernameNotFoundException("User " + username + " has not been found");
-//            }
-//        }
-//        return new org.springframework.security.core.userdetails.User(username, user.getPassword(),
-//                user.getEnabled(), true, true, true,
-//                AuthorityUtils.createAuthorityList(user.getRole()));
-//    }
-
-
-//    @Override
-//    public UserDetailsAdapter loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userRepository.findByUsername(username);
-//        if (Objects.isNull(user)) {
-//            throw new UsernameNotFoundException("User " + username + " has not been found");
-//        }
-//        return new UserDetailsAdapter(user);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String loginUsername) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(loginUsername);

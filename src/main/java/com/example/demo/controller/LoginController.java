@@ -4,7 +4,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Objects;
 
@@ -22,18 +21,6 @@ public class LoginController {
         }
         return "login";
     }
-
-//    @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
-//    public ModelAndView login(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        boolean isUserLogged = Objects.nonNull(authenticationUser);
-//        modelMap.addAttribute("isUserLogged", isUserLogged);
-//        if (isUserLogged) {
-//            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-//                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-//            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
-//        }
-//        return new ModelAndView("login");
-//    }
 
 
 }

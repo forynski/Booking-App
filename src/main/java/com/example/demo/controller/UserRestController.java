@@ -37,12 +37,4 @@ public class UserRestController {
     }
 
 
-//     TESTING JDBC AUTHENTICATION
-    @RequestMapping(method = RequestMethod.GET, value="/user/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    ResponseEntity<User> getUser(@PathVariable(name = "id") Long id){
-        User user = userService.getUserById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
-
 }

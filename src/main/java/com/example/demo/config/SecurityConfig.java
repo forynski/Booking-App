@@ -14,20 +14,6 @@ import com.example.demo.service.UserDetailServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-//    //JDBC AUTHENTICATION TESTING
-//    private final PasswordEncoder passwordEncoder;
-//    public SecurityConfig(PasswordEncoder passwordEncoder) {
-//        this.passwordEncoder = passwordEncoder;
-//    }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication().passwordEncoder(passwordEncoder)
-//                .usersByUsernameQuery("select username, password, enabled from booking.user where username = ?")
-//                .authoritiesByUsernameQuery("select username, 'default' from booking.user where username=?")
-//                .passwordEncoder(new StandardPasswordEncoder("secret"));
-//    }
-
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserDetailServiceImpl userDetailService;
 
