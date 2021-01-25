@@ -114,7 +114,7 @@ public class UserController {
         }
         user.setId(id);
         userService.updateUser(user);
-        return "redirect:/booking/" + user.getId();
+        return "redirect:/user/" + user.getId();
     }
 
     @RequestMapping(value = "/delete_user/{id}", method = RequestMethod.GET)
@@ -128,6 +128,6 @@ public class UserController {
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
         userService.deleteUserById(id);
-        return "redirect:/booking";
+        return "redirect:/user";
     }
 }

@@ -72,9 +72,9 @@
                 <input type="text" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}" required>
             </div>
 
-<!--            <div class="form-group col-md-6">-->
-<!--                <input type="text" class="form-control" id="inputPass" placeholder="Password" th:field="*{password}" required>-->
-<!--            </div>-->
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputPass" placeholder="Password" th:field="*{password}" required>
+            </div>
 
             <div class="form-group col-md-6">
                 <input type="text" class="form-control" id="inputEmail" placeholder="E-mail" th:field="*{email}" required>
@@ -84,8 +84,8 @@
             <div class="form-group col-md-6">
                 <label for="inputRoleType">User privilege level</label>
                 <select class="form-control" id="inputRoleType" th:field="*{role}" required>
-                    <option th:value="1">User role</option>
-                    <option th:value="2">Admin role</option>
+                    <option th:value="ROLE_USER">User role</option>
+                    <option th:value="ROLE_ADMIN">Admin role</option>
                 </select>
             </div>
 

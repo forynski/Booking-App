@@ -73,15 +73,17 @@
                     <th scope="col">Id</th>
                     <th scope="col">Username</th>
                     <th scope="col">Password</th>
+                    <th scope="col">E-mail</th>
                     <th scope="col">Role</th>
                     <th scope="col">Enabled?</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${userList}">
+                <tr th:object="${user}">
                     <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>
                     <td th:text="${user.username}"></td>
                     <td th:text="${user.password}"></td>
+                    <td th:text="${user.email}"></td>
                     <td th:text="${user.role}"></td>
                     <td th:text="${user.enabled}"></td>
                     <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
