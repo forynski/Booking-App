@@ -25,19 +25,11 @@ public class BookingServiceDbImpl implements BookingService {
         this.bookingRepository = bookingRepository;
     }
 
-//    @Override
-//    public Booking createNewBooking(Booking booking) {
-//        //TODO: ADD USER TO BOOKING
-//        log.info("Creating new booking");
-//        return bookingRepository.save(booking);
-//    }
 
     @Override
     public Booking createNewBooking(Booking booking, User user) {
         //TODO: ADD USER TO BOOKING
         log.info("Creating new booking");
-
-        // USER IS NULL - INSPECT
 
         user.addBooking(booking);
         booking.setUser(user);
@@ -48,7 +40,6 @@ public class BookingServiceDbImpl implements BookingService {
     @Override
     public Booking getBookingById(Long id) throws WrongIdNumber {
         if (bookingRepository.findById(id).isEmpty()) {
-            // log.info("couldn't find any match with this id " + id);
             throw new WrongIdNumber("couldn't find any match with this id" + id);
         } else {
             log.info("Found booking by id " + id);
@@ -81,10 +72,6 @@ public class BookingServiceDbImpl implements BookingService {
         }
     }
 
-//    @Override
-//    public List<Booking> getCurrentBookingsByUser(User user) {
-//        return new ArrayList<>(user.getBookings());
-//    }
 
     @Override
     public List<Booking> getCurrentBookingsByUser(User user) {

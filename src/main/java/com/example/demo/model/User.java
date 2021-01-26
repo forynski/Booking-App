@@ -14,6 +14,7 @@ import java.util.List;
 
 @Getter
 @Setter
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -25,7 +26,7 @@ public class User {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    @Size(min = 4,max = 16,message = "Username must be between 4 and 16")
+    @Size(min = 4, max = 16, message = "Username must be between 4 and 16")
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -46,14 +47,6 @@ public class User {
     private Boolean enabled;
 
 
-//    //TODO: DATABASE KEYS
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @Setter(value = AccessLevel.NONE)
-//    private List<Booking> bookings = new ArrayList<>();
-//    private void addBooking(Booking booking) {
-//        bookings.add(booking);
-//    }
-
     //TODO: DATABASE KEYS
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Setter(value = AccessLevel.NONE)
@@ -65,7 +58,7 @@ public class User {
 
 }
 
-// KOPIA CUSTOMERA
+// CUSTOMER MODEL COPY
 //@Entity(name = "customer")
 //public class Customer {
 //    @Id

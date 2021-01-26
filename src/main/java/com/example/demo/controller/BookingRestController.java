@@ -39,8 +39,6 @@ public class BookingRestController {
     }
 
 
-
-
     //    //SEARCH:
 //    @GetMapping("/hotel/{locationCity}")
 //    public ResponseEntity<?> getHotelsByCity(@PathVariable String locationCity) {
