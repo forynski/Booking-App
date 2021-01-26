@@ -69,8 +69,8 @@ public class BookingController {
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
         //TESTING
-        User user = userService.getUserByUsername(authenticationUser.getUsername());
-        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
+//        User user = userService.getUserByUsername(authenticationUser.getUsername());
+//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         return "booking-add";
     }

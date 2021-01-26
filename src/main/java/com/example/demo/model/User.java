@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.print.DocFlavor;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -47,7 +48,7 @@ public class User {
     private Boolean enabled;
 
 
-    //TODO: DATABASE KEYS
+    //DATABASE
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Setter(value = AccessLevel.NONE)
     private List<Booking> bookings = new ArrayList<>();
@@ -55,6 +56,7 @@ public class User {
     public void addBooking(Booking booking) {
         bookings.add(booking);
     }
+
 
 }
 

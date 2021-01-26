@@ -73,11 +73,13 @@ public class Booking {
         return roomNumber;
     }
 
-    //TODO: DATABASE KEYS
+    //DATABASE
 //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ManyToOne(fetch = FetchType.LAZY)
     @Getter(value = AccessLevel.NONE)
     private User user;
+
+
 
 }
 
