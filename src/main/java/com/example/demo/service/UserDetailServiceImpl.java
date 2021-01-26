@@ -93,6 +93,11 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public Boolean deleteUserById(Long id) throws IdNotFoundException {
         if (userRepository.findById(id).isEmpty()) {
             throw new IdNotFoundException("Couldn't find any match with this id " + id);

@@ -3,12 +3,16 @@ package com.example.demo.service;
 import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.exception.WrongIdNumber;
 import com.example.demo.model.Booking;
+import com.example.demo.model.User;
 import com.example.demo.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @Scope("prototype")
@@ -21,12 +25,25 @@ public class BookingServiceDbImpl implements BookingService {
         this.bookingRepository = bookingRepository;
     }
 
+//    @Override
+//    public Booking createNewBooking(Booking booking) {
+//        //TODO: ADD USER TO BOOKING
+//        log.info("Creating new booking");
+//        return bookingRepository.save(booking);
+//    }
+
     @Override
-    public Booking createNewBooking(Booking booking) {
+    public Booking createNewBooking(Booking booking, User user) {
         //TODO: ADD USER TO BOOKING
         log.info("Creating new booking");
+
+        // USER IS NULL - INSPECT
+
+        user.addBooking(booking);
+        booking.setUser(user);
         return bookingRepository.save(booking);
     }
+
 
     @Override
     public Booking getBookingById(Long id) throws WrongIdNumber {
@@ -63,6 +80,17 @@ public class BookingServiceDbImpl implements BookingService {
             return true;
         }
     }
+
+//    @Override
+//    public List<Booking> getCurrentBookingsByUser(User user) {
+//        return new ArrayList<>(user.getBookings());
+//    }
+
+    @Override
+    public List<Booking> getCurrentBookingsByUser(User user) {
+        return new ArrayList<>(user.getBookings());
+    }
+
 }
 
 

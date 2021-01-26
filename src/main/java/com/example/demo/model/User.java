@@ -12,7 +12,8 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -45,13 +46,22 @@ public class User {
     private Boolean enabled;
 
 
-    //TODO: DATABASE KEYS
+//    //TODO: DATABASE KEYS
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @Setter(value = AccessLevel.NONE)
 //    private List<Booking> bookings = new ArrayList<>();
 //    private void addBooking(Booking booking) {
 //        bookings.add(booking);
 //    }
+
+    //TODO: DATABASE KEYS
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Setter(value = AccessLevel.NONE)
+    private List<Booking> bookings = new ArrayList<>();
+
+    public void addBooking(Booking booking) {
+        bookings.add(booking);
+    }
 
 }
 

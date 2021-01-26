@@ -74,9 +74,10 @@ public class Booking {
     }
 
     //TODO: DATABASE KEYS
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @Getter(value = AccessLevel.NONE)
-//    private User user;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @Getter(value = AccessLevel.NONE)
+    private User user;
 
 }
 

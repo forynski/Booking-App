@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Booking;
+import com.example.demo.model.User;
 import com.example.demo.service.BookingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class BookingRestController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createNewBooking(booking));
+    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, User user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createNewBooking(booking, user));
     }
 
     @GetMapping

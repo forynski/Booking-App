@@ -74,6 +74,7 @@
                 <th scope="col">Password</th>
                 <th scope="col">Role</th>
                 <th scope="col">Enabled?</th>
+                <th scope="col">Assigned bookings</th>
             </tr>
             </thead>
             <tbody>
@@ -83,6 +84,9 @@
                 <td th:text="${user.password}"></td>
                 <td th:text="${user.role}"></td>
                 <td th:text="${user.enabled}"></td>
+<!--                <td th:text="${user.bookings}"></td>-->
+<!--                <td th:each="user : ${user.getBookings()}">-->
+                <td th:text="${user.bookings}"></td>
                 <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
                     <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>
             </tr>
