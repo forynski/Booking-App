@@ -7,8 +7,11 @@ import com.example.demo.model.User;
 import com.example.demo.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -76,6 +79,7 @@ public class BookingServiceDbImpl implements BookingService {
 //    public List<Booking> getCurrentBookingsByUser(User user) {
 //        return new ArrayList<>(user.getBookings());
 //    }
+
 
 }
 

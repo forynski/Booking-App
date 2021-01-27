@@ -30,13 +30,16 @@ public class User {
     private Long id;
 
     @Size(min = 4, max = 16, message = "Username must be between 4 and 16")
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Username may contain only alphanumeric characters")
     @Column(nullable = false, unique = true)
     private String username;
 
     @Email
+    @Size(min = 1,message = "Email field cannot be empty ")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Size(min = 4,message = "Passwords must be at least 4 characters in length")
     @Column(nullable = false)
     private String password;
 
@@ -58,6 +61,8 @@ public class User {
     public void addBooking(Booking booking) {
         bookings.add(booking);
     }
+
+
 
 
 }

@@ -80,7 +80,6 @@ public class UserController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-
         User newOne = userService.createNewUser(user);
         modelMap.addAttribute("newOne", newOne);
         return "redirect:/user/" + user.getId();
@@ -103,8 +102,10 @@ public class UserController {
 
     // POST EDIT USER
     @PostMapping(value = "user/update/{id}")
-    public String updateUserById(@PathVariable(name = "id") Long id, ModelMap modelMap, @Valid @ModelAttribute("user") User user, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-
+    public String updateUserById(@PathVariable(name = "id") Long id, final Errors errors, ModelMap modelMap, @Valid @ModelAttribute("user") User user, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+        if (errors.hasErrors()) {
+            return "one-user";
+        }
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
