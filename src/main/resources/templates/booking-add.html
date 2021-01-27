@@ -124,7 +124,7 @@
 
                     <script type="text/javascript">
                         $(function () {
-                            $('#checkout').datepicker();
+                            $('#checkin').datepicker();
                         });
                     </script>
                 </div>
@@ -177,19 +177,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <script>
+        var date = new Date();
         $('#checkin').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
+            format:'yyyy-mm-dd',
+            todayBtn:true,
+            autoclose:true,
             todayHighlight: true,
-            startDate: new Date(),
-            minDate: new Date()
+            startDate:date
+        }).on("changeDate", function(e) {
+            var checkInDate = e.date, $checkOut = $("#checkout");
+            checkInDate.setDate(checkInDate.getDate() + 1);
+            $checkOut.datepicker("setStartDate", checkInDate);
+            $checkOut.datepicker("setDate", checkInDate).focus();
         });
-        $('#checkout').datepicker({
-            format: 'yyyy-mm-dd',
+
+        $("#checkout").datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: true,
             autoclose: true,
             todayHighlight: true,
-            startDate: '+1d',
-            minDate: new Date()
         });
     </script>
 

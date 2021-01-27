@@ -221,22 +221,28 @@
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-    <script>
-        $('#checkin').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true,
-            startDate: new Date(),
-            minDate: new Date()
-        });
-        $('#checkout').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            todayHighlight: true,
-            startDate: '+1d',
-            minDate: new Date()
-        });
-    </script>
+<script>
+    var date = new Date();
+    $('#checkin').datepicker({
+        format:'yyyy-mm-dd',
+        todayBtn:true,
+        autoclose:true,
+        todayHighlight: true,
+        startDate:date
+    }).on("changeDate", function(e) {
+        var checkInDate = e.date, $checkOut = $("#checkout");
+        checkInDate.setDate(checkInDate.getDate() + 1);
+        $checkOut.datepicker("setStartDate", checkInDate);
+        $checkOut.datepicker("setDate", checkInDate).focus();
+    });
+
+    $("#checkout").datepicker({
+        format: "yyyy-mm-dd",
+        todayBtn: true,
+        autoclose: true,
+        todayHighlight: true,
+    });
+</script>
 
     <!--        <script th:href="@{scripts/calendar.js}"></script>-->
 
