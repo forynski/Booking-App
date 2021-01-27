@@ -68,7 +68,7 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-        //TESTING
+        // TESTING
 //        User user = userService.getUserByUsername(authenticationUser.getUsername());
 //        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
@@ -85,9 +85,9 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
-        //TESTING
         User user = userService.getUserByUsername(authenticationUser.getUsername());
-        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
+        // TESTING
+//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         Booking newOne = bookingService.createNewBooking(booking, user);
         modelMap.addAttribute("newOne", newOne);

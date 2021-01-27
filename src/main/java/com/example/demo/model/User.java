@@ -3,6 +3,7 @@ package com.example.demo.model;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.data.domain.Page;
 
 import javax.persistence.*;
 import javax.print.DocFlavor;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter

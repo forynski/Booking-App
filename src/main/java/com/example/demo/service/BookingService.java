@@ -16,7 +16,7 @@ public interface BookingService {
 
     boolean deleteBookingById(Long id);
 
-    List<Booking> getCurrentBookingsByUser(User user);
+//    List<Booking> getCurrentBookingsByUser(User user);
 
 
 }
