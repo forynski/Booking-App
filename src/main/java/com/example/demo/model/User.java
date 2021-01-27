@@ -7,10 +7,7 @@ import org.springframework.data.domain.Page;
 
 import javax.persistence.*;
 import javax.print.DocFlavor;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,9 +36,12 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull
+    @NotEmpty
     @Size(min = 4,message = "Passwords must be at least 4 characters in length")
     @Column(nullable = false)
     private String password;
+    private String matchingPassword;
 
 //    @Column(nullable = false)
 //    private String role;

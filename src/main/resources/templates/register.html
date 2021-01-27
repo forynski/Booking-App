@@ -91,15 +91,16 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" id="password-register" name="password" placeholder="password"
-                               th:field="*{password}">
+                        <input type="password" class="form-control" id="password-register" name="password" placeholder="password" th:field="*{password}">
+<!--                        <p class="text-danger"th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>-->
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
 <!--                        <input type="password" class="form-control" id="confirm-password-register" name="password" placeholder="confirm password">-->
-                        <input type="password" class="form-control" id="confirm-password-register" name="confirm-password" placeholder="confirm password">
+                        <input type="password" class="form-control" id="confirm-password-register" name="matchingPassword" placeholder="confirm password" th:field="*{matchingPassword}">
+                        <p class="text-danger"th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}"></p>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Create account" class="btn float-right login_btn">

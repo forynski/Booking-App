@@ -45,6 +45,37 @@ public class RegisterController {
             return "register";
         }
         userService.createNewUser(user);
+//        User createdUser = userService.createNewUser(user);
+//        if (Objects.isNull(createdUser)) {
+//            modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
+//            return "register";
+//        }
+//
+        boolean matchPasswords = user.getPassword().equals(user.getMatchingPassword());
+        if (!matchPasswords) {
+            modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
+            return "register";
+        }
         return "redirect:/login";
     }
+
 }
+
+
+
+//    //        userService.createNewUser(user);
+//    User createdUser = userService.createNewUser(user);
+//    //        if (Objects.isNull(createdUser)) {
+////            modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
+////            return "register";
+////        }
+//    boolean matchPasswords = createdUser.getPassword().equals(createdUser.getMatchingPassword());
+//        if (!matchPasswords) {
+//                modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
+//                System.out.println("TEST TEST");
+//                return "register";
+//                }
+//                return "redirect:/login";
+//                }
+//
+//                }
