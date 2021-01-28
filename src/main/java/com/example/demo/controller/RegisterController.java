@@ -4,6 +4,7 @@ import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -44,16 +45,10 @@ public class RegisterController {
         if (errors.hasErrors()) {
             return "register";
         }
-        userService.createNewUser(user);
-//        User createdUser = userService.createNewUser(user);
-//        if (Objects.isNull(createdUser)) {
-//            modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
-//            return "register";
-//        }
-//
-        boolean matchPasswords = user.getPassword().equals(user.getMatchingPassword());
-        if (!matchPasswords) {
-            modelMap.addAttribute("userExistsError", "Unable to create user, because that username or email already exist.");
+//        userService.createNewUser(user);
+        User createdUser = userService.createNewUser(user);
+        if (Objects.isNull(createdUser)) {
+            modelMap.addAttribute("userExistsError", "Username or email already exist");
             return "register";
         }
         return "redirect:/login";

@@ -41,7 +41,6 @@ public class User {
     @Size(min = 4, message = "Passwords must be at least 4 characters in length")
     @Column(nullable = false)
     private String password;
-    private String matchingPassword;
 
 //    @Column(nullable = false)
 //    private String role;
