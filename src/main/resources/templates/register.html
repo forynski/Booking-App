@@ -82,7 +82,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-at"></i></span>
                         </div>
-                        <input type="text" class="form-control" name="email" placeholder="e-mail" th:field="*{email}">
+                        <input type="text" class="form-control" name="email" placeholder="email" th:field="*{email}">
                     </div>
                     <div th:if="${#fields.hasErrors('password')}" class="input-group alert alert-danger">
                         <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>

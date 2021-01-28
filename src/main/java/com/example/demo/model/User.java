@@ -32,13 +32,13 @@ public class User {
     private String username;
 
     @Email
-    @Size(min = 1,message = "Email field cannot be empty ")
+    @Size(min = 1, message = "Email field cannot be empty ")
     @Column(nullable = false, unique = true)
     private String email;
 
     @NotNull
     @NotEmpty
-    @Size(min = 4,message = "Passwords must be at least 4 characters in length")
+    @Size(min = 4, message = "Passwords must be at least 4 characters in length")
     @Column(nullable = false)
     private String password;
     private String matchingPassword;
@@ -61,8 +61,6 @@ public class User {
     public void addBooking(Booking booking) {
         bookings.add(booking);
     }
-
-
 
 
 }
