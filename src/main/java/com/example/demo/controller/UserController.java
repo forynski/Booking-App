@@ -49,7 +49,6 @@ public class UserController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         return "one-user";
-//        // TODO: dodać widok
     }
 
     @GetMapping("user/add")
@@ -129,5 +128,23 @@ public class UserController {
         }
         userService.deleteUserById(id);
         return "redirect:/user";
+    }
+
+    @GetMapping("/user/profile")
+    public String getUserProfile(@ModelAttribute("user") ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser){
+        modelMap.addAttribute("isUserLogged", true);
+        boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
+        modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserAdminOrManager);
+        modelMap.addAttribute("updateUser", new User());
+        modelMap.addAttribute("updateUserPassword", new User());
+
+        User user = new User();
+        if (Objects.nonNull(userService.getUserByUsername(authenticationUser.getUsername()))){
+            user = userService.getUserByUsername(authenticationUser.getUsername());
+        }
+//        modelMap.addAttribute("user",user);
+//        modelMap.addAttribute("currentReservations", userService.getCurrentBookingByUser(user));
+
+        return "redirect:/user/" + user.getId();
     }
 }

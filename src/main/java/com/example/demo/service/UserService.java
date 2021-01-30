@@ -26,5 +26,7 @@ public interface UserService {
 
     User getUserByUsername(String username);
 
+//    List<Booking> getCurrentBookingByUser(User user);
+
 
 }

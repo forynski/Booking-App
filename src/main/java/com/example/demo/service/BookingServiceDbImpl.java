@@ -7,15 +7,13 @@ import com.example.demo.model.User;
 import com.example.demo.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 @Scope("prototype")
@@ -77,7 +75,7 @@ public class BookingServiceDbImpl implements BookingService {
 
     //TESTING
     @Override
-    public List<Booking> getCurrentBookingsByUser(Booking booking, User user) {
+    public List<Booking> getCurrentBookingsByUser(User user) {
         if (Objects.nonNull(user)) {
             return new ArrayList<>(user.getBookings());
         }
@@ -85,7 +83,18 @@ public class BookingServiceDbImpl implements BookingService {
     }
 
 
+//    public long calculateBookingCost(Booking booking) {
+//        Double price = 100.00;
+//        long days = DAYS.between(booking.getCheckIn(), booking.getCheckOut());
+//        long bookingCost = booking.getRoomClass() * days;
+//        if (booking.getAllInclusive()) {
+//            bookingCost += 20.00 * days;
+//        }
+//        if (booking.getChildren() > 0) {
+//            bookingCost += 20 * booking.getChildren() * days;
+//        }
+//        return bookingCost;
+//    }
+
+
 }
-
-
-

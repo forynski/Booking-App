@@ -52,6 +52,7 @@
                     <!--                <li th:if="${isUserLogged}" class="nav-item"><a href="/user/add" class="btn btn-large btn-danger">Add user</a></li>-->
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item active"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/user/profile}">Profile</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
@@ -92,7 +93,6 @@
                     <!--                <td th:text="${user.bookings}"></td>-->
                     <!--                <td th:each="user : ${user.getBookings()}">-->
                     <td th:text="${user.bookings}"></td>
-
                     <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
 <!--                        <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>-->
                         <a th:href="@{/delete_user/__${user.id}__}" th:onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>

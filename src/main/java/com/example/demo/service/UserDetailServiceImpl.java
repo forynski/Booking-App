@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.exception.IdNotFoundException;
+import com.example.demo.model.Booking;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -96,6 +97,7 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
 
     @Override
     public Boolean deleteUserById(Long id) throws IdNotFoundException {
