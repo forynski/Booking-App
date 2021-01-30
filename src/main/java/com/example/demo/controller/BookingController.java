@@ -48,11 +48,16 @@ public class BookingController {
         modelMap.addAttribute("bookingList", bookingService.getAllBookings(1, 100));
         modelMap.addAttribute("bookingPage", bookingPage);
 
+        modelMap.addAttribute("booking", new Booking());
+        User user = userService.getUserByUsername(authenticationUser.getUsername());
+
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
         modelMap.addAttribute("isAuthorizedUserAdmin", true);
+
+        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         return "booking";
     }
