@@ -92,6 +92,7 @@
                     <!--                <td th:text="${user.bookings}"></td>-->
                     <!--                <td th:each="user : ${user.getBookings()}">-->
                     <td th:text="${user.bookings}"></td>
+
                     <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
 <!--                        <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>-->
                         <a th:href="@{/delete_user/__${user.id}__}" th:onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>

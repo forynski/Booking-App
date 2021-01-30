@@ -82,16 +82,17 @@ public class Booking {
 
     @Override
     public String toString() {
-        return
-                "Booking id= " + id +
-                ", Adults= " + adults +
-                ", Children=" + children +
-                ", Check-in=" + checkIn +
-                ", Check-out=" + checkOut +
-                ", All inclusive?=" + allInclusive +
-                ", Price=" + price +
-                ", Room class=" + roomClass +
-                ", Room number=" + roomNumber +
-                ", Total price=" + calculatedPrice;
+        return "Booking{" +
+                "id=" + id +
+                ", adults=" + adults +
+                ", children=" + children +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", allInclusive=" + allInclusive +
+                ", price=" + price +
+                ", roomClass=" + roomClass +
+                ", roomNumber=" + roomNumber +
+                ", calculatedPrice=" + calculatedPrice +
+                '}';
     }
 }

@@ -75,10 +75,14 @@ public class BookingServiceDbImpl implements BookingService {
         }
     }
 
-//    @Override
-//    public List<Booking> getCurrentBookingsByUser(User user) {
-//        return new ArrayList<>(user.getBookings());
-//    }
+    //TESTING
+    @Override
+    public List<Booking> getCurrentBookingsByUser(Booking booking, User user) {
+        if (Objects.nonNull(user)) {
+            return new ArrayList<>(user.getBookings());
+        }
+        return null;
+    }
 
 
 }
