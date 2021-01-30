@@ -57,9 +57,18 @@ public class User {
     @Setter(value = AccessLevel.NONE)
     private List<Booking> bookings = new ArrayList<>();
 
+//    String formattedBookings = bookings.toString()
+//            .replace(",", "")  //remove the commas
+//            .replace("[", "")  //remove the right bracket
+//            .replace("]", "")  //remove the left bracket
+//            .trim();
+
     public void addBooking(Booking booking) {
         bookings.add(booking);
     }
+
+
+
 
 
 }

@@ -80,9 +80,18 @@ public class Booking {
     private User user;
 
 
-
+    @Override
+    public String toString() {
+        return
+                "Booking id= " + id +
+                ", Adults= " + adults +
+                ", Children=" + children +
+                ", Check-in=" + checkIn +
+                ", Check-out=" + checkOut +
+                ", All inclusive?=" + allInclusive +
+                ", Price=" + price +
+                ", Room class=" + roomClass +
+                ", Room number=" + roomNumber +
+                ", Total price=" + calculatedPrice;
+    }
 }
-
-
-
-
