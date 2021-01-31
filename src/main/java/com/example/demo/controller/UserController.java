@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 
+import com.example.demo.service.BookingService;
 import com.example.demo.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,11 @@ import java.util.Objects;
 public class UserController {
 
     private final UserService userService;
+    private final BookingService bookingService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BookingService bookingService) {
         this.userService = userService;
+        this.bookingService = bookingService;
     }
 
 
@@ -48,6 +51,7 @@ public class UserController {
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
+        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(userService.getUserById(id)));
         return "one-user";
     }
 
@@ -130,21 +134,24 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping("/user/profile")
-    public String getUserProfile(@ModelAttribute("user") ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser){
+    // TODO: CHECK IF WE NEED BELOW MAPPING
+    @GetMapping("/user/profile/")
+    public String getUserProfile(@ModelAttribute(value = "user") ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser){
+
         modelMap.addAttribute("isUserLogged", true);
-        boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
-        modelMap.addAttribute("isAuthorizedUserAdminOrManager", isAuthorizedUserAdminOrManager);
-        modelMap.addAttribute("updateUser", new User());
-        modelMap.addAttribute("updateUserPassword", new User());
+        boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
 
         User user = new User();
         if (Objects.nonNull(userService.getUserByUsername(authenticationUser.getUsername()))){
             user = userService.getUserByUsername(authenticationUser.getUsername());
         }
-//        modelMap.addAttribute("user",user);
-//        modelMap.addAttribute("currentReservations", userService.getCurrentBookingByUser(user));
+        modelMap.addAttribute("user",user);
+        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
-        return "redirect:/user/" + user.getId();
+        return "redirect:/user-profile";
     }
+
+
+
 }
