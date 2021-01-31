@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Booking;
+import com.example.demo.model.BookingsManagement;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,10 @@ public interface UserService {
     User updateUser(User user);
 
     User getUserByUsername(String username);
+
+    User getUserByBooking(Booking booking);
+
+
 
 //    List<Booking> getCurrentBookingByUser(User user);
 

@@ -3,10 +3,13 @@ package com.example.demo.service;
 import com.example.demo.exception.IdNotFoundException;
 import com.example.demo.exception.WrongIdNumber;
 import com.example.demo.model.Booking;
+import com.example.demo.model.BookingsManagement;
+import com.example.demo.model.BookingsManagementContent;
 import com.example.demo.model.User;
 import com.example.demo.repository.BookingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +32,6 @@ public class BookingServiceDbImpl implements BookingService {
 
     @Override
     public Booking createNewBooking(Booking booking, User user) {
-        //TODO: ADD USER TO BOOKING
         log.info("Creating new booking");
 
         user.addBooking(booking);

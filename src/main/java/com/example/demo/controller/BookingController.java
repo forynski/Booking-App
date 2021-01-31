@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Booking;
+import com.example.demo.model.BookingsManagement;
 import com.example.demo.model.User;
 import com.example.demo.service.BookingService;
-import com.example.demo.service.RoomService;
+import com.example.demo.service.BookingsManagementService;
 import com.example.demo.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -144,6 +146,7 @@ public class BookingController {
         bookingService.deleteBookingById(id);
         return "redirect:/booking";
     }
+
 
 //    @GetMapping("/bookings")
 //    public String showUserBookings(@Valid @ModelAttribute("booking") Booking booking, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
