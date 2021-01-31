@@ -70,17 +70,18 @@
                 <table class="table table-bordered table-striped table-sm">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Enabled?</th>
+                        <th scope="col" class="text-center">Id</th>
+                        <th scope="col" class="text-center">Username</th>
+                        <th scope="col" class="text-center">Password</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Role</th>
+                        <th scope="col" class="text-center">Enabled?</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:object="${user}">
-                        <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>
+<!--                        <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>-->
+                        <td th:text="${user.id}" class="text-center align-middle"></td>
                         <td th:text="${user.username}" class="text-center align-middle"></td>
 <!--                        <td th:text="${user.password}" class="text-center align-middle"></td>-->
                         <td th:text="hidden" class="text-center align-middle"></td>
@@ -99,16 +100,16 @@
                 <table class="table table-bordered table-striped table-sm">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Adults</th>
-                        <th scope="col">Children</th>
-                        <th scope="col">Check-in</th>
-                        <th scope="col">Check-out</th>
-                        <th scope="col">All inclusive</th>
-                        <th scope="col">Room class</th>
-                        <th scope="col">Room number</th>
-                        <th scope="col">Total price</th>
-                        <th scope="col">Selected room</th>
+                        <th scope="col" class="text-center">Id</th>
+                        <th scope="col" class="text-center">Adults</th>
+                        <th scope="col" class="text-center">Children</th>
+                        <th scope="col" class="text-center">Check-in</th>
+                        <th scope="col" class="text-center">Check-out</th>
+                        <th scope="col" class="text-center">All inclusive</th>
+                        <th scope="col" class="text-center">Room class</th>
+                        <th scope="col" class="text-center">Room number</th>
+                        <th scope="col" class="text-center">Total price</th>
+                        <th scope="col" class="text-center">Selected room</th>
                     </tr>
                     </thead>
                     <tr th:each="currentBooking : ${currentBookings}">

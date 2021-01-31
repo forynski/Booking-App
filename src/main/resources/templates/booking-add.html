@@ -63,13 +63,12 @@
 
 <div class="container">
     <div class="card" id="bookingContainer">
-        <h1 th:text="#{add.booking.form}"></h1>
-
 
         <form method="post" th:action="@{/booking/add}" th:object="${booking}">
 
             <!--        <div class="form-group">-->
             <div class="form-group col-md-6">
+                <h1 th:text="#{add.booking.form}"></h1>
                 <label for="inputRoomType">Select room type</label>
                 <select class="form-control" id="inputRoomType" th:field="*{roomClass}" required>
                     <option th:value="1">Single Room</option>
@@ -201,7 +200,6 @@
     </script>
 
 <!--    <script src="scripts/calendar.js"></script>-->
-
 </div>
 </body>
 </html>

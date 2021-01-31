@@ -28,7 +28,8 @@ body {
 /*}*/
 
 .card {
-    opacity: 0.9;
+    /*opacity: 0.9;*/
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
 
 /*div button {*/
@@ -85,4 +86,9 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+#buttonShowBookingByUserId, #buttonEditBooking, #buttonDeleteBooking, #buttonEditUser, #buttonDeleteUser {
+    display: block;
+    margin:auto;
 }

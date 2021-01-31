@@ -65,13 +65,12 @@
 <div class="card my-5">
 
     <div class="card" id="bookingContainer">
-        <h1 th:text="#{update.booking.form}"></h1>
-
 
         <form method="post" th:action="@{/booking/update/__${booking.id}__}" th:value="id" th:object="${booking}">
 
             <!--        <div class="form-group">-->
             <div class="form-group col-md-6">
+                <h1 th:text="#{update.booking.form}"></h1>
                 <label for="inputRoomType">Select room type</label>
                 <select class="form-control" id="inputRoomType" th:field="*{roomClass}" required>
                     <option th:value="1">Single Room</option>
@@ -166,35 +165,37 @@
 
         </form>
 <!--    </div>-->
-    <div class="card my-5">
-        <h1 th:text="#{update.current.booking.form}"></h1>
+<!--    <div class="card my-5">-->
+
         <div class="card-body">
+            <h1 th:text="#{update.current.booking.form}"></h1>
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Adults</th>
-                    <th scope="col">Children</th>
-                    <th scope="col">Check-in</th>
-                    <th scope="col">Check-out</th>
-                    <th scope="col">All inclusive</th>
-                    <th scope="col">Room class</th>
-                    <th scope="col">Room number</th>
-                    <th scope="col">Total price</th>
-                    <th scope="col">Selected room</th>
+                    <th scope="col" class="text-center">Id</th>
+                    <th scope="col" class="text-center">Adults</th>
+                    <th scope="col" class="text-center">Children</th>
+                    <th scope="col" class="text-center">Check-in</th>
+                    <th scope="col" class="text-center">Check-out</th>
+                    <th scope="col" class="text-center">All inclusive</th>
+                    <th scope="col" class="text-center">Room class</th>
+                    <th scope="col" class="text-center">Room number</th>
+                    <th scope="col" class="text-center">Total price</th>
+                    <th scope="col" class="text-center">Selected room</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:object="${booking}">
-                    <td><a th:href="@{/booking/__${booking.id}__}" th:text="${booking.id}"></a></td>
-                    <td th:text="${booking.adults}"></td>
-                    <td th:text="${booking.children}"></td>
-                    <td th:text="${booking.checkIn}"></td>
-                    <td th:text="${booking.checkOut}"></td>
-                    <td th:text="${booking.allInclusive}"></td>
-                    <td th:text="${booking.roomClass}"></td>
-                    <td th:text="${booking.generateRoomNumber()}"></td>
-                    <td th:text="${booking.getPrice()}"></td>
+<!--                    <td><a th:href="@{/booking/__${booking.id}__}" th:text="${booking.id}"></a></td>-->
+                    <td th:text="${booking.id}" class="text-center align-middle"></td>
+                    <td th:text="${booking.adults}" class="text-center align-middle"></td>
+                    <td th:text="${booking.children}" class="text-center align-middle"></td>
+                    <td th:text="${booking.checkIn}" class="text-center align-middle"></td>
+                    <td th:text="${booking.checkOut}" class="text-center align-middle"></td>
+                    <td th:text="${booking.allInclusive}" class="text-center align-middle"></td>
+                    <td th:text="${booking.roomClass}" class="text-center align-middle"></td>
+                    <td th:text="${booking.generateRoomNumber()}" class="text-center align-middle"></td>
+                    <td th:text="${booking.getPrice()}" class="text-center align-middle"></td>
                     <td th:if="${booking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
                     <td th:if="${booking.roomClass.equals(2)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=160x120" alt=""></td>
                     <td th:if="${booking.roomClass.equals(3)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=160x120" alt=""></td>
