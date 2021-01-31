@@ -125,11 +125,11 @@
                     <tbody>
                     <tr th:object="${user}">
                         <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>
-                        <td th:text="${user.username}"></td>
-                        <td>hidden</td>
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.role}"></td>
-                        <td th:text="${user.enabled}"></td>
+                        <td th:text="${user.username}" class="text-center align-middle"></td>
+                        <td th:text="hidden" class="text-center align-middle"></td>
+                        <td th:text="${user.email}" class="text-center align-middle"></td>
+                        <td th:text="${user.role}" class="text-center align-middle"></td>
+                        <td th:text="${user.enabled}" class="text-center align-middle"></td>
                         <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
                             <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking">Delete</a></td>
                     </tr>
