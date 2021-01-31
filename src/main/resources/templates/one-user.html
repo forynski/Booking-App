@@ -67,8 +67,9 @@
     <div class="card my-5">
 
         <div class="card-body">
-        <h1 th:text="#{new.user.summary}"></h1>
+
         <div class="card-body">
+            <h1 th:text="#{new.user.summary}"></h1>
             <table class="table table-bordered table-striped table-sm">
                 <thead class="thead-dark">
                 <tr>
@@ -95,29 +96,29 @@
             </table>
 
 <!--            <div class="card-body">-->
-                <h1 th:text="#{new.user.summary}"></h1>
+                <h1 th:text="#{your.bookings}"></h1>
 <!--                <div class="card-body">-->
                     <table class="table table-bordered table-striped table-sm">
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Password</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Enabled?</th>
+                            <th scope="col">Assigned bookings</th>
+<!--                            <th scope="col">Password</th>-->
+<!--                            <th scope="col">Email</th>-->
+<!--                            <th scope="col">Role</th>-->
+<!--                            <th scope="col">Enabled?</th>-->
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:object="${user}">
                             <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>
-                            <td th:text="${user.username}"></td>
-                            <td th:text="${user.password}"></td>
-                            <td th:text="${user.email}"></td>
-                            <td th:text="${user.role}"></td>
-                            <td th:text="${user.enabled}"></td>
-                            <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditUser">Edit</a><br>
-                                <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteUser">Delete</a></td>
+                            <td th:text="${user.bookings}"></td>
+<!--                            <td th:text="${password}"></td>-->
+<!--                            <td th:text="${user.email}"></td>-->
+<!--                            <td th:text="${user.role}"></td>-->
+<!--                            <td th:text="${user.enabled}"></td>-->
+<!--                            <td><a th:href="@{/user/update/__${user.id}__}" class="btn btn-large btn-warning" id="buttonEditUser">Edit</a><br>-->
+<!--                                <a th:href="@{/delete_user/__${user.id}__}" class="btn btn-large btn-danger" id="buttonDeleteUser">Delete</a></td>-->
                         </tr>
                         </tbody>
                     </table>
