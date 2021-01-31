@@ -5,10 +5,12 @@ import com.example.demo.model.BookingsManagement;
 import com.example.demo.model.BookingsManagementContent;
 import com.example.demo.model.User;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BookingsManagementServiceDbImpl implements BookingsManagementService {
 
     public final BookingService bookingService;

@@ -98,6 +98,14 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
         return userRepository.findByUsername(username);
     }
 
+    @Override
+    public User getUserByBooking(Booking booking) {
+        if (Objects.nonNull(booking)) {
+            return userRepository.findUserByBookingsContains(booking);
+        }
+        return null;
+    }
+
 
     @Override
     public Boolean deleteUserById(Long id) throws IdNotFoundException {

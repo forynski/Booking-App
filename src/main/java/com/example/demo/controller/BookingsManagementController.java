@@ -27,6 +27,7 @@ public class BookingsManagementController {
         this.bookingService = bookingService;
     }
 
+
     @GetMapping("/booking/current-bookings")
     public String getAllCurrentBookings(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser,
                                         @RequestParam(required = false, defaultValue = "1") Integer page, @RequestParam(required = false, defaultValue = "5") Integer size){
