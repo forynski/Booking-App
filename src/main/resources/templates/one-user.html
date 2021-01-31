@@ -113,8 +113,8 @@
                     </tr>
                     </thead>
                     <tr th:each="currentBooking : ${currentBookings}">
-                        <td><a th:href="@{/booking/__${currentBooking.id}__}" th:text="${currentBooking.id}"></a></td>
-<!--                        <td th:text="${currentBooking.id}" class="text-center align-middle"></td>-->
+<!--                        <td><a th:href="@{/booking/__${currentBooking.id}__}" th:text="${currentBooking.id}"></a></td>-->
+                        <td th:text="${currentBooking.id}" class="text-center align-middle"></td>
                         <td th:text="${currentBooking.adults}" class="text-center align-middle"></td>
                         <td th:text="${currentBooking.children}" class="text-center align-middle"></td>
                         <td th:text="${currentBooking.checkIn}" class="text-center align-middle"></td>
