@@ -71,14 +71,18 @@
         <form method="post" th:action="@{/user/update/__${user.id}__}" th:value="id" th:object="${user}">
 
             <div class="form-group col-md-6">
+                <label for="inputRoleType">Username</label>
                 <input type="text" class="form-control" id="inputUsername" placeholder="Username" th:field="*{username}" required>
             </div>
 
-            <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="inputPass" placeholder="Password" th:field="*{password}" required>
-            </div>
+
+<!--            <div class="form-group col-md-6">-->
+<!--                <input type="text" class="form-control" id="inputPass" placeholder="Password" th:field="*{password}" required>-->
+<!--            </div>-->
+
 
             <div class="form-group col-md-6">
+                <label for="inputRoleType">User email</label>
                 <input type="text" class="form-control" id="inputEmail" placeholder="email" th:field="*{email}" required>
             </div>
 
