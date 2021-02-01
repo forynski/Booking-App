@@ -39,7 +39,8 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
 <!--                <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
-                <li th:if="${isUserLogged}" class="nav-item active"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
+                <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">Your Bookings</a></li>
+                <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
             </ul>
         </div>
 
@@ -49,8 +50,8 @@
 <!--                <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>-->
                 <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
                 <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
-                <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
                 <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
+                <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
             </ul>
 
         </div>
@@ -96,9 +97,9 @@
                 <td th:if="${currentBooking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
                 <td th:if="${currentBooking.roomClass.equals(2)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=160x120" alt=""></td>
                 <td th:if="${currentBooking.roomClass.equals(3)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=160x120" alt=""></td>
-                <td><a th:href="@{/booking/update/__${booking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
+                <td><a th:href="@{/booking/update/__${currentBooking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a>
 <!--                    <a th:href="@{/delete_booking/__${booking.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>-->
-                    <a th:href="@{/delete_booking/__${booking.id}__}" th:onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>
+                    <a th:href="@{/delete_booking/__${currentBooking.id}__}" th:onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>
             </tr>
             </div>
 
@@ -118,7 +119,7 @@
                 <td th:if="${booking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
                 <td th:if="${booking.roomClass.equals(2)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684153/a25bf6fcf724ec8eb98353fa5dc5d47a.jpg?s=160x120" alt=""></td>
                 <td th:if="${booking.roomClass.equals(3)}"><img class="img" src="http://pix6.agoda.net/hotelImages/5251874/77684101/38f80eb0f3f47d3a806872cd022e40f4.jpg?s=160x120" alt=""></td>
-                <td><a th:href="@{/booking/update/__${booking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a><br>
+                <td><a th:href="@{/booking/update/__${booking.id}__}" class="btn btn-large btn-warning" id="buttonEditBooking">Edit</a>
                     <!--                    <a th:href="@{/delete_booking/__${booking.id}__}" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>-->
                     <a th:href="@{/delete_booking/__${booking.id}__}" th:onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-large btn-danger" id="buttonDeleteBooking" >Delete</a></td>
             </tr>
