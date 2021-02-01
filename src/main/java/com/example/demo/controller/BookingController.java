@@ -57,7 +57,7 @@ public class BookingController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUserAdmin", true);
+//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
 
         modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
