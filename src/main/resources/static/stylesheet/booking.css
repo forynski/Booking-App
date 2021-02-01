@@ -18,6 +18,18 @@ body {
     background-repeat: no-repeat;
     height: 100%;
 
+    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Eczar', serif;
+    font-family: 'Gentium Basic', serif;
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Proza Libre', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Taviraj', serif;
+    font-family: 'Trirong', serif;
+    font-family: 'Work Sans', sans-serif;
+
     background-attachment: fixed;
     background-position: center;
 }
@@ -76,9 +88,9 @@ body {
 }
 
 .navbar {
-    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Quicksand', sans-serif;*/
     grid-area: navbar;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /*CSS FOR STICKY NAVBAR*/

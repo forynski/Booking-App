@@ -106,7 +106,6 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
         return null;
     }
 
-
     @Override
     public Boolean deleteUserById(Long id) throws IdNotFoundException {
         if (userRepository.findById(id).isEmpty()) {

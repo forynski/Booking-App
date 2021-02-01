@@ -24,6 +24,8 @@ public interface UserService {
 
     User getUserByBooking(Booking booking);
 
+//    User updatePassword(User user);
+
 
 //    List<Booking> getCurrentBookingByUser(User user);
 

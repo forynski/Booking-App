@@ -68,7 +68,7 @@
 
     <div class="card" id="bookingContainer">
 
-        <form method="post" th:action="@{/user/update/__${user.id}__}" th:value="id" th:object="${user}">
+        <form method="post" th:action="@{/user/update/__${user.id}__}" th:value="id" th:object="${user}" >
 
             <div class="form-group col-md-6">
                 <h1 th:text="#{update.user.form}"></h1>
@@ -77,9 +77,10 @@
             </div>
 
 
-<!--            <div class="form-group col-md-6">-->
-<!--                <input type="text" class="form-control" id="inputPass" placeholder="Password" th:field="*{password}" required>-->
-<!--            </div>-->
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputNewPass" placeholder="Password" th:field="*{password}" required>
+            </div>
+
 
 
             <div class="form-group col-md-6">
@@ -110,14 +111,14 @@
                 <button type="submit" class="btn btn-lg btn-block btn-warning" id="submitBooking">Submit</button>
             </div>
 
-
         </form>
+
         <!--    </div>-->
 <!--        <div class="card my-5">-->
 
             <div class="card-body">
                 <h1 th:text="#{update.current.user.form}"></h1>
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped table-sm">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="text-center">Id</th>

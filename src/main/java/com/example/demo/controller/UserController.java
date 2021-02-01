@@ -105,7 +105,7 @@ public class UserController {
 
     // POST EDIT USER
     @PostMapping(value = "user/update/{id}")
-    public String updateUserById(@PathVariable(name = "id") Long id, final Errors errors, ModelMap modelMap, @Valid @ModelAttribute("user") User user, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
+    public String updateUserById(@PathVariable(name = "id") Long id, ModelMap modelMap, @Valid @ModelAttribute("user") User user, final Errors errors, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         if (errors.hasErrors()) {
             return "one-user";
         }
@@ -116,6 +116,7 @@ public class UserController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
         }
+        
         user.setId(id);
         userService.updateUser(user);
         return "redirect:/user/" + user.getId();
