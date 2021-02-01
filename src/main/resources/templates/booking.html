@@ -92,7 +92,7 @@
                 <td th:text="${currentBooking.checkOut}" class="text-center align-middle"></td>
                 <td th:text="${currentBooking.allInclusive}" class="text-center align-middle"></td>
                 <td th:text="${currentBooking.roomClass}" class="text-center align-middle"></td>
-                <td th:text="${currentBooking.generateRoomNumber()}" class="text-center align-middle"></td>
+                <td th:text="${currentBooking.roomNumber}" class="text-center align-middle"></td>
 <!--                <td th:text="${booking.getPrice()}"></td>-->
                 <td th:text="${currentBooking.getPrice()}" class="text-center align-middle"></td>
                 <td th:if="${currentBooking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>
@@ -114,7 +114,7 @@
                 <td th:text="${booking.checkOut}" class="text-center align-middle"></td>
                 <td th:text="${booking.allInclusive}" class="text-center align-middle"></td>
                 <td th:text="${booking.roomClass}" class="text-center align-middle"></td>
-                <td th:text="${booking.generateRoomNumber()}" class="text-center align-middle"></td>
+                <td th:text="${booking.roomNumber}" class="text-center align-middle"></td>
                 <!--                <td th:text="${booking.getPrice()}"></td>-->
                 <td th:text="${booking.getPrice()}" class="text-center align-middle"></td>
                 <td th:if="${booking.roomClass.equals(1)}"><img class="img" src="http://pix6.agoda.net/hotelImages/156/1568863/1568863_16112204160048957205.jpg?s=160x120" alt=""></td>

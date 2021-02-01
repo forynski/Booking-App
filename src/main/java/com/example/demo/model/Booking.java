@@ -36,7 +36,7 @@ public class Booking {
     private Double price = 100.00;
 
     Integer roomClass;
-    Integer roomNumber;
+    Integer roomNumber = generateRoomNumber();
     double calculatedPrice = 0;
 
     public double getPrice() {
@@ -72,6 +72,7 @@ public class Booking {
         } while (roomNumber == 0);
         return roomNumber;
     }
+
 
     //DATABASE
 //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
