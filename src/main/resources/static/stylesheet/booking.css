@@ -88,7 +88,7 @@ body {
     width: 100%;
 }
 
-#buttonShowBookingByUserId, #buttonEditBooking, #buttonDeleteBooking, #buttonEditUser, #buttonDeleteUser, #buttonBackToBooking, #buttonBackToUsers {
+#buttonShowBookingByUserId, #buttonEditBooking, #buttonDeleteBooking, #buttonEditUser, #buttonDeleteUser, #buttonBackToBooking, #buttonBackToUsers, #buttonViewBooking {
     display: block;
     margin:auto;
 }
