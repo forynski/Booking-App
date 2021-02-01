@@ -37,7 +37,8 @@ public class UserController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUserAdmin", true);
+//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
+
         return "user";
     }
 
@@ -47,7 +48,7 @@ public class UserController {
         modelMap.addAttribute("updateUser", new User());
 
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUser", true);
+//        modelMap.addAttribute("isAuthorizedUser", true);
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
@@ -69,7 +70,7 @@ public class UserController {
         return "user-add";
     }
 
-    // TODO: ERROR MAPPING EXAMPLE
+
     @PostMapping("user/add")
     public String addUser(@Valid @ModelAttribute("user") User user, final Errors errors, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
         if (errors.hasErrors()) {
