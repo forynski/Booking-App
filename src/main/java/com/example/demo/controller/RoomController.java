@@ -31,9 +31,9 @@ public class RoomController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         return "room";
     }
@@ -45,9 +45,9 @@ public class RoomController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         return "room-add";
     }
@@ -58,9 +58,9 @@ public class RoomController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         roomService.createNewRoom(room);
         return "redirect:/room";

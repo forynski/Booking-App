@@ -37,7 +37,7 @@ public class UserController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-        modelMap.addAttribute("isAuthorizedUserAdmin", true);
+//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
 
         return "user";
     }
@@ -48,7 +48,7 @@ public class UserController {
         modelMap.addAttribute("updateUser", new User());
 
         modelMap.addAttribute("isUserLogged", true);
-//        modelMap.addAttribute("isAuthorizedUser", true);
+//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
@@ -63,9 +63,9 @@ public class UserController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         return "user-add";
     }
@@ -79,9 +79,9 @@ public class UserController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         User newOne = userService.createNewUser(user);
         modelMap.addAttribute("newOne", newOne);
@@ -95,9 +95,9 @@ public class UserController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         modelMap.addAttribute("user", userService.getUserById(id));
         return "user-update";
@@ -112,11 +112,11 @@ public class UserController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
-        
+
         user.setId(id);
         userService.updateUser(user);
         return "redirect:/user/" + user.getId();
@@ -128,9 +128,9 @@ public class UserController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         userService.deleteUserById(id);
         return "redirect:/user";
@@ -141,8 +141,8 @@ public class UserController {
     public String getUserProfile(@ModelAttribute(value = "user") ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser){
 
         modelMap.addAttribute("isUserLogged", true);
-        boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
 
         User user = new User();
         if (Objects.nonNull(userService.getUserByUsername(authenticationUser.getUsername()))){

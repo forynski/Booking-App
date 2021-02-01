@@ -37,9 +37,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         return "one-booking";
     }
@@ -71,9 +71,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         // TESTING
 //        User user = userService.getUserByUsername(authenticationUser.getUsername());
@@ -88,9 +88,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         User user = userService.getUserByUsername(authenticationUser.getUsername());
         // TESTING
@@ -108,9 +108,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         modelMap.addAttribute("booking", bookingService.getBookingById(id));
         return "booking-update";
@@ -124,9 +124,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         booking.setId(id);
         bookingService.updateBooking(booking);
@@ -139,9 +139,9 @@ public class BookingController {
         boolean isUserLogged = Objects.nonNull(authenticationUser);
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
-            boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
+            boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
+            modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         bookingService.deleteBookingById(id);
         return "redirect:/booking";
