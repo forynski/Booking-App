@@ -27,11 +27,12 @@ public class UserController {
 
 
     @GetMapping("/user")
-    public String getUsers(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser,
+    public String getUsers(ModelMap modelMap, Long id, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser,
                            @RequestParam(required = false, defaultValue = "1") Integer page, @RequestParam(required = false, defaultValue = "2") Integer size) {
         List<User> userPage = userService.getAllUsers();
         modelMap.addAttribute("userList", userService.getAllUsers());
         modelMap.addAttribute("userPage", userPage);
+        modelMap.addAttribute("thisUser", userService.getUserByUsername(authenticationUser.getUsername()));
 
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
