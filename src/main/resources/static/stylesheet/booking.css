@@ -13,7 +13,7 @@
 }
 
 body {
-    overflow:   scroll;
+    overflow: -moz-scrollbars-none;
 }
 ::-webkit-scrollbar {
     width: 0px;
