@@ -48,9 +48,9 @@ public class UserController {
         modelMap.addAttribute("updateUser", new User());
 
         modelMap.addAttribute("isUserLogged", true);
-//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
         boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(userService.getUserById(id)));
         return "one-user";
@@ -96,11 +96,12 @@ public class UserController {
         modelMap.addAttribute("isUserLogged", isUserLogged);
         if (isUserLogged) {
             boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority ->
-                    grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+                    grantedAuthority.getAuthority().equals("ROLE_ROLE"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         modelMap.addAttribute("user", userService.getUserById(id));
         return "user-update";
+
     }
 
     // POST EDIT USER
@@ -120,6 +121,7 @@ public class UserController {
         user.setId(id);
         userService.updateUser(user);
         return "redirect:/user/" + user.getId();
+
     }
 
     @RequestMapping(value = "/delete_user/{id}", method = RequestMethod.GET)

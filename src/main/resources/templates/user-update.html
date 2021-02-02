@@ -89,6 +89,7 @@
                 <input type="text" class="form-control" id="inputEmail" placeholder="email" th:field="*{email}" required>
             </div>
 
+<!--            TESTING: BLOCK USER SELECTION FOR ROLE_USER !!!!!! -->
             <div th:if="${isUserLogged and !isAuthorizedUserAdmin}">
             <div class="form-group col-md-6">
                 <label for="inputRoleType">User privilege level</label>
