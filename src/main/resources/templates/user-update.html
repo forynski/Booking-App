@@ -82,7 +82,7 @@
 
 
             <div class="form-group col-md-12">
-                <input type="text" class="form-control" id="inputNewPass" placeholder="Password" th:field="*{password}" required>
+                <input type="hidden" class="form-control" id="inputNewPass" placeholder="Password" th:field="*{password}" required>
             </div>
 
 
@@ -152,7 +152,7 @@
 <!--                        <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>-->
                         <td th:text="${user.id}" class="text-center align-middle"></td>
                         <td th:text="${user.username}" class="text-center align-middle"></td>
-                        <td th:text="${user.password}" class="text-center align-middle"></td>
+                        <td class="text-center align-middle">password hidden</td>
                         <td th:text="${user.email}" class="text-center align-middle"></td>
                         <td th:text="${user.role}" class="text-center align-middle"></td>
                         <td th:text="${user.enabled}" class="text-center align-middle"></td>
