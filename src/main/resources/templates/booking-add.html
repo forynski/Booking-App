@@ -41,10 +41,13 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
 <!--                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
-                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">My Bookings</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
-                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link disabled" th:href="@{user}">My Profile</a></li>
-                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
+                    <!--                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">My Bookings</a></li>-->
+                    <!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>-->
+                    <!--                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{user}">My Profile</a></li>-->
+                    <!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>-->
+
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
+                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
                 </ul>
             </div>
 
@@ -70,7 +73,7 @@
         <form method="post" th:action="@{/booking/add}" th:object="${booking}">
 
             <!--        <div class="form-group">-->
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <h1 th:text="#{add.booking.form}"></h1>
                 <label for="inputRoomType">Select room type</label>
                 <select class="form-control" id="inputRoomType" th:field="*{roomClass}" required>
@@ -86,7 +89,7 @@
             <!--            <div class="form-group col-md-6">-->
             <!--                <input type="number" class="form-control" id="inputBookingAdults" placeholder="Adults" th:field="*{adults}" required>-->
             <!--            </div>-->
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputBookingAdults">Adults</label>
                 <select id="inputBookingAdults" class="form-control" th:placeholder="Adults" th:field="*{adults}" required>
                     <!--                    <option value="" selected disabled>Adults</option>-->
@@ -101,7 +104,7 @@
             <!--            <div class="form-group col-md-6">-->
             <!--                <input type="number" class="form-control" id="inputBookingChildren" placeholder="Children" th:field="*{children}" required>-->
             <!--            </div>-->
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputBookingChildren">Children</label>
                 <select id="inputBookingChildren" class="form-control" th:field="*{children}" required>
                     <!--                <option value="" selected disabled>Adults</option>-->
@@ -116,7 +119,7 @@
 
 <!--            DATE AND TIME PICKER STARTS-->
             <div class="form-group row">
-                <div class='col-sm-3'>
+                <div class='col-sm-6'>
                     <div class='input-group date'>
                         <input type='text' placeholder="Check-in" class="form-control" id="checkin" autocomplete="off" th:field="*{checkIn}" th:required="required"/>
                         <span class="input-group-addon">
@@ -131,7 +134,7 @@
                     </script>
                 </div>
 
-                <div class='col-sm-3'>
+                <div class='col-sm-6'>
                     <div class='input-group date'>
                         <input type='text' placeholder="Check-out" class="form-control" id="checkout" autocomplete="off" th:field="*{checkOut}" th:required="required"/>
                         <span class="input-group-addon">
@@ -149,7 +152,7 @@
 <!--            DATA TIME PICKER ENDS-->
 
             <!--            <div class="form-group row">-->
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="inputAllInclusive">All inclusive?</label>
                 <select id="inputAllInclusive" class="form-control" placeholder="All inclusive" th:field="*{allInclusive}" required>
                     <!--                        <option value="" selected disabled>All inclusive?</option>-->
@@ -159,7 +162,7 @@
             </div>
             <!--            </div>-->
             <!--            <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>-->
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <button type="submit" class="btn btn-lg btn-block btn-warning" id="submitBooking">Submit</button>
             </div>
             <!--        </div>-->
