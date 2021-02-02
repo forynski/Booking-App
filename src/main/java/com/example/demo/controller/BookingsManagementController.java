@@ -32,8 +32,8 @@ public class BookingsManagementController {
     public String getAllCurrentBookings(ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser,
                                         @RequestParam(required = false, defaultValue = "1") Integer page, @RequestParam(required = false, defaultValue = "5") Integer size){
         modelMap.addAttribute("isUserLogged", true);
-        boolean isAuthorizedUserAdminOrManager = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdminOrManager);
+        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         BookingsManagement currentBookingsManagement = bookingsManagementService.getCurrentBookingsManagement(page - 1, size);
         modelMap.addAttribute("currentBookingsManagement", currentBookingsManagement.getBookingsManagementContentList());
         Page<Booking> currentBookingsPage = currentBookingsManagement.getBookingPage();

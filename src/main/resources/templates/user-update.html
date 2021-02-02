@@ -43,7 +43,7 @@
                     <!--                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
                     <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">My Bookings</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
-                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{user}">My Profile</a></li>
+                    <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link disabled" th:href="@{user}">My Profile</a></li>
                     <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
                 </ul>
             </div>
@@ -158,7 +158,8 @@
                     </tr>
                     </tbody>
                 </table>
-                <a th:href="@{/user}" class="btn btn-large btn-light" id="buttonBackToUsers">Back to Users</a>
+                <a th:if="${isUserLogged and !isAuthorizedUserAdmin}" th:href="@{/user}" class="btn btn-large btn-light" id="buttonBackToUsers">Back to My Profile</a>
+                <a th:if="${isAuthorizedUserAdmin}" th:href="@{/user}" class="btn btn-large btn-light" id="buttonBackToUsers">Back to Users</a>
             </div>
         </div>
     </div>
