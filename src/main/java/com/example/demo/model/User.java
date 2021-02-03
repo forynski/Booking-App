@@ -18,11 +18,13 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "user")
+// WE HAVE TO USE "users" INSTEAD OF "user" (RESERVED AS KEYWORD BY POSTGRESQL)
+@Entity(name = "users")
+//@Table(name="\"user\"")
 
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
 
