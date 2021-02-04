@@ -18,6 +18,7 @@ User account:
 * password: user
 
 The admin account has more privileges than other accounts.
+You can always register your own user!
 ### Database layer
 The PostgreSQL database was used in this project.
 Created tables: user, booking.
