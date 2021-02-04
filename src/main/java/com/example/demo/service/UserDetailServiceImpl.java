@@ -51,7 +51,7 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
             if (Objects.isNull(user.getEnabled())) {
                 user.setEnabled(true);
             }
-            // TODO: SET ROLE WHEN CREATING NEW USER
+            // SET ROLE WHEN CREATING NEW USER
 //            if (Objects.isNull(user.getRole())) {
 //                user.setRole("ROLE_USER");
 //            }
@@ -60,6 +60,7 @@ public class UserDetailServiceImpl implements UserDetailsService, UserService {
         return null;
     }
 
+// CREATE USER ANOTHER IMPLEMENTATION
 //    @Override
 //    public User createNewUser(User user) {
 //        user.setUsername(user.getUsername());

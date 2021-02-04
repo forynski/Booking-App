@@ -42,23 +42,10 @@ body {
     background-position: center;
 }
 
-/*.navbar-nav {*/
-/*    margin: 10px;*/
-/*    font-size: large;*/
-/*}*/
-
 .card {
     /*opacity: 0.9;*/
     box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
-
-/*div button {*/
-/*    margin-left: 15px;*/
-/*}*/
-
-/*#addHotelButton {*/
-/*    margin-left: 15px;*/
-/*}*/
 
 #listing {
     margin-top: 50px;
@@ -96,7 +83,6 @@ body {
 }
 
 .navbar {
-    /*font-family: 'Quicksand', sans-serif;*/
     grid-area: navbar;
     font-size: 17px;
 }

@@ -40,20 +40,15 @@
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
-<!--                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
                                         <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">My Bookings</a></li>
                                         <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
                                         <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link disabled" th:href="@{user}">My Profile</a></li>
                                         <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
-
-<!--                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>-->
-<!--                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>-->
                 </ul>
             </div>
 
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
-<!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>-->
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
@@ -63,7 +58,7 @@
             </div>
         </div>
     </div>
-    <!--         SOCIAL LINKS (TOP RIGHT)-->
+
     <div class="social_links">
         <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>
         <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -77,7 +72,6 @@
 
         <form method="post" th:action="@{/booking/add}" th:object="${booking}">
 
-            <!--        <div class="form-group">-->
             <div class="form-group col-md-12">
                 <h1 th:text="#{add.booking.form}"></h1>
                 <label for="inputRoomType">Select room type</label>
@@ -87,17 +81,10 @@
                     <option th:value="3">Superior Family Room</option>
                 </select>
             </div>
-            <!--        </div>-->
 
-
-            <!--        <div class="form-group">-->
-            <!--            <div class="form-group col-md-6">-->
-            <!--                <input type="number" class="form-control" id="inputBookingAdults" placeholder="Adults" th:field="*{adults}" required>-->
-            <!--            </div>-->
             <div class="form-group col-md-12">
                 <label for="inputBookingAdults">Adults</label>
                 <select id="inputBookingAdults" class="form-control" th:placeholder="Adults" th:field="*{adults}" required>
-                    <!--                    <option value="" selected disabled>Adults</option>-->
                     <option th:field="*{adults}" th:value="1">1</option>
                     <option th:field="*{adults}" th:value="2">2</option>
                     <option th:field="*{adults}" th:value="3">3</option>
@@ -106,13 +93,9 @@
                 </select>
             </div>
 
-            <!--            <div class="form-group col-md-6">-->
-            <!--                <input type="number" class="form-control" id="inputBookingChildren" placeholder="Children" th:field="*{children}" required>-->
-            <!--            </div>-->
             <div class="form-group col-md-12">
                 <label for="inputBookingChildren">Children</label>
                 <select id="inputBookingChildren" class="form-control" th:field="*{children}" required>
-                    <!--                <option value="" selected disabled>Adults</option>-->
                     <option th:field="*{children}" th:value="0">0</option>
                     <option th:field="*{children}" th:value="1">1</option>
                     <option th:field="*{children}" th:value="2">2</option>
@@ -156,22 +139,19 @@
             </div>
 <!--            DATA TIME PICKER ENDS-->
 
-            <!--            <div class="form-group row">-->
             <div class="form-group col-md-12">
                 <label for="inputAllInclusive">All inclusive?</label>
                 <select id="inputAllInclusive" class="form-control" placeholder="All inclusive" th:field="*{allInclusive}" required>
-                    <!--                        <option value="" selected disabled>All inclusive?</option>-->
                     <option th:field="*{allInclusive}" value="true">Yes</option>
                     <option th:field="*{allInclusive}" value="false">No</option>
                 </select>
             </div>
-            <!--            </div>-->
-            <!--            <button type="submit" class="btn btn-warning" id="addHotelButton">Submit</button>-->
+
             <div class="form-group col-md-12">
                 <button type="submit" class="btn btn-lg btn-block btn-warning" id="submitBooking">Submit</button><br>
                 <a th:href="@{/booking}" class="btn btn-large btn-light" id="buttonBackToBooking">Back to Bookings</a>
             </div>
-            <!--        </div>-->
+
 
         </form>
 
@@ -212,7 +192,6 @@
         });
     </script>
 
-<!--    <script src="scripts/calendar.js"></script>-->
 </div>
 </body>
 </html>

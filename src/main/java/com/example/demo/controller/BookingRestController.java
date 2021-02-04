@@ -38,11 +38,4 @@ public class BookingRestController {
         return ResponseEntity.badRequest().build();
     }
 
-
-    //    //SEARCH:
-//    @GetMapping("/hotel/{locationCity}")
-//    public ResponseEntity<?> getHotelsByCity(@PathVariable String locationCity) {
-//        List<Hotel> hotels =hotelService.findHotelByLocationCity(locationCity);
-//        return ResponseEntity.notFound().build();
-//    }
 }

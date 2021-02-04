@@ -40,20 +40,15 @@
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}"><span class="fas fa-home nav-menu-icons"></span> Home<span class="sr-only">(current)</span></a></li>
-                    <!--                    <li class="nav-item"><a class="nav-link disabled" href="#">Car rentals</a></li>-->
                                         <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">My Bookings</a></li>
                                         <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>
                                         <li th:if="${isUserLogged and !isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link disabled" th:href="@{user}">My Profile</a></li>
                                         <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>
-
-<!--                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/booking}">All Bookings</a></li>-->
-<!--                    <li th:if="${isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/user}">Users</a></li>-->
                 </ul>
             </div>
 
             <div class="navbar-nav">
                 <ul class="navbar-nav mr-auto">
-<!--                    <li th:if="${isAuthorizedUserAdmin}" class="nav-item"><a class="nav-link" th:href="@{/room}">Rooms</a></li>-->
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
                     <li th:if="${!isUserLogged}" class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
                     <li th:if="${isUserLogged}" class="nav-item"><a class="navbar-brand">Hello&nbsp;<span>[[${#request.remoteUser}]]</span></a></li>
@@ -63,15 +58,15 @@
             </div>
         </div>
     </div>
-    <!--         SOCIAL LINKS (TOP RIGHT)-->
+
     <div class="social_links">
         <a th:href="#{social.github}" target="_blank"><i class="fab fa-github"></i></a>
         <a th:href="#{social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
 </nav>
 
-<!-- ADD HOTEL FORM -->
 
+<!-- ADD HOTEL FORM -->
 <div class="container">
 <div class="card my-5">
 
@@ -91,13 +86,12 @@
             </div>
 
 
-
             <div class="form-group col-md-12">
                 <label for="inputRoleType">User email</label>
                 <input type="text" class="form-control" id="inputEmail" placeholder="email" th:field="*{email}" required>
             </div>
 
-<!--            TESTING: BLOCK USER SELECTION FOR ROLE_USER !!!!!! -->
+
             <div th:if="${isUserLogged and !isAuthorizedUserAdmin}">
             <div class="form-group col-md-12">
                 <label for="inputRoleType">User privilege level</label>
@@ -119,8 +113,6 @@
             </div>
 
 
-
-
             <div class="form-group col-md-12">
                 <label for="inputIsUserEnabled">Enabled / Disabled</label>
                 <select id="inputIsUserEnabled" class="form-control" th:placeholder="Enabled" th:field="*{enabled}" required>
@@ -136,8 +128,6 @@
 
         </form>
 
-        <!--    </div>-->
-<!--        <div class="card my-5">-->
 
             <div class="table-responsive card-body">
                 <h1 th:text="#{update.current.user.form}"></h1>
@@ -154,7 +144,6 @@
                     </thead>
                     <tbody>
                     <tr th:object="${user}">
-<!--                        <td><a th:href="@{/user/__${user.id}__}" th:text="${user.id}"></a></td>-->
                         <td th:text="${user.id}" class="text-center align-middle"></td>
                         <td th:text="${user.username}" class="text-center align-middle"></td>
                         <td class="text-center align-middle">password hidden</td>
@@ -173,6 +162,7 @@
     </div>
 </div>
 </div>
+
     <!-- SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>

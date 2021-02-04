@@ -38,7 +38,6 @@ public class UserController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
 
         return "user";
     }
@@ -141,25 +140,5 @@ public class UserController {
         userService.deleteUserById(id);
         return "redirect:/user";
     }
-
-//    // TODO: CHECK IF WE NEED BELOW MAPPING
-//    @GetMapping("/user/profile/")
-//    public String getUserProfile(@ModelAttribute(value = "user") ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser){
-//
-//        modelMap.addAttribute("isUserLogged", true);
-//        boolean isAuthorizedUserAdmin = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
-//        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
-//
-//        User user = new User();
-//        if (Objects.nonNull(userService.getUserByUsername(authenticationUser.getUsername()))){
-//            user = userService.getUserByUsername(authenticationUser.getUsername());
-//        }
-//        modelMap.addAttribute("user",user);
-//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
-//
-//        return "redirect:/user-profile";
-//    }
-
-
 
 }

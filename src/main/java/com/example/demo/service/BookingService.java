@@ -23,8 +23,4 @@ public interface BookingService {
     Page<Booking> getCurrentBookings(Integer page, Integer size);
 
 
-
-
-
-
 }

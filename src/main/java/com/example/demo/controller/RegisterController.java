@@ -45,7 +45,6 @@ public class RegisterController {
         if (errors.hasErrors()) {
             return "register";
         }
-//        userService.createNewUser(user);
         User createdUser = userService.createNewUser(user);
         if (Objects.isNull(createdUser)) {
             modelMap.addAttribute("userExistsError", "Username or email already exist");

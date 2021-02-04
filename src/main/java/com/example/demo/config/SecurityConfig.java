@@ -46,7 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
     }
 
+}
 
+
+//IN MEMORY AUTHENTICATION
 //    @Override
 //    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 ////        auth.userDetailsService(userDetailService).passwordEncoder(bCryptPasswordEncoder);
@@ -58,4 +61,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("admin").password(bCryptPasswordEncoder.encode("adminPass")).roles("ADMIN");
 //
 //    }
-}
+

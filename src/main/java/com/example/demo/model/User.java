@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @Builder
 // WE HAVE TO USE "users" INSTEAD OF "user" (RESERVED AS KEYWORD BY POSTGRESQL)
 @Entity(name = "users")
-//@Table(name="\"user\"")
 
 public class User {
     @Id
@@ -64,44 +63,4 @@ public class User {
     }
 
 
-
-    //    String formattedBookings = bookings.toString()
-//            .replace(",", "")  //remove the commas
-//            .replace("[", "")  //remove the right bracket
-//            .replace("]", "")  //remove the left bracket
-//            .trim();
-
-
-
 }
-
-// CUSTOMER MODEL COPY
-//@Entity(name = "customer")
-//public class Customer {
-//    @Id
-//    @GeneratedValue
-//    private Long id;
-//    @NotNull
-////    @Pattern(regexp = "[a-zA-Z]", message = "First name must contain only alphabetic characters")
-//    private String firstName;
-//    @NotNull
-////    @Pattern(regexp = "[a-zA-Z]", message = "Last name must contain only alphabetic characters")
-//    private String lastName;
-//    @NotNull
-//    @Pattern(regexp = "[[0-9]]+", message = "Phone number must contain digits only")
-//    private String phoneNumber;
-//    @NotNull
-//    @Email
-//    private String email;
-
-//    @OneToOne(mappedBy = "customer")
-//    @Getter(value=AccessLevel.NONE)
-//    private User user;
-
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @Setter(value = AccessLevel.NONE)
-//    private List<Booking> bookings = new ArrayList<>();
-//
-//    public void addBooking(Booking booking) {
-//        bookings.add(booking);
-//    }

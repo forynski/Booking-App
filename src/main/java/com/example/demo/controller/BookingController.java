@@ -20,12 +20,10 @@ import java.util.Objects;
 public class BookingController {
 
     private final BookingService bookingService;
-//    private final RoomService roomService;
     private final UserService userService;
 
     public BookingController(BookingService bookingService, UserService userService) {
         this.bookingService = bookingService;
-//        this.roomService = roomService;
         this.userService = userService;
     }
 
@@ -57,8 +55,6 @@ public class BookingController {
                 grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
         modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         modelMap.addAttribute("isUserLogged", true);
-//        modelMap.addAttribute("isAuthorizedUserAdmin", true);
-
         modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         return "booking";
@@ -75,9 +71,6 @@ public class BookingController {
                     grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
-        // TESTING
-//        User user = userService.getUserByUsername(authenticationUser.getUsername());
-//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         return "booking-add";
     }
@@ -93,8 +86,6 @@ public class BookingController {
             modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUserAdmin);
         }
         User user = userService.getUserByUsername(authenticationUser.getUsername());
-        // TESTING
-//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
 
         Booking newOne = bookingService.createNewBooking(booking, user);
         modelMap.addAttribute("newOne", newOne);
@@ -117,7 +108,6 @@ public class BookingController {
     }
 
     // POST EDIT BOOKING
-
     @PostMapping("/booking/update/{id}")
     public String updateBookingById(@PathVariable(name = "id") Long id, ModelMap modelMap, @Valid @ModelAttribute("booking") Booking booking, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
 
@@ -146,28 +136,6 @@ public class BookingController {
         bookingService.deleteBookingById(id);
         return "redirect:/booking";
     }
-
-
-//    @GetMapping("/bookings")
-//    public String showUserBookings(@Valid @ModelAttribute("booking") Booking booking, ModelMap modelMap, @AuthenticationPrincipal org.springframework.security.core.userdetails.User authenticationUser) {
-//        modelMap.addAttribute("isUserLogged", true);
-//        boolean isAuthorizedUser = authenticationUser.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN") || grantedAuthority.getAuthority().equals("ROLE_MANAGER"));
-//        modelMap.addAttribute("isAuthorizedUserAdmin", isAuthorizedUser);
-//
-//        User user = userService.getUserByUsername(authenticationUser.getUsername());
-//        modelMap.addAttribute("currentBookings", bookingService.getCurrentBookingsByUser(user));
-//
-//        return "bookings";
-//    }
-
-
-    //    //SEARCH
-//    @RequestMapping(value = "hotels", method = RequestMethod.GET)
-//    public String findHotelByLocationCity(@RequestParam (value = "search", required = false) String locationCity, Model model) {
-//        model.addAttribute("search", hotelService.findHotelByLocationCity(locationCity));
-//        return "hotels";
-//    }
-
 
 }
 

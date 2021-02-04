@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface UserService {
 
-    // DAO
-
     User createNewUser(User user);
 
     List<User> getAllUsers();
@@ -23,11 +21,6 @@ public interface UserService {
     User getUserByUsername(String username);
 
     User getUserByBooking(Booking booking);
-
-//    User updatePassword(User user);
-
-
-//    List<Booking> getCurrentBookingByUser(User user);
 
 
 }

@@ -79,7 +79,7 @@ public class BookingServiceDbImpl implements BookingService {
         }
     }
 
-    //TESTING
+
     @Override
     public List<Booking> getCurrentBookingsByUser(User user) {
         if (Objects.nonNull(user)) {
@@ -104,23 +104,8 @@ public class BookingServiceDbImpl implements BookingService {
         if (page < 0) {
             throw new WrongPageException("Page number can't be less than 1");
         }
-        Sort sort = Sort.by("startOfBooking").ascending();
+        Sort sort = Sort.by("checkIn").ascending();
         return PageRequest.of(page, size, sort);
     }
-
-
-//    public long calculateBookingCost(Booking booking) {
-//        Double price = 100.00;
-//        long days = DAYS.between(booking.getCheckIn(), booking.getCheckOut());
-//        long bookingCost = booking.getRoomClass() * days;
-//        if (booking.getAllInclusive()) {
-//            bookingCost += 20.00 * days;
-//        }
-//        if (booking.getChildren() > 0) {
-//            bookingCost += 20 * booking.getChildren() * days;
-//        }
-//        return bookingCost;
-//    }
-
 
 }
