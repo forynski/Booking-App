@@ -1,6 +1,6 @@
 # Booking App
 ### Description
-Booking App allows you to register new user and book hotel rooms.
+Booking App allows you to register new users and book hotel rooms.
 It also allows the property to be managed by an administrator.
 Information about user details and assigned bookings are available for management.
 Each user can change their data in "My Profile".
