@@ -4,6 +4,10 @@ Booking App allows you to register new users and book hotel rooms.
 It also allows the property to be managed by an administrator.
 Information about user details and assigned bookings are available for management.
 Each user can change their data in "My Profile".
+
+### Preview
+![Architecture](https://github.com/forynski/Booking-App/blob/master/resources/booking-app.jpg)
+
 ### Project on heroku
 ~This project is available on the heroku platform at: https://booking-app-spring.herokuapp.com/~
 ### Authentication
