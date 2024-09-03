@@ -5,7 +5,7 @@ It also allows the property to be managed by an administrator.
 Information about user details and assigned bookings are available for management.
 Each user can change their data in "My Profile".
 ### Project on heroku
-This project is available on the heroku platform at: https://booking-app-spring.herokuapp.com/
+~This project is available on the heroku platform at: https://booking-app-spring.herokuapp.com/~
 ### Authentication
 Admin account:
 * username: admin
